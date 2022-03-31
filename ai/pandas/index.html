@@ -1,0 +1,1259 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/pandas/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>データ処理 - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pandas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              データ処理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          データ処理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        データ処理
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    データフレームの作成と保存
+  </a>
+  
+    <nav class="md-nav" aria-label="データフレームの作成と保存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データの作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データフレームの保存
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    カラム名からデータ列を取り出す
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    列データの追加
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    n行目のデータを取り出す
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    セルの値
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    データベースの操作
+  </a>
+  
+    <nav class="md-nav" aria-label="データベースの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projection" class="md-nav__link">
+    射影(projection)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection" class="md-nav__link">
+    選択(selection)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    グループごとの集計
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ピボットテーブルとクロス集計⭐️
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    表の連結
+  </a>
+  
+    <nav class="md-nav" aria-label="表の連結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    単純な連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    表データの結合(join)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inplace" class="md-nav__link">
+    テーブルの変更(inplace)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    練習問題
+  </a>
+  
+    <nav class="md-nav" aria-label="練習問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#j" class="md-nav__link">
+    Jリーガー、プロ野球、大相撲
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j_1" class="md-nav__link">
+    Jリーガー、プロ野球、アイドルデータ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク４
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        より本格的なAIへ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    データフレームの作成と保存
+  </a>
+  
+    <nav class="md-nav" aria-label="データフレームの作成と保存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データの作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データフレームの保存
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基本操作
+  </a>
+  
+    <nav class="md-nav" aria-label="基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    カラム名からデータ列を取り出す
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    列データの追加
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    n行目のデータを取り出す
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    セルの値
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    データベースの操作
+  </a>
+  
+    <nav class="md-nav" aria-label="データベースの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projection" class="md-nav__link">
+    射影(projection)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection" class="md-nav__link">
+    選択(selection)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    グループごとの集計
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ピボットテーブルとクロス集計⭐️
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    表の連結
+  </a>
+  
+    <nav class="md-nav" aria-label="表の連結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    単純な連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    表データの結合(join)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inplace" class="md-nav__link">
+    テーブルの変更(inplace)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    練習問題
+  </a>
+  
+    <nav class="md-nav" aria-label="練習問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#j" class="md-nav__link">
+    Jリーガー、プロ野球、大相撲
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j_1" class="md-nav__link">
+    Jリーガー、プロ野球、アイドルデータ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="pandas">前処理: Pandasを使いこなそう<a class="headerlink" href="#pandas" title="Permanent link">#</a></h1>
+<p>データサイエンスや機械学習では、
+データ分析を始める前に、データ分析が行いやすいように加工する必要があります。
+このような処理を <strong>前処理</strong> と呼びます。</p>
+<p>今までは、
+比較的データサイエンスや機械学習の学習用に加工された前処理済みのデータを使ってきましたが、
+Pandasを使いこなせるようになって、前処理をできるようになりましょう。</p>
+<h2 id="_1">データフレームの作成と保存<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p>Pandas のデータフレームは、色々な方法で作ることができます。</p>
+<p><strong>今まで習った方法主な方法</strong></p>
+<ul>
+<li><code>pd.read_csv('file.csv')</code>: CSVファイルから読み込む</li>
+<li><code>pd.DataFrame(data)</code>: データ列からデータフレームを作る</li>
+</ul>
+<p>まず、練習用の小さなデータフレームを用意してみましょう。</p>
+<h3 id="_2">データの作成<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>まず、データ列からデータフレームを作る方法をみましょう。</p>
+<p>基本は、次のように、カラム名をキー、データ列を値とした辞書を定義し、
+そこから<code>pd.DataFrame()</code>を使って、データフレームを作成します。</p>
+<div class="highlight"><span class="filename">辞書からデータフレームへ</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="s1">&#39;名前&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;櫻井翔&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="s1">&#39;出身&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;千葉&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="s1">&#39;生年&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">1982</span><span class="p">],</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="s1">&#39;身長&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="mi">171</span><span class="p">],</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="s1">&#39;血液型&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<p>もう一つは、データ列をタプルにして、データ列のリストを作ります。</p>
+<div class="highlight"><span class="filename">データ行のリストからデータフレームへ</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="s1">&#39;出身&#39;</span><span class="p">,</span> <span class="s1">&#39;生年&#39;</span><span class="p">,</span> <span class="s1">&#39;身長&#39;</span><span class="p">,</span> <span class="s1">&#39;血液型&#39;</span><span class="p">]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="p">(</span><span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;千葉&#39;</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="s1">&#39;AB&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="p">(</span><span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="p">(</span><span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="p">(</span><span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">(</span><span class="s1">&#39;櫻井翔&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">171</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">]</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+</code></pre></div>
+<p>どちらの方法でも同じデータフレームが得られます。</p>
+<div class="highlight"><span class="filename">作成したデータフレームの確認</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df1-fs8.png" style="width:352px" /></p>
+<div class="admonition check">
+<p class="admonition-title">データが間違っているとご指摘を受けますが..</p>
+<p>一部間違っていると指摘をよく受けます。
+どうぞ、各自でご自由に、ご修正して練習にお使いください。</p>
+</div>
+<h3 id="_3">データフレームの保存<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>Pandas で操作した表データは、<code>.to_csv()</code>でCSVファイルに保存できます。</p>
+<div class="highlight"><span class="filename">CSVファイルで保存</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;arashi.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>　<span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf_8_sig&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Excelで開いて文字化けするときは？</p>
+<p>Windows は、標準でShiftJIS文字コードを使っています。
+そのため、先頭にBOMと呼ばれる文字コードを識別する記号を入れると、
+文字化けなくCSVファイルを保存されます。
+<img alt="Excel" src="../figs/pandas_arashi-fs8.png" /></p>
+</div>
+<div class="highlight"><span class="filename">エクセル形式のファイルに保存</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;arashi.xlsx&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_4">基本操作<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<p>Pandas は、表データを効率よく操作できます。
+Pandas 用語では、表データのことをデータフレーム(DataFrame)と呼びますが、本資料では表データと呼びます。</p>
+<p><img alt="dataframe-fs8.png" src="../figs/pandas_table-fs8.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">確認：Pandas用語</p>
+</div>
+<ul>
+<li><strong>データフレーム</strong>: 表データのこと</li>
+<li><strong>カラム</strong>: 列方向のデータ</li>
+<li><strong>インデックス</strong>: 行方向のデータ</li>
+</ul>
+<h3 id="_5">カラム名からデータ列を取り出す<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>Pandasは、今ままできてきたとおり、カラムごとのデータ処理が多くなります。
+まず、カラム名<code>'名前'</code>のデータを取り出してみましょう。</p>
+<div class="highlight"><span class="filename">データ列の取り出し</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>取り出したデータ列は、Pythonの列(シーケンス）として、
+<code>for</code>文などでひとつずつ処理することができます。</p>
+<p><div class="highlight"><span class="filename">for文によるデータ列の処理</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>for name in df[&#39;名前&#39;]:
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  print(name)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>相葉雅紀
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>松本潤
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>二宮和也
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>大野智
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>櫻井翔
+</code></pre></div></p>
+<p>複数のデータ列を取り出して同時に処理したい時は、<code>zip</code>を使います。</p>
+<p><div class="highlight"><span class="filename">複数のデータ列の取り出し</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">blood</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;血液型&#39;</span><span class="p">]):</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">blood</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>相葉雅紀 AB
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>松本潤 A
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>二宮和也 A
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>大野智 A
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>櫻井翔 A
+</code></pre></div></p>
+<h3 id="_6">列データの追加<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>新しいカラム、つまり縦方向の列データを追加してみましょう。</p>
+<p>表データ中には、５人分のデータがあるため、
+リストとして５人分のデータを代入すると、新しい属性を追加することができます。</p>
+<div class="highlight"><span class="filename">例. 性別を追加する</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;性別&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>エクセルのようにカラムの値から計算して、新しいカラムを作ることもできます。</p>
+<div class="highlight"><span class="filename">計算結果による新しいカラム</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;年齢&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2022</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;生年&#39;</span><span class="p">]</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df2-fs8.png" style="width:436px" /></p>
+<h3 id="n">n行目のデータを取り出す<a class="headerlink" href="#n" title="Permanent link">#</a></h3>
+<p>表データの行ごとへのアクセスは、<code>.iloc</code>プロパティを通して行ます。</p>
+<p><div class="highlight"><span class="filename">最初の行を抽出</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>名前     相葉雅紀
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>出身       千葉
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>生年     1982
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>身長      175
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>血液型      AB
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>性別       男性
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>年齢       40
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>Name: 0, dtype: object
+</code></pre></div></p>
+<p>Pandasは強力なデータ操作の機能を持っているのであまり使うことはありませんが、
+データフレームから１行ずつ取り出して処理することもできます。</p>
+<p><div class="highlight"><span class="filename">１行ずつ処理する</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>[&#39;相葉雅紀&#39; &#39;千葉&#39; 1982 175 &#39;AB&#39; &#39;男性&#39; 40]
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>[&#39;松本潤&#39; &#39;東京都&#39; 1983 172 &#39;A&#39; &#39;男性&#39; 39]
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>[&#39;二宮和也&#39; &#39;東京都&#39; 1983 168 &#39;A&#39; &#39;男性&#39; 39]
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>[&#39;大野智&#39; &#39;東京都&#39; 1980 166 &#39;A&#39; &#39;男性&#39; 42]
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>[&#39;櫻井翔&#39; &#39;東京都&#39; 1982 171 &#39;A&#39; &#39;男性&#39; 40]
+</code></pre></div></p>
+<h3 id="_7">セルの値<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<p>カラム名とインデックスの組み合わせで、
+表データをセルの値を指定して取り出すことができます。</p>
+<p><div class="highlight"><span class="filename">セルの値</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>df[&#39;出身&#39;][0]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>千葉
+</code></pre></div></p>
+<h2 id="_8">データベースの操作<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<p>Pandas の<a href="https://ja.wikipedia.org/wiki/%E9%96%A2%E4%BF%82%E4%BB%A3%E6%95%B0_(%E9%96%A2%E4%BF%82%E3%83%A2%E3%83%87%E3%83%AB)">リレーショナル代数</a>の操作をみていきましょう。</p>
+<p>データベース実習を履修している人は、SQLを思い出しながら試していきましょう。</p>
+<div class="admonition note">
+<p class="admonition-title">SQLって何？</p>
+<p>データベースを操作するためのクエリー言語です。
+データベース操作では定番になっています。</p>
+</div>
+<h3 id="projection">射影(projection)<a class="headerlink" href="#projection" title="Permanent link">#</a></h3>
+<p>射影（projection）は、表データからカラムを限定した表データを取り出す操作です。</p>
+<div class="highlight"><span class="filename">SQLの例; 名前と生年、血液型のみ抽出</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">SELECT</span> <span class="err">名前</span><span class="p">,</span><span class="err">生年</span><span class="p">,</span><span class="err">血液型</span> <span class="k">FROM</span> <span class="n">df</span>
+</code></pre></div>
+<p>Pandasでは、抽出したいカラム名をリストにして渡します。</p>
+<div class="highlight"><span class="filename">pandas</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>df[[&#39;名前&#39;, &#39;生年&#39;, &#39;血液型&#39;]]
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df3-fs8.png" style="width:232px" /></p>
+<p>機械学習では、
+説明変数と目的変数を取り出すときによく用います。</p>
+<h3 id="selection">選択(selection)<a class="headerlink" href="#selection" title="Permanent link">#</a></h3>
+<p>選択は、SQLでは指定した条件に合う行を取り出す基本操作です。</p>
+<p>Pandasでは、
+<code>query()</code>メソッドでSQL風の条件を記述する方法と
+NumPy風にマスクしてフィルタする方法の２種類あります。</p>
+<div class="highlight"><span class="filename">SQLクエリー</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df</span> <span class="k">WHERE</span> <span class="err">身長</span> <span class="o">&gt;=</span> <span class="mi">170</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Pandas: query()</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;身長 &gt;= 170&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Pandas: NumPy風フィルタ</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;身長&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">]</span>
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df4-fs8.png" style="width:401px" /></p>
+<p>より複雑な条件も書くことができます。</p>
+<div class="highlight"><span class="filename">SQL</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df</span> <span class="k">WHERE</span> <span class="err">身長</span> <span class="o">&gt;=</span> <span class="mi">170</span> <span class="k">AND</span> <span class="err">血液型</span> <span class="o">==</span> <span class="ss">&quot;A&quot;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">query()を使う</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;身長 &gt;= 170 and 血液型 == &quot;A&quot;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">NumPy風フィルタ</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;身長&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;血液型&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)]</span>
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df5-fs8.png" style="width:380px" /></p>
+<h3 id="_9">グループごとの集計<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p><code>groupby()</code> は、同じ値を持つデータをまとめて、統計処理を行いときに使います。</p>
+<div class="highlight"><span class="filename">例. 血液型ごとに平均(mean)をとる</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>df.groupby(&#39;血液型&#39;).mean()
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df6-fs8.png" style="width:235px" /></p>
+<div class="highlight"><span class="filename">基礎統計量を全てみたいとき</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>df.groupby(&#39;血液型&#39;).describe()
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df7-fs8.png" style="width:750px" /></p>
+<p><code>groupby()</code>は、グループごとに集計して操作するときに、重宝します。
+それぞれのグループごとに表(df)を取り出すときは、次のように操作します。</p>
+<p><div class="highlight"><span class="filename">グループごとにデータフレームを取り出す</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>for key, df2 in df.groupby(&#39;血液型&#39;):
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>  print(key, df2)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>A
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>     名前   出身    生年   身長 血液型  性別  年齢
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a>1   松本潤  東京都  1983  172   A  男性  39
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a>2  二宮和也  東京都  1983  168   A  男性  39
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a>3   大野智  東京都  1980  166   A  男性  42
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a>4   櫻井翔  東京都  1982  171   A  男性  40
+<a id="__codelineno-29-7" name="__codelineno-29-7"></a>AB
+<a id="__codelineno-29-8" name="__codelineno-29-8"></a>     名前  出身    生年   身長 血液型  性別  年齢
+<a id="__codelineno-29-9" name="__codelineno-29-9"></a>0  相葉雅紀  千葉  1982  175  AB  男性  40
+</code></pre></div></p>
+<h3 id="_10">ピボットテーブルとクロス集計⭐️<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p>ピボットテーブルは、クロス集計に使われる便利ツールです。</p>
+<ul>
+<li><code>index</code>: 縦軸に展開するカラムを指定</li>
+<li><code>columns</code>: 横軸に展開するカラムを指定</li>
+<li><code>values</code>: 集約する値カラムを指定</li>
+<li><code>aggfunc</code>: 集約方法を指定</li>
+</ul>
+<p>ピボットテーブルを用いると、集計結果を表データに変換して取り出せるようになります。</p>
+<div class="highlight"><span class="filename">ピボットテーブル: インデックスのみ指定</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>pd.pivot_table(df, index=&quot;血液型&quot;)
+</code></pre></div>
+<h2 id="_11">表の連結<a class="headerlink" href="#_11" title="Permanent link">#</a></h2>
+<p>必要なデータが複数のファイルに保存されていて、
+複数のデータフレームの一つにまとめてデータ分析する機会は多くあります。</p>
+<p>まず、もうひとつデータフレームを用意します。</p>
+<p><div class="highlight"><span class="filename">もう一つ、表を用意</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>    <span class="s1">&#39;名前&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;カビゴン&#39;</span><span class="p">],</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>    <span class="s1">&#39;身長&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">166</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>    <span class="s1">&#39;体重&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">52.0</span><span class="p">,</span> <span class="mf">58.0</span><span class="p">,</span> <span class="mf">52.0</span><span class="p">,</span> <span class="mf">62.0</span><span class="p">,</span> <span class="mf">460.0</span><span class="p">],</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="p">})</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/pandas_df8-fs8.png" style="width:233px" /></p>
+<div class="admonition warning">
+<p class="admonition-title">カビゴン？</p>
+<p>練習用に少し変なデータにしてあります。</p>
+</div>
+<h3 id="_12">単純な連結<a class="headerlink" href="#_12" title="Permanent link">#</a></h3>
+<p>最も簡単方法は、単純に表を連結することです。</p>
+<p>単純に縦方向に連結したいときは、<code>pd.concat()</code>を使って連結します。</p>
+<div class="highlight"><span class="filename">縦方向に表を連結する</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>pd.concat([df, df2]) 
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df9-fs8.png" style="width:500px" /></p>
+<p>横方向に連結したいときは、<code>axis=1</code>のオプションをつけます。</p>
+<div class="highlight"><span class="filename">横方向に連結する</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>pd.concat([df, df2], axis=1)
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df91-fs8.png" style="width:600px" /></p>
+<h3 id="join">表データの結合(join)<a class="headerlink" href="#join" title="Permanent link">#</a></h3>
+<p>表データの結合は、ふたつの表データのある属性をキーにして、
+キーが同じ値であれば一つの行にまとめる操作です。</p>
+<p>Pandasでは、<code>pd.merge()</code>で結合します。</p>
+<div class="highlight"><span class="filename">`名前`をキーにして連結する</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>pd.merge(df, df2, on=&#39;名前&#39;)
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df92-fs8.png" style="width:600px" /></p>
+<p>ふたつの表データは結合されましたが、データが一部消えてしまいました。
+これは、Pandas では何も指定しなければ、一番条件の厳しい内部結合が用いられるためです。</p>
+<div class="admonition note">
+<p class="admonition-title">結合の方法</p>
+<ul>
+<li>内部結合 <code>inner</code>: 両方にキーが存在するとき結合</li>
+<li>外部結合 <code>outer</code>: どちらか一方にキーが存在するとき結合</li>
+<li>左外部結合 <code>left</code>: 左側にキーが存在するとき </li>
+<li>右外部結合 <code>right</code>: 右側にキーが存在するとき</li>
+</ul>
+</div>
+<p><code>left</code>が良さそうですが、<code>outer</code>で結合してみます。</p>
+<div class="highlight"><span class="filename">df, df2を外部結合する</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>df3 = pd.merge(df, df2, on=&#39;名前&#39;, how=&#39;outer&#39;)
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>df3.head()
+</code></pre></div>
+<p><img alt="" src="../figs/pandas_df93-fs8.png" style="width:600px" /></p>
+<h3 id="inplace">テーブルの変更(inplace)<a class="headerlink" href="#inplace" title="Permanent link">#</a></h3>
+<p>少しデータを整頓しておきましょう。</p>
+<p>===</p>
+<p>また、カラム名が英語だったり、日本だったり不統一です。少し整頓しておきましょう。</p>
+<div class="highlight"><span class="filename">df, df2を外部結合し、df3</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>df3 = pd.merge(df, df2, on=&#39;名前&#39;, how=&#39;outer&#39;)
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a>
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a>df3.drop(5, axis=0, inplace=True)  #index=5を消す
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a>df3.drop(&#39;身長_y&#39;, axis=1, inplace=True)  # &#39;身長_y&#39;を消す
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a>df3.rename(columns={&#39;身長_x&#39;: &#39; 身長&#39;}, inplace=True)
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a>df.reindex(columns=[&#39;名前&#39;, &#39;出身&#39;, &#39;年齢&#39;, &#39;身長&#39;, &#39;体重&#39;])
+<a id="__codelineno-36-7" name="__codelineno-36-7"></a>df3.head()
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">pandas の表操作は書き換えない</p>
+<p>pandas の表操作は、新しい表データを返すようになっています。だから、別の変数名で別の表データとして操作することもできます。
+<div class="highlight"><span class="filename">新しい表を df2 として操作する</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+だから、同じ変数名で置き換えることもできます。
+<div class="highlight"><span class="filename">python</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>df = df.drop(&#39;名前&#39;, axis=1)
+</code></pre></div>
+データを直接、書き換えたいときは、<code>inplace=True</code>をつけます。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a>df.drop(&#39;名前&#39;, axis=1, inplace=True)
+</code></pre></div></p>
+</div>
+<h2 id="_13">練習問題<a class="headerlink" href="#_13" title="Permanent link">#</a></h2>
+<p>Pandas を使ってデータの前処理の練習をしましょう。</p>
+<h3 id="j">Jリーガー、プロ野球、大相撲<a class="headerlink" href="#j" title="Permanent link">#</a></h3>
+<p>プロ野球、Jリーガー、大相撲に関するデータをひとつにまとめよう。</p>
+<div class="highlight"><span class="filename">カラムの例</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>名前　職業  所属  身長  体重  BMI
+</code></pre></div>
+<ol>
+<li><code>職業</code>は、<code>プロ野球</code>、<code>Jリーガー</code>、<code>相撲</code>とする</li>
+<li><code>BMI</code> は<code>身長</code>と<code>体重</code>から計算する</li>
+<li>身長の高い順にソートして、<code>sports.csv</code>として保存する</li>
+<li>(余力があったら)散布図などを表示してデータの傾向を見てみよう。</li>
+</ol>
+<p><strong>データの入手先</strong></p>
+<p>鈴木 雅也、渡辺 将人、井上 史斗.
+「<a href="https://github.com/massongit/math-program-book">数式をプログラムするってつまりこういうこと</a>」より、公開データを使わせてもらいます。</p>
+<p><div class="highlight"><span class="filename">JリーガーのデータのURL</span><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/サッカー/Jリーグ選手身長体重.csv
+</code></pre></div>
+<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a>チーム,ポジション,背番号,名前,生年月日,身長,体重
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a>川崎フロンターレ,GK,1,チョン　ソンリョン,1985/01/04,191,90
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a>川崎フロンターレ,GK,24,安藤　駿介,1990/08/10,185,79
+</code></pre></div></p>
+<p><div class="highlight"><span class="filename">プロ野球選手のデータURL</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>!wget https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/プロ野球/プロ野球選手身長体重.csv
+</code></pre></div>
+<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>チーム,背番号,氏名,生年月日,身長,体重,投,打
+<a id="__codelineno-44-2" name="__codelineno-44-2"></a>広島,11,福井　優也,1988.02.08,178,85,右,右
+<a id="__codelineno-44-3" name="__codelineno-44-3"></a>広島,12,九里　亜蓮,1991.09.01,187,92,右,右
+</code></pre></div></p>
+<p><div class="highlight"><span class="filename">大相撲のデータURL</span><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a>!wget https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/相撲/力士身長体重.csv
+</code></pre></div>
+<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>しこ名,身長,体重
+<a id="__codelineno-46-2" name="__codelineno-46-2"></a>玉鷲 一朗,188.0,174.0
+<a id="__codelineno-46-3" name="__codelineno-46-3"></a>旭秀鵬 滉規,190.0,147.0
+</code></pre></div></p>
+<h3 id="j_1">Jリーガー、プロ野球、アイドルデータ<a class="headerlink" href="#j_1" title="Permanent link">#</a></h3>
+<p>プロ野球、Jリーガー、アイドルに関するデータをひとつにまとめよう。</p>
+<div class="highlight"><span class="filename">カラムの例</span><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>名前　職業  所属  生年  身長  体重  年齢  BMI
+</code></pre></div>
+<ol>
+<li><code>職業</code>は、<code>プロ野球</code>、<code>Jリーガー</code>、<code>アイドル</code>とする</li>
+<li><code>年齢</code>は、<code>生年</code>から計算する（うまく、プロ野球とJリーガーの生年を前処理をしてください。）</li>
+<li><code>BMI</code> は<code>身長</code>と<code>体重</code>から計算する</li>
+<li>(余力があったら)散布図などを表示してデータの傾向を見てみよう。</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../corpus/" class="md-footer__link md-footer__link--prev" aria-label="Previous: データ資源とコーパス" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              データ資源とコーパス
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../nlp/" class="md-footer__link md-footer__link--next" aria-label="Next: 自然言語処理" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              自然言語処理
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

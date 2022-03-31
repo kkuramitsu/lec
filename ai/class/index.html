@@ -1,0 +1,1452 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/class/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>２クラス分類 - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ２クラス分類
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ２クラス分類
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ２クラス分類
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    乳がん診断データセット
+  </a>
+  
+    <nav class="md-nav" aria-label="乳がん診断データセット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データの理解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    説明変数と目的変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    説明変数と目的変数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classifier" class="md-nav__link">
+    分類器(Classifier)
+  </a>
+  
+    <nav class="md-nav" aria-label="分類器(Classifier)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    混同行列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    定量的な評価指標
+  </a>
+  
+    <nav class="md-nav" aria-label="定量的な評価指標">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    正解率(accuracy)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precision" class="md-nav__link">
+    適合度(Precision)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recall" class="md-nav__link">
+    再現率(Recall)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    F値
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ハイパーパラメータとグリッドサーチ
+  </a>
+  
+    <nav class="md-nav" aria-label="ハイパーパラメータとグリッドサーチ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    パラメータとモデルの正解率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    グリッドサーチ（★）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    練習問題
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    クラス分類器あれこれ
+  </a>
+  
+    <nav class="md-nav" aria-label="クラス分類器あれこれ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    回帰からクラス分類へ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    ２クラス分類問題
+  </a>
+  
+    <nav class="md-nav" aria-label="２クラス分類問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    学習モデル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    練習問題
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    (補足） 次元圧縮による高次元データの散布図
+  </a>
+  
+    <nav class="md-nav" aria-label="(補足） 次元圧縮による高次元データの散布図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    次元圧縮
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク４
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        より本格的なAIへ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    乳がん診断データセット
+  </a>
+  
+    <nav class="md-nav" aria-label="乳がん診断データセット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データの理解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    説明変数と目的変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    説明変数と目的変数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classifier" class="md-nav__link">
+    分類器(Classifier)
+  </a>
+  
+    <nav class="md-nav" aria-label="分類器(Classifier)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    混同行列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    定量的な評価指標
+  </a>
+  
+    <nav class="md-nav" aria-label="定量的な評価指標">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy" class="md-nav__link">
+    正解率(accuracy)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precision" class="md-nav__link">
+    適合度(Precision)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recall" class="md-nav__link">
+    再現率(Recall)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    F値
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ハイパーパラメータとグリッドサーチ
+  </a>
+  
+    <nav class="md-nav" aria-label="ハイパーパラメータとグリッドサーチ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    パラメータとモデルの正解率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    グリッドサーチ（★）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    練習問題
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    クラス分類器あれこれ
+  </a>
+  
+    <nav class="md-nav" aria-label="クラス分類器あれこれ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    回帰からクラス分類へ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    ２クラス分類問題
+  </a>
+  
+    <nav class="md-nav" aria-label="２クラス分類問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    学習モデル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    練習問題
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    (補足） 次元圧縮による高次元データの散布図
+  </a>
+  
+    <nav class="md-nav" aria-label="(補足） 次元圧縮による高次元データの散布図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    次元圧縮
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="_1">クラス分類問題<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p><strong>機械学習 (machine learning)</strong> とは、
+与えられた問題に対して、コンピュータ自身が学習し、学習結果を活かした問題解決を行うしくみのことです。
+人工知能 (artificial inteligence) を実現する手段として活用されています。</p>
+<p>今回は、クラス分類問題をとりあげ、いよいよ本格的な機械学習の世界に足を踏み入れていきます。</p>
+<p><strong>準備</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>  <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#matplotlibの日本語化  </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
+</code></pre></div>
+<h2 id="_2">乳がん診断データセット<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>乳がん診断データセットは、Breast Cancer Wisconsin (Diagnostic) Data Setに由来し、
+乳腺腫瘤の穿刺吸引細胞診のデジタル画像から計算されたデータです。</p>
+<p><img src="https://cdn-ak.f.st-hatena.com/images/fotolife/e/ensekitt/20181102/20181102002649.jpg" width="40%"/></p>
+<p>1993 W.N. Street, W.H. Wolberg and O.L. Mangasarian
+Nuclear feature extraction for breast tumor diagnosis 
+IS&amp;T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993. (abstract)</p>
+<div class="highlight"><span class="filename">データのURL</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>https://KuramitsuLab.github.io/data/cancer.csv
+</code></pre></div>
+<h3 id="_3">データの理解<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>まずは、データをダウンロードして内容をみてみましょう。</p>
+<div class="highlight"><span class="filename">読み込み</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>!wget https://KuramitsuLab.github.io/data/cancer.csv
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>df = pd.read_csv(&#39;cancer.csv&#39;)
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>df.head()
+</code></pre></div>
+<p><img alt="" src="../figs/cancer_df-fs8.png" /></p>
+<p>最初の<code>target</code>カラムは、乳がんの診断結果になります。
+良性は<code>1</code>、悪性は<code>0</code>のラベルがついています。
+それに続いて、乳がんの診断に用いた
+検査結果（たぶん、X線画像を分析し、腫瘍を測定した値）が続きます。
+詳細は、専門医ではないので割愛させていただきます。</p>
+<p>詳細がわからないデータでもデータ分析できるのかと思うかもしれません。
+むしろ、決定木などで乳がんの予測モデルを構築することで、
+重要度からどの項目が乳がんの診断に影響があるか分析するヒントになります。</p>
+<p><img alt="" src="../figs/cancer_importance-fs8.png" /></p>
+<h3 id="_4">説明変数と目的変数<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>乳がんの診断モデルを準備していきましょう。
+検査項目に関しては専門医でないため、どれが特徴量をよく表しているかわかりません。
+全ての項目を説明変数にして、診断モデルを作成してみます。</p>
+<div class="highlight"><span class="filename">説明変数と目的変数</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>X = df[df.columns[1:]]  # target 以外
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>y = df[&#39;target&#39;]
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>print(f&#39;データ数: {len(df)}, 説明変数の次元 {X.shape[1]}&#39;)
+</code></pre></div>
+<p>乳がん診断データセットでは、学習するデータの次元は、30次元になります。
+この30次元のデータを、良性<code>1</code>　悪性<code>0</code>に分類することが予測になります。</p>
+<p>ここで、通常の手順として、分類できるかどうかをみるため、
+あらかじめ散布図などで、データの散らばりを確認します。</p>
+<p><img alt="" src="../figs/cancer_scatter_std_pca-fs8.png" /></p>
+<h3 id="_5">説明変数と目的変数<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>続いて、ホールドアウト法によって、淡々とモデルを作ります。</p>
+<div class="highlight"><span class="filename">訓練データとテストデータ</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;訓練データ数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;テストデータ数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="classifier">分類器(Classifier)<a class="headerlink" href="#classifier" title="Permanent link">#</a></h2>
+<p>前回、決定木を習いましたので、今回も決定木を使ってみたいと思います。</p>
+<p>クラス分類のモデルを構築するポイントは、
+Regressor の代わりにClassifierを使う点です。</p>
+<div class="highlight"><span class="filename">回帰木（前回）</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">分類木（今回）</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+</code></pre></div>
+<p>注意：モデルが出力する値が数値データか、
+カテゴリデータ（ラベル付けされたクラス）かの違いがあります。</p>
+<p><code>DecisionTreeClassifier</code>を正しく使えば、あとは同じように学習(fit)し、
+予測する(predict)ことができます。</p>
+<p><div class="highlight"><span class="filename">分類器</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>[0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 1 1 0 1 0 1 0 1 0 1 0 1
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a> 0 1 0 0 1 0 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 0 0 0 1 1 0 1 0 0 0 1 1 0 1 0
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a> 0 1 1 1 1 1 0 0 0 1 0 1 1 1 0 0 1 0 1 0 1 1 0 1 1 1 1 1 1 1 0 1 0 1 0 0 1
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a> 0 0 1 1 1 1 1 1 1 1 1 0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 1 1 1 0 1 1 0 1 0
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a> 1 1 1 1 1 1 1 0 1 0 1 0 0 1 1 0 1 0 0 0 1 1 1]
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>[0 1 1 1 1 1 1 1 1 1 0 1 1 0 1 0 1 0 0 0 0 0 1 1 0 1 1 0 1 0 1 0 1 0 1 0 1
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a> 0 1 0 0 1 0 1 1 0 1 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 1 1
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a> 0 1 1 1 1 1 0 0 0 1 0 1 1 1 0 0 1 0 1 0 1 1 0 0 1 1 1 1 1 0 0 1 0 1 0 1 1
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a> 0 0 1 1 1 0 1 1 1 1 1 0 1 0 0 1 1 1 1 0 1 1 1 1 1 1 0 0 1 1 1 0 1 1 0 1 0
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a> 1 1 1 0 1 0 1 0 1 1 1 0 0 1 0 0 1 0 0 0 1 1 1]
+</code></pre></div></p>
+<p>さて、どのくらい正確に分類されているのでしょうか？</p>
+<h3 id="_6">混同行列<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>クラス分類は、常に正しい分類をしてくれるとは限りません。
+悪性なのに良性と間違って判断される場合もありますし、良性が悪性と判断される可能性もあります。</p>
+<p>クラス分類器が出した予測結果と実際の結果を全て網羅したものが、混合行列になります。</p>
+<p>Pythonで、混同行列を求めるには、
+<code>sklearn.metrics</code>モジュールの<code>confusion_matrix()</code>を用います。
+第一引数に実測クラス（正解クラス）、第二引数に予測したクラスを指定します。</p>
+<p><div class="highlight"><span class="filename">混同行列を算出する</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">cm</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>array([[60,  3],
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>       [12, 96]])
+</code></pre></div></p>
+<p>混同行列は、ヒートマップにして確認することも多くあります。</p>
+<p><div class="highlight"><span class="filename">混同行列をヒートマップで確認する</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>sns.heatmap(cm, annot=True, cmap=&#39;Reds&#39;)
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>plt.show()
+</code></pre></div>
+<img alt="" src="../figs/cancer_headmap-fs8.png" /></p>
+<p>さて、混同行列の読み方ですが、次のように読みます。</p>
+<p><img alt="" src="../figs/cancer_matrix-fs8.png" style="width:400px" /></p>
+<ul>
+<li>TP(True Positive): 良性かつ良性と予想される</li>
+<li>TN(True Negative): 悪性かつ悪性と判定される</li>
+<li>FN(False Negative, 偽陰性): 悪性であるが、良性と予想される</li>
+<li>FP(False Positive, 偽陽性): 良性であるが、悪性と予想される</li>
+</ul>
+<h2 id="_7">定量的な評価指標<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<ul>
+<li>正解率（accuracy）</li>
+<li>適合率（precision, PPV）</li>
+<li>再現率（recall, sensitivity, hit rate, TPR）</li>
+<li>F値（F-measure, F-score, F1-score ）</li>
+</ul>
+<h3 id="accuracy">正解率(accuracy)<a class="headerlink" href="#accuracy" title="Permanent link">#</a></h3>
+<p>正解率（accuracy）は、すべてのサンプルのうち正解したサンプルの割合です。</p>
+<p>
+<script type="math/tex; mode=display">
+\frac{TF+TN}{TP+FP+FN+TN}
+</script>
+</p>
+<p>機械学習では、最も一般的に性能評価で用いられる指標です。</p>
+<p><code>sklearn.metrics</code>モジュールの<code>accuracy_score()</code>で算出できます。</p>
+<p><div class="highlight"><span class="filename">正解率: accuracy_score</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率 </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>正解率 0.91228
+</code></pre></div></p>
+<p>学習済みの分類モデル<code>model</code>も、<code>model.score(X, y)</code>で簡単に算出できるように
+なっています。</p>
+<p><div class="highlight"><span class="filename">訓練データとテストデータの正解率を比較してみる</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率(訓練)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率(テスト)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>正解率(訓練) 1.0
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>正解率(テスト) 0.9122807017543859
+</code></pre></div></p>
+<h3 id="precision">適合度(Precision)<a class="headerlink" href="#precision" title="Permanent link">#</a></h3>
+<p>適合率（precision）は、陽性と予測されたサンプルのうち正解したサンプルの割合です。
+FP（偽陽性）が大きくなると適合率は小さくなるので、偽陽性を避けたい場合に用います。</p>
+<p>
+<script type="math/tex; mode=display">
+\frac{TP}{TP+FP}
+</script>
+</p>
+<p><code>sklearn.metrics</code>モジュールの<code>precision_score()</code>で算出できます。</p>
+<p><div class="highlight"><span class="filename">適合度</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;適合率 </span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>適合率 0.96970
+</code></pre></div></p>
+<h3 id="recall">再現率(Recall)<a class="headerlink" href="#recall" title="Permanent link">#</a></h3>
+<p>再現率（recall）は実際に陽性のサンプルのうち正解したサンプルの割合です。
+FN（偽陰性）が大きくなると再現率は小さくなるので、偽陰性を避けたい場合に用います。</p>
+<p>
+<script type="math/tex; mode=display">
+\frac{TP}{TP+FN}
+</script>
+</p>
+<p><code>sklearn.metrics</code>モジュールの<code>recall_score()</code>で算出できます。</p>
+<p><div class="highlight"><span class="filename">再現率</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">recall_score</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="n">recall_score</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;再現率 </span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>再現率 0.88889
+</code></pre></div></p>
+<h3 id="f">F値<a class="headerlink" href="#f" title="Permanent link">#</a></h3>
+<p>F値（F1-measure）は適合率と再現率の調和平均です。</p>
+<p>
+<script type="math/tex; mode=display">
+\frac{TP\times 2}{TP\times2+FP+FN}
+</script>
+</p>
+<p><code>sklearn.metrics</code>モジュールの<code>recall_score()</code>で算出できます。</p>
+<p><div class="highlight"><span class="filename">F値の算出</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1値 </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>F1値 0.92754
+</code></pre></div></p>
+<p>詳しくは、<a href="https://ja.wikipedia.org/wiki/F値_(評価指標)">F値の記事</a>を参考にしてください。</p>
+<h2 id="_8">ハイパーパラメータとグリッドサーチ<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<p>定量的に正解率を計算できるようになったので、それに基づいて、
+より正解率の高い分類モデルを作っていきましょう。</p>
+<h3 id="_9">パラメータとモデルの正解率<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p>決定木の分類モデルを作成するとき、次のようなパラメータを設定することができます。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="n">DecisionTreeClassifier</span><span class="p">(</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>    <span class="n">criterion</span><span class="o">=</span><span class="err">’</span><span class="n">gini</span><span class="err">’</span><span class="p">,</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>    <span class="n">splitter</span><span class="o">=</span><span class="err">’</span><span class="n">best</span><span class="err">’</span><span class="p">,</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>    <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a>    <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>    <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a>    <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a>    <span class="n">max_features</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a>    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a>    <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a>    <span class="n">min_impurity_split</span><span class="o">=</span><span class="mf">1e-07</span><span class="p">,</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a>    <span class="n">class_weight</span><span class="o">=</span><span class="err">’</span><span class="n">balanced</span><span class="err">’</span><span class="p">,</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13"></a>    <span class="n">presort</span><span class="o">=</span><span class="kc">False</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="p">)</span>
+</code></pre></div>
+各パラメータの解説は、次の参考資料を見てください。</p>
+<p><strong>参考資料</strong>
+* <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier">公式のリファレンス</a>
+* <a href="https://data-analysis-stats.jp/python/決定木分析のパラメータ解説/">決定木分析のパラメータ解説</a></p>
+<p>最初のパラメータの与え方で、正解率は変わってきます。
+少ししか変わらない場合もありますが、大きく影響するパラメータもあります。</p>
+<div class="highlight"><span class="filename">パラメータ: criterion=’gini’, max_depth=2</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率(訓練)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率(テスト)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">パラメータ: criterion=’entropy’, max_depth=5</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率(訓練)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;正解率(テスト)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+<p>データサイエンティストやAIエンジニアは、
+機械学習アルゴリズムの原理を理解し、経験を頼りにできるだけ良い
+パラメータを探し、正確さの高いモデルを構築していきます。</p>
+<h3 id="_10">グリッドサーチ（★）<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p>グリッドサーチは、複数のパラメータの組み合わせを探索し、
+最も優れた精度の高い組み合わせを探索する手法です
+。
+sklearnでは、クロスバリデーションと組み合わさった`GridSearchCV()'が用意されています。
+使い方は、簡単なのでぜひ使いこなせるようになりましょう。</p>
+<p>まず、組み合わせを調べたいパラメータの辞書を作ります。</p>
+<div class="highlight"><span class="filename">パラメータの辞書を作る</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">hparams</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>    <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="kc">None</span><span class="p">],</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="c1">#    &#39;min_samples_split&#39;: [2, 3, 4, 5, 6, 7, 8],</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">組み合わせ</p>
+<p>最大３つくらいの組み合わせが適切です。
+組み合わせを<script type="math/tex">N</script>にすると、計算時間は<script type="math/tex">O(p^N)</script>で増えます。</p>
+</div>
+<p><code>GridSearchCV()</code>には、モデル、パラメータの辞書の順に渡します。</p>
+<p><div class="highlight"><span class="filename">決定木のグリッドサーチ</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> 
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a>                   <span class="n">hparams</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a><span class="n">best_model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;最良条件:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">best_model</span><span class="p">)</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正解率(訓練):&#39;</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正解率(テスト):&#39;</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>最良条件:
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a> DecisionTreeClassifier(criterion=&#39;entropy&#39;, max_depth=4, min_samples_leaf=2)
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>正解率(訓練): 0.9849246231155779
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a>正解率(テスト): 0.9473684210526315
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">高速化のコツ</p>
+<p>クロスバリデーションの分割数は、cv=5にしていますが、
+時間がかかりすぎる場合はより小さな値にすると早くなります。</p>
+</div>
+<p>グリッドサーチは、万能ではありませんが、良いパラメータを探すスタート地点になります。
+ぜひ、使いこなせるようになりましょう。</p>
+<h2 id="_11">練習問題<a class="headerlink" href="#_11" title="Permanent link">#</a></h2>
+<h2 id="_12">クラス分類器あれこれ<a class="headerlink" href="#_12" title="Permanent link">#</a></h2>
+<h3 id="_13">回帰からクラス分類へ<a class="headerlink" href="#_13" title="Permanent link">#</a></h3>
+<p>ロジスティック回帰は、線形回帰のバリエーションです。
+ロジスティック「回帰」と、回帰がついていますが、クラス分類アルゴリズムです。
+回帰からクラス分類の原理を理解していきましょう。</p>
+<p>原理: 線形回帰の予測モデルに、シグモイド関数(<a href="http://kenichia.hatenablog.com/entry/2017/03/04/122551">ロジスティック関数</a>)を組み合わせることで、カテゴリー値に変換します。</p>
+<p>
+<script type="math/tex; mode=display">
+\sigma(x) = \frac{1}{1+e^{-x}}
+</script>
+</p>
+<p>!!!! example "Let's try"
+    シグモイド関数をmatplotlibで描画してみよう</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>import matplotlib.pyplot as plt
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>import numpy as np
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a>from math import e
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a>x = np.arange(-10, 10, 0.1)
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a>y = 1 / (1 + e**-x)
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8"></a>plt.plot(x, y)
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">２クラス分類問題と多クラス分類問題</p>
+</div>
+<p>数学的に扱いやすいため、２クラス分類問題と多クラス分類問題は区別されています。
+  上記の説明は、２クラス分類のケースですが、
+  ロジスティック回帰は多クラス分類に拡張されています。
+  興味があるときは、多クラスロジスティック回帰の原理も調べてみましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>from sklearn.linear_model import LogisticRegression
+</code></pre></div>
+<h2 id="2">２クラス分類問題<a class="headerlink" href="#2" title="Permanent link">#</a></h2>
+<p>乳がんデータセットを用いて、２クラス分類問題として、乳がんの良性・悪性を判定しましょう。</p>
+<h3 id="_14">学習モデル<a class="headerlink" href="#_14" title="Permanent link">#</a></h3>
+<p>まず、とりあえずロジスティック回帰モデルを学習してみましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>from sklearn.linear_model import LogisticRegression
+</code></pre></div>
+<p>重回帰のときと同じく、２つの説明変数にしてみます。</p>
+<p>ここでは、適当にふたつの<code>平均半径</code>と<code>平均感触</code>を選んでいます。
+他の説明変数に変えてみてください。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>X = data[[&#39;平均半径&#39;, &#39;平均感触&#39;]]
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>y = data[&#39;良性&#39;]
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>model = LogisticRegression()
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a># 学習の実行
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a>model.fit(X, y)
+</code></pre></div>
+<p>学習したモデルが予測するのは、<code>predict</code>を使います。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>model.predict([(20, 18)])
+</code></pre></div>
+<p>入力に対して、予測された良性/悪性が出力されました。
+モデルの学習はできたようです。</p>
+<div class="admonition example">
+<p class="admonition-title">Let's try</p>
+</div>
+<p>入力を変更してどのように予測されるか調べてみよう。
+  また、予測間違いを起こすデータも調べてみよう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>y_pred = model.predict(X)
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>pd.DataFrame({&#39;正解&#39;: y, &#39;予測&#39;: y_pred})
+</code></pre></div>
+<h3 id="_15">練習問題<a class="headerlink" href="#_15" title="Permanent link">#</a></h3>
+<p><strong>例題（２クラス分類問題）</strong></p>
+<p>乳がんのデータをホールドアウト法で訓練データとテストデータ(7:3)に分割し、
+良性か悪性か判定する予測モデルを作成してみよう。</p>
+<ol>
+<li>ロジスティック回帰</li>
+<li>決定木</li>
+<li>ランダムフォレスト</li>
+<li>サポートベクターマシン</li>
+<li>ナイーブベイズ</li>
+<li>多層パーセプトロン(MLP)</li>
+</ol>
+<p>クラス分類アルゴリズムは、ロジスティック回帰<code>sklearn.linear_model.LogisticRegression</code>以外にも多くあります。
+sklearn から簡単に試せるものもあります。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>from sklearn.linear_model import LogisticRegression
+</code></pre></div>
+<p><strong>決定木</strong>: <code>sklearn.tree.DecisionTreeClassifier</code></p>
+<p>決定木は、条件分岐によってグループを分割して分類する手法です。その際にグループがなるべく同じような属性で構成されるように分割します。</p>
+<p><strong>ランダムフォレスト</strong>: <code>sklearn.ensemble.RandomForestClassifier</code></p>
+<p>ランダムフォレストとは、分類や回帰に使える機械学習の手法です。決定木をたくさん作って多数決する（または平均を取る）ような手法です。ランダムフォレストは大量のデータを必要としますが、精度の高い予測/分類を行えるという特徴があります。</p>
+<p><strong>サポートベクターマシン（SVC)</strong>: <code>sklearn.svm.LinearSVC</code></p>
+<p>サポートベクターマシンは、パターン認識モデルの一つで、線形入力素子を利用して2クラスのパターン識別器を構成する手法です。2つのグループ間の最も距離の離れた箇所（最大マージン）を見つけ出し、その真ん中に識別の線を引きます。</p>
+<p><strong>ナイーブベイズ分類器</strong>: <code>sklearn.naive_bayes.GaussianNB</code></p>
+<p>ナイーブベイズ分類器は特徴間に強い（ナイーブな）独立性を仮定した上でベイズの定理を使う、確率に基づいたアルゴリズムです。</p>
+<p><strong>多層パーセプトロン(MLP)</strong>: <code>sklearn.neural_network.MLPClassifier</code></p>
+<p>人間の脳（ニューロン）の数理モデルに基づくアルゴリズムです。深層学習に用いられています。詳しい原理は、授業の後半で扱います。</p>
+<p>説明変数は、各アルゴリズムに適したものを選んで構いません。
+テストデータに対する正解率で比較してみましょう。</p>
+<h2 id="_16">(補足） 次元圧縮による高次元データの散布図<a class="headerlink" href="#_16" title="Permanent link">#</a></h2>
+<p>乳がん診断データセットは、30次元のデータでした。
+一方、人間は2次元、もしくは３次元しか視覚的に理解できません。
+散布図も２次元、頑張っても３次元のデータまでしか描画できません。</p>
+<p><div class="highlight"><span class="filename">２次元の散布図</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;mean radius&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean texture&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/cancer_scatter1-fs8.png" /></p>
+<div class="highlight"><span class="filename">頑張って、３次元の散布図</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="n">ax</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;mean radius&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;mean texture&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;mean perimeter&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">gd</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)):</span>
+<a id="__codelineno-36-9" name="__codelineno-36-9"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gd</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;mean radius&#39;</span><span class="p">],</span> <span class="n">gd</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;mean texture&#39;</span><span class="p">],</span> <span class="n">gd</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;mean perimeter&#39;</span><span class="p">],</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10"></a>            <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="../figs/cancer_scatter3d-fs8.png" /></p>
+<p>頑張って3次元のデータを散布図に収めても、
+まだ全てのデータの散らばりが言えたわけではありません。</p>
+<h3 id="_17">次元圧縮<a class="headerlink" href="#_17" title="Permanent link">#</a></h3>
+<p>30次元のデータを重要な特徴量を残しながら、次元を落とす方法を見ていきましょう。</p>
+<p>ここでは、<strong>主成分分析(PCA)</strong>の手法を使ってみます。</p>
+<div class="highlight"><span class="filename">主成分分析(PCA)による2次元への圧縮</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a>
+<a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4"></a>
+<a id="__codelineno-37-5" name="__codelineno-37-5"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># ２次元に</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="s1">&#39;pc2&#39;</span><span class="p">])</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;target&#39;</span><span class="p">]],</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8"></a><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/cancer_df_pca-fs8.png" style="width:400px" /></p>
+<p>pc1は第一主成分、pc2は第二主成分を表します。</p>
+<p>主成分分析をした結果を用いて散布図を描画すれば、
+高次元のデータの散らばりをみることができます。</p>
+<p>```py title='主成分分析の結果から散布図を描画する"
+plt.figure(figsize=(7, 7))
+sns.scatterplot(data=df2, x='pc1', y='pc2', hue='target')
+plt.show()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>![](figs/cancer_scatter_pca-fs8.png)
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>
+<a id="__codelineno-38-3" name="__codelineno-38-3"></a>## スケーリング
+<a id="__codelineno-38-4" name="__codelineno-38-4"></a>
+<a id="__codelineno-38-5" name="__codelineno-38-5"></a>乳がん診断データセットは、さまざまな検査結果が含まれていますが、
+<a id="__codelineno-38-6" name="__codelineno-38-6"></a>それぞれ単位が異なります。各カラムごとに最大値や最小値も大きくばらついています。
+<a id="__codelineno-38-7" name="__codelineno-38-7"></a>
+<a id="__codelineno-38-8" name="__codelineno-38-8"></a>![](figs/cancer_boxplot1-fs8.png)
+<a id="__codelineno-38-9" name="__codelineno-38-9"></a>
+<a id="__codelineno-38-10" name="__codelineno-38-10"></a>データ分析では、大きな値の説明変数があると、小さな値の説明変数の影響が小さくなることがあります。
+<a id="__codelineno-38-11" name="__codelineno-38-11"></a>そのような影響を排除するため、スケーリング（標準化）は常套手段です。
+<a id="__codelineno-38-12" name="__codelineno-38-12"></a>
+<a id="__codelineno-38-13" name="__codelineno-38-13"></a>__標準化__: サンプル値$x$から平均$\bar{x}$を引き、標準偏差$\sigma$で割る
+<a id="__codelineno-38-14" name="__codelineno-38-14"></a>
+<a id="__codelineno-38-15" name="__codelineno-38-15"></a>$$
+<a id="__codelineno-38-16" name="__codelineno-38-16"></a>z = \frac{x - \bar{x}}{\sigma}
+<a id="__codelineno-38-17" name="__codelineno-38-17"></a>$$
+<a id="__codelineno-38-18" name="__codelineno-38-18"></a>
+<a id="__codelineno-38-19" name="__codelineno-38-19"></a>sklearnモジュールでは、
+<a id="__codelineno-38-20" name="__codelineno-38-20"></a>簡単にスケーリングを行うための道具が`StandardScaler`クラスとして提供されています。
+<a id="__codelineno-38-21" name="__codelineno-38-21"></a>
+<a id="__codelineno-38-22" name="__codelineno-38-22"></a>``` title=&quot;StandardScalerによるスケーリング&quot;
+<a id="__codelineno-38-23" name="__codelineno-38-23"></a>from sklearn.preprocessing import StandardScaler
+<a id="__codelineno-38-24" name="__codelineno-38-24"></a>sc = StandardScaler()
+<a id="__codelineno-38-25" name="__codelineno-38-25"></a>X = sc.fit_transform(df[df.columns[1:]])  # 標準化
+<a id="__codelineno-38-26" name="__codelineno-38-26"></a>plt.figure(figsize=(14, 7))
+<a id="__codelineno-38-27" name="__codelineno-38-27"></a>sns.boxplot(data=pd.DataFrame(X, columns=df.columns[1:]), orient=&#39;horizontal&#39;)
+<a id="__codelineno-38-28" name="__codelineno-38-28"></a>plt.show()
+</code></pre></div></p>
+<p><img alt="" src="../figs/cancer_boxplot2-fs8.png" /></p>
+<div class="highlight"><span class="filename">主成分分析の前にスケーリングして散布図を書く</span><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3"></a><span class="n">X</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>  <span class="c1"># スケーリング</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4"></a>
+<a id="__codelineno-39-5" name="__codelineno-39-5"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># ２次元に</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6"></a><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="s1">&#39;pc2&#39;</span><span class="p">])</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;target&#39;</span><span class="p">]],</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8"></a>
+<a id="__codelineno-39-9" name="__codelineno-39-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<a id="__codelineno-39-10" name="__codelineno-39-10"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pc2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/cancer_scatter_std_pca-fs8.png" /></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../lunch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: コースワーク２" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              コースワーク２
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../kaggle/" class="md-footer__link md-footer__link--next" aria-label="Next: Kaggleに挑戦" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Kaggleに挑戦
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

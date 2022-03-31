@@ -1,0 +1,1204 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/student/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>コースワーク１ - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              コースワーク１
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          コースワーク１
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        コースワーク１
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    データ
+  </a>
+  
+    <nav class="md-nav" aria-label="データ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データの内容を確認する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    （補足説明)データの形式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データをわかりやすくする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    カテゴリデータの一覧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    コースワーク
+  </a>
+  
+    <nav class="md-nav" aria-label="コースワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    箱ひげ図
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ヒストグラム
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    ３つ以上のヒストグラムと散布図を一度に見る
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    相関行列とヒートマップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    カテゴリーデータを視覚化する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク４
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        より本格的なAIへ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    データ
+  </a>
+  
+    <nav class="md-nav" aria-label="データ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データの内容を確認する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    （補足説明)データの形式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データをわかりやすくする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    カテゴリデータの一覧
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    コースワーク
+  </a>
+  
+    <nav class="md-nav" aria-label="コースワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    箱ひげ図
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ヒストグラム
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    ３つ以上のヒストグラムと散布図を一度に見る
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    相関行列とヒートマップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    カテゴリーデータを視覚化する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="1">コースワーク１： データの傾向をつかもう<a class="headerlink" href="#1" title="Permanent link">#</a></h1>
+<p>コースワークは、データサイエンスや機械学習をしっかり学ぶための応用問題です。
+応用問題なので、今までの内容を振り返るだけでなく、
+より深く知るためにWebで調べながら取り組んでみてください。</p>
+<p>今回は、データ分析、グラフ描画、相関などを使いながら、
+データの傾向をつかんでいきます。</p>
+<h2 id="_1">データ<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p>今回は、<a href="https://archive.ics.uci.edu/ml/datasets/student+performance">ポルトガルの高校生の数学の成績データ</a>を使って、データ解析をします。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/315e0d53-5fed-3f10-db50-eda9ece4f5f9.jpeg" width="40%"/></p>
+<div class="highlight"><span class="filename">データのURL</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>https://kuramitsulab.github.io/data/student-mat.csv
+</code></pre></div>
+<p>まず、データをダウンロードして、pandas のデータフレームに読み込んでください。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>必要なモジュールのインポートを忘れないにしましょう</p>
+</div>
+<h3 id="_2">データの内容を確認する<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>新しいデータをロードしたとき、最初に行うことは<strong>データの属性</strong>を確認することです。</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>school</code></td>
+<td>学校名</td>
+</tr>
+<tr>
+<td><code>sex</code></td>
+<td>性別 <code>F</code>: 女性, <code>M</code>: 男性</td>
+</tr>
+<tr>
+<td><code>age</code></td>
+<td>年齢</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>居住地 <code>U</code>: 都市部, <code>R</code>: 地方</td>
+</tr>
+<tr>
+<td><code>famsize</code></td>
+<td>家族サイズ <code>GT3</code>: 兄弟あり, <code>LE3</code>: 一人暮らし</td>
+</tr>
+<tr>
+<td><code>Pstatus</code></td>
+<td>同居 <code>T</code>: 同居, <code>A</code>: 寮</td>
+</tr>
+<tr>
+<td><code>Medu</code></td>
+<td>母親の学歴</td>
+</tr>
+<tr>
+<td><code>Fedu</code></td>
+<td>父親の学歴</td>
+</tr>
+<tr>
+<td><code>Mjob</code></td>
+<td>母親の職業</td>
+</tr>
+<tr>
+<td><code>Fjob</code></td>
+<td>父親の職業</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td>学校を選んだ理由</td>
+</tr>
+<tr>
+<td><code>guardian</code></td>
+<td>保護者は誰か？</td>
+</tr>
+<tr>
+<td><code>traveltime</code></td>
+<td>通学時間</td>
+</tr>
+<tr>
+<td><code>studytime</code></td>
+<td>週の勉強時間</td>
+</tr>
+<tr>
+<td><code>failures</code></td>
+<td>過去の落第数</td>
+</tr>
+<tr>
+<td><code>schoolsup</code></td>
+<td>奨学金</td>
+</tr>
+<tr>
+<td><code>famsup</code></td>
+<td>家族からのサポート</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td>塾</td>
+</tr>
+<tr>
+<td><code>activities</code></td>
+<td>部活動</td>
+</tr>
+<tr>
+<td><code>nursery</code></td>
+<td>保育園</td>
+</tr>
+<tr>
+<td><code>higher</code></td>
+<td>高等教育</td>
+</tr>
+<tr>
+<td><code>internet</code></td>
+<td>ネット接続</td>
+</tr>
+<tr>
+<td><code>romantic</code></td>
+<td>恋人</td>
+</tr>
+<tr>
+<td><code>famrel</code></td>
+<td>家族関係</td>
+</tr>
+<tr>
+<td><code>freetime</code></td>
+<td>自由時間</td>
+</tr>
+<tr>
+<td><code>goout</code></td>
+<td>友人と遊ぶ頻度</td>
+</tr>
+<tr>
+<td><code>Dalc</code></td>
+<td>平日のアルコール量</td>
+</tr>
+<tr>
+<td><code>Walc</code></td>
+<td>週末のアルコール量</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>健康状態</td>
+</tr>
+<tr>
+<td><code>absense</code></td>
+<td>欠席数</td>
+</tr>
+<tr>
+<td><code>G1</code></td>
+<td>一学期の成績 (０〜２０)</td>
+</tr>
+<tr>
+<td><code>G2</code></td>
+<td>二学期の成績 (０〜２０)</td>
+</tr>
+<tr>
+<td><code>G3</code></td>
+<td>最終成績 (０〜２０)</td>
+</tr>
+</tbody>
+</table>
+<p>ポルトガルの高校なので、日本人の感覚からすると？？？なところもありますが、
+上記の情報が含まれています。</p>
+<div class="admonition warning">
+<p class="admonition-title">ここからのミッション</p>
+<p>高校生の各属性が数学の成績(G1, G2, G3)、特に最終成績(G3)に与える影響を調べていきましょう。</p>
+</div>
+<h3 id="_3">（補足説明)データの形式<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>今回のデータは、ボストン住宅データセットと異なり、数値以外の形式のデータが含まれています。</p>
+<p><code>info()</code>メソッドを用いると、カラム名とデータ形式の一覧を表示してくれます。</p>
+<div class="highlight"><span class="filename">データ形式の確認</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>df.info()
+</code></pre></div>
+<p>カラム名に続いて、データの個数、さらに形式が<code>int64</code>か<code>object</code>のように示されています。</p>
+<ul>
+<li><code>int64</code>: 数値データ</li>
+<li><code>object</code>: 文字列データ</li>
+</ul>
+<p>データの形式で重要なのは、
+<strong>数値データ（量的データ）</strong>、<strong>カテゴリデータ（質的データ）</strong>を区別することです。</p>
+<ul>
+<li><strong>数値データ</strong>: 量が数値によって連続的に表現されるデータであり比較可能。（例. 人数や金額など)</li>
+<li><strong>カテゴリデータ</strong>: カテゴリやグループを表す不連続のデータ</li>
+</ul>
+<p>少し注意したいのは、カテゴリデータであっても、カテゴリの種類が数値で表現されていると、<code>int64</code>形式となります。
+また、カテゴリーデータであっても、比較可能な数値に変換できるものがあります。</p>
+<p>必ずしもデータの形式を変換する必要はありませんが、
+カテゴリデータとして処理したいなら、型を<code>object</code>に変更しておくとよいでしょう。</p>
+<div class="highlight"><span class="filename">数値を文字列に変換する</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>df[&#39;Medu&#39;] = df[&#39;Medu&#39;].astype(&#39;object&#39;)
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>df[&#39;Fedu&#39;] = df[&#39;Fedu&#39;].astype(&#39;object&#39;)
+</code></pre></div>
+<h3 id="_4">データをわかりやすくする<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>海外で作られたデータは、特に英語をベースにした記述であって、直感的なデータ分析の妨げになります。
+カラム名やカテゴリーデータは、もう少し直感的に理解しやすいように書き換えてしまいましょう。</p>
+<p>カラム名は、変更後のカラム名の一覧を作成すれば、まとめて差し替えられます。</p>
+<div class="highlight"><span class="filename">カラム名の変更</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="s1">&#39;学校名&#39;</span><span class="p">,</span> <span class="s1">&#39;性別&#39;</span><span class="p">,</span> <span class="s1">&#39;年齢&#39;</span><span class="p">,</span> <span class="s1">&#39;住所&#39;</span><span class="p">,</span> <span class="s1">&#39;兄弟姉妹&#39;</span><span class="p">,</span> <span class="s1">&#39;住居&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="s1">&#39;母学歴&#39;</span><span class="p">,</span> <span class="s1">&#39;父学歴&#39;</span><span class="p">,</span> <span class="s1">&#39;母職業&#39;</span><span class="p">,</span> <span class="s1">&#39;父職業&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="s1">&#39;進学理由&#39;</span><span class="p">,</span> <span class="s1">&#39;保護者&#39;</span><span class="p">,</span> <span class="s1">&#39;通学時間&#39;</span><span class="p">,</span> <span class="s1">&#39;学習時間&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="s1">&#39;落第数&#39;</span><span class="p">,</span> <span class="s1">&#39;奨学金&#39;</span><span class="p">,</span> <span class="s1">&#39;親もち&#39;</span><span class="p">,</span> <span class="s1">&#39;塾&#39;</span><span class="p">,</span> <span class="s1">&#39;部活&#39;</span><span class="p">,</span> 
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="s1">&#39;幼稚園&#39;</span><span class="p">,</span> <span class="s1">&#39;大学&#39;</span><span class="p">,</span> <span class="s1">&#39;ネット&#39;</span><span class="p">,</span> <span class="s1">&#39;恋人&#39;</span><span class="p">,</span> <span class="s1">&#39;家族&#39;</span><span class="p">,</span> 
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="s1">&#39;自由時間&#39;</span><span class="p">,</span> <span class="s1">&#39;外出&#39;</span><span class="p">,</span> <span class="s1">&#39;アルコール&#39;</span><span class="p">,</span> <span class="s1">&#39;パリピ&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="s1">&#39;健康状態&#39;</span><span class="p">,</span> <span class="s1">&#39;欠席日&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">]</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>  <span class="c1">#差し替え</span>
+</code></pre></div>
+<p>カテゴリーデータも新旧対応表を辞書で作れば、まとめてマッピングできます。</p>
+<div class="highlight"><span class="filename">カテゴリデータの置き換え</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>df[&#39;学校名&#39;] = df[&#39;学校名&#39;].replace({&#39;GP&#39;: &#39;GP高&#39;, &#39;MS&#39;: &#39;MS高&#39;})
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>df[&#39;性別&#39;] = df[&#39;性別&#39;].map({&#39;M&#39;: &#39;男性&#39;, &#39;F&#39;: &#39;女性&#39;})
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>df[&#39;住所&#39;] = df[&#39;住所&#39;].map({&#39;R&#39;: &#39;郊外&#39;, &#39;U&#39;: &#39;市内&#39;})
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>df[&#39;兄弟姉妹&#39;] = df[&#39;兄弟姉妹&#39;].map({&#39;LE3&#39;: &#39;なし&#39;, &#39;GT3&#39;: &#39;あり&#39;})
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>df[&#39;住居&#39;] = df[&#39;住居&#39;].map({&#39;A&#39;: &#39;下宿&#39;, &#39;T&#39;: &#39;同居&#39;})
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>df[&#39;母職業&#39;] = df[&#39;母職業&#39;].map(
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>    {&#39;at_home&#39;: &#39;なし&#39;, &#39;services&#39;: &#39;サービス&#39;, &#39;teacher&#39;: &#39;教師&#39;, &#39;health&#39;: &#39;医療&#39;, &#39;other&#39;: &#39;その他&#39;})
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>df[&#39;父職業&#39;] = df[&#39;父職業&#39;].map(
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    {&#39;at_home&#39;: &#39;なし&#39;, &#39;services&#39;: &#39;サービス&#39;, &#39;teacher&#39;: &#39;教師&#39;, &#39;health&#39;: &#39;医療&#39;, &#39;other&#39;: &#39;その他&#39;})
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>df[&#39;進学理由&#39;] = df[&#39;進学理由&#39;].map(
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    {&#39;course&#39;: &#39;教育内容&#39;, &#39;home&#39;: &#39;通いやすさ&#39;, &#39;reputation&#39;: &#39;評判の良さ&#39;, &#39;other&#39;: &#39;その他&#39;})
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>df[&#39;保護者&#39;] = df[&#39;保護者&#39;].map({&#39;mother&#39;: &#39;母親&#39;, &#39;father&#39;: &#39;父親&#39;, &#39;other&#39;: &#39;その他&#39;})
+</code></pre></div>
+<h3 id="_5">カテゴリデータの一覧<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>数値データは、<code>describe()</code>メソッドを使って、要約統計量を求めることができました。
+カテゴリデータは、便利なメソッドは用意されていませんが、少し工夫すると、
+要約統計量をつかむことができます。</p>
+<div class="highlight"><span class="filename">性別の比率をみる</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>df[&#39;sex&#39;].value_counts()
+</code></pre></div>
+<p>ひとつずつ、カラム名を調べるのは大変なので、
+<code>df.dtypes</code>が<code>object</code>あるものをカテゴリデータとみなして、
+カテゴリデータのカラム名を取り出します。</p>
+<div class="highlight"><span class="filename">カテゴリデータのカラム名一覧</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>list(df.dtypes[df.dtypes == &#39;object&#39;].index)
+</code></pre></div>
+<p>あとは、for文を使ってカラム名を順番に処理していきます。</p>
+<p><div class="highlight"><span class="filename">カテゴリデータの値の調べる</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>for name in df.dtypes[df.dtypes == &#39;object&#39;].index:
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>    print(name)
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>    print(df[name].value_counts())
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>    print()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>学校名
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>GP高    349
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>MS高     46
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>Name: 学校名, dtype: int64
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>性別
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>女性    208
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>男性    187
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>Name: 性別, dtype: int64
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>住所
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>市内    307
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>郊外     88
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>Name: 住所, dtype: int64
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Pandas力をあげるためには？</p>
+<p>Pandas は高機能で、Google で調べるといってもなかなか求めている機能を探すことが難しいです。
+最初のうちは、よくわからないコードが出てきたら、地道にひとつずつ動きを確認するようにしましょう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>df.dtypes
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>df.dtypes == &#39;object&#39;
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>df.dtypes[df.dtypes == &#39;object&#39;]
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>df.dtypes[df.dtypes == &#39;object&#39;].index
+</code></pre></div>
+こういう地道な努力がプログラミング向上に繋がります。</p>
+</div>
+<h2 id="_6">コースワーク<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<p>ポルトガルの高校生データをデータ分析し、最終成績G3に影響を与える要因を報告しよう。</p>
+<p>（レポートには、Pandas で用いて作画したグラフをエビデンス（根拠）として含めること）</p>
+<p>データ分析は、自由な視点から自由に分析して良い。</p>
+<p><strong>例えばの例</strong></p>
+<ol>
+<li>どの属性（カラム）が最終成績に最も影響を与えるだろうか？</li>
+<li>そもそも男子学生と女子学生とどちらが成績がいい？</li>
+<li>恋人の有無と成績の関係は？</li>
+</ol>
+<p>もし自分なりに新しい事実（関係性）を発見したときは、そちらを報告して頂けると
+評価は高くなります。</p>
+<p>グラフの作画は、講義で習ったものだけでなく、Web等で調べて新しいグラフに挑戦しよう。
+Webで調べて書くのが、データ分析を上達するコツです。</p>
+<h3 id="_7">箱ひげ図<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<p>箱ひげ図は、最大値、最小値、中央値、四分位範囲を視覚化してくれるグラフです。
+ヒゲの上端が最大値、ヒゲの下端が最小値を示します。データの範囲がみえてきます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">G1,G2,G3と並べた箱ヒゲ図</label><label for="__tabbed_1_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="箱ヒゲ図" src="../figs/student_boxplot-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">G1,G2,G3と並べる</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>plt.boxplot([df[&#39;G1&#39;], df[&#39;G2&#39;], df[&#39;G3&#39;]])
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>plt.grid(True)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>seaborn の<code>boxplot()</code>を用いれば、もう少しこった凝った箱ヒゲ図を描画できます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">父親の職業ごとに</label><label for="__tabbed_2_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="箱ヒゲ図" src="../figs/student_boxplot2-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>order_by = [&#39;なし&#39;, &#39;サービス&#39;, &#39;教師&#39;, &#39;医療&#39;, &#39;その他&#39;]
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>sns.boxplot(x=df[&#39;父職業&#39;], y=df[&#39;G3&#39;], order=order_by)
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>plt.title(&#39;父親の仕事が子供の成績に与える影響&#39;)
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>plt.xlabel(&#39;父親の仕事&#39;)
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>plt.ylabel(&#39;成績&#39;)
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>plt.show()
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>subplot を使うと、複数のグラフを一枚の図に加えることができます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">父親と母親を比較する</label><label for="__tabbed_3_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="箱ヒゲ図" src="../figs/student_boxplot3-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">subplot を使った凝ったグラフ</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>plt.figure(figsize= (15,5))
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>plt.subplot(1, 2, 1)
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>order_by=[&#39;なし&#39;, &#39;サービス&#39;, &#39;教師&#39;, &#39;医療&#39;, &#39;その他&#39;]
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>sns.boxplot(x=df[&#39;父職業&#39;], y=df[&#39;G3&#39;], order=order_by)
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>plt.xticks(rotation=90)
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>plt.title(&#39;父親の職業と成績&#39;)
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>plt.subplot(1, 2, 2)
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>sns.boxplot(x=df[&#39;母職業&#39;], y=df[&#39;G3&#39;], order=order_by)
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>plt.xticks(rotation=90)
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a>plt.title(&#39;母親の職業と成績&#39;)
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a>plt.show()
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="_8">ヒストグラム<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<p>おなじみのヒストグラムもSeabornを使うと多彩に描画できます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">パレットによるヒストグラム</label><label for="__tabbed_4_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="ヒストグラム" src="../figs/student_count-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">countplot</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>sns.set_theme(style=&quot;whitegrid&quot;, font=&quot;IPAexGothic&quot;)
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>sns.countplot(x=df[&#39;G3&#39;], palette=&#39;gray_r&#39;)
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>plt.xlabel(&#39;G3&#39;)
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>plt.ylabel(&#39;Count&#39;)
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>plt.show()
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><code>hue</code>を追加すると、カテゴリーごとに色分けされたヒストグラムが得られます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">グループ分けされたヒストグラム</label><label for="__tabbed_5_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="ヒストグラム" src="../figs/student_hue-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">性別ごとにヒストグラム</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sns.set(font=&quot;IPAexGothic&quot;)  # 文字化けしたら
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>sns.countplot(x=&#39;G3&#39;,hue=&#39;性別&#39;, data=df)
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>plt.title(&#39;性別ごとの成績分布&#39;)
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>plt.xlabel(&#39;G3&#39;)
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>plt.ylabel(&#39;Count&#39;)
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>plt.show()
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>カーネル密度推定法を使うと、ヒストグラムを滑らかな曲線に保管してくれます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">カーネル密度推定法によるヒストグラム</label><label for="__tabbed_6_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="ヒストグラム" src="../figs/student_kde-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">カーネル密度推定法によるヒストグラム</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>sns.kdeplot(df.groupby(&#39;性別&#39;).get_group(&#39;男性&#39;)[&#39;G3&#39;], shade = True, label = &#39;男子学生&#39;)
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>sns.kdeplot(df.groupby(&#39;性別&#39;).get_group(&#39;女性&#39;)[&#39;G3&#39;], shade = True, label = &#39;女子学生&#39;)
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>plt.xlabel(&#39;G3&#39;)
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>plt.ylabel(&#39;% data distribution&#39;)
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>plt.show()
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="3">３つ以上のヒストグラムと散布図を一度に見る<a class="headerlink" href="#3" title="Permanent link">#</a></h3>
+<p>Seabornの<code>pairplot</code>を用いると、３つ以上のヒストグラムと散布図を一度に確認できます。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">全部のペアプロット</label><label for="__tabbed_7_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="ペアプロット" src="../figs/student_pairplot-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>sns.pairplot(df, hue=&#39;性別&#39;)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>確認したい項目に絞った方が見やすいグラフになります。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">４項目に絞ったペアプロット</label><label for="__tabbed_8_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="ペアプロット" src="../figs/student_pairplot2-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>sns.pairplot(df[[&#39;欠席日&#39;, &#39;アルコール&#39;, &#39;年齢&#39;, &#39;G3&#39;]])
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="_9">相関行列とヒートマップ<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p>相関行列は、すべての数値データ間で相関係数を計算した行列です。</p>
+<div class="highlight"><span class="filename">相関行列を求める</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>df.corr()
+</code></pre></div>
+<p>ご多分に漏れず、可視化しておくとデータ解析が行やすいです。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">ヒートマップ</label><label for="__tabbed_9_2">コード</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="ヒートマップ" src="../figs/student_headmap-fs8.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">相関行列のヒートマップ</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>plt.figure(figsize=(10,10))
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>corr = df.corr()
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>sns.heatmap(corr, annot=True)
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="_10">カテゴリーデータを視覚化する<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p>カテゴリデータの分類がどのように散らばっているか一覧を作ります。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>plt.figure(figsize = (15,15))
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>for i,item in enumerate([&#39;school&#39;, &#39;sex&#39;, &#39;famsize&#39;, &#39;Pstatus&#39;, &#39;Mjob&#39;, &#39;Fjob&#39;,
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>       &#39;reason&#39;, &#39;guardian&#39;, &#39;schoolsup&#39;, &#39;famsup&#39;, &#39;paid&#39;, &#39;activities&#39;,
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>       &#39;nursery&#39;, &#39;higher&#39;, &#39;internet&#39;, &#39;romantic&#39;]):
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>    plt.subplot(4,4,i+1)
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>    sns.countplot(data=df, x=item)
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a>    plt.title(item)
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a>plt.show()   
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../boston2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 散布図と相関係数" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              散布図と相関係数
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../boston3/" class="md-footer__link md-footer__link--next" aria-label="Next: 線形回帰" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              線形回帰
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

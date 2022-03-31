@@ -1,0 +1,1172 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/mnist/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>コースワーク４ - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mnist" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              コースワーク４
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          コースワーク４
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        コースワーク４
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mnist_1" class="md-nav__link">
+    MNIST データ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    訓練データの準備
+  </a>
+  
+    <nav class="md-nav" aria-label="訓練データの準備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    画像データの分布 (寄り道)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    多層パーセプトロン
+  </a>
+  
+    <nav class="md-nav" aria-label="多層パーセプトロン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    パラメータ・チューニング
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    学習の例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分類モデルの評価
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自分の手書き文字を認識する⭐️
+  </a>
+  
+    <nav class="md-nav" aria-label="自分の手書き文字を認識する⭐️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pillowpil" class="md-nav__link">
+    Pillow/PIL ライブラリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    アプリケーションへの組み込み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    練習
+  </a>
+  
+    <nav class="md-nav" aria-label="練習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fashion-mnist" class="md-nav__link">
+    Fashion-MNIST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cifar-10" class="md-nav__link">
+    CIFAR-10
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        より本格的なAIへ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mnist_1" class="md-nav__link">
+    MNIST データ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    訓練データの準備
+  </a>
+  
+    <nav class="md-nav" aria-label="訓練データの準備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    画像データの分布 (寄り道)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    多層パーセプトロン
+  </a>
+  
+    <nav class="md-nav" aria-label="多層パーセプトロン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    パラメータ・チューニング
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    学習の例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分類モデルの評価
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自分の手書き文字を認識する⭐️
+  </a>
+  
+    <nav class="md-nav" aria-label="自分の手書き文字を認識する⭐️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pillowpil" class="md-nav__link">
+    Pillow/PIL ライブラリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    アプリケーションへの組み込み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    練習
+  </a>
+  
+    <nav class="md-nav" aria-label="練習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fashion-mnist" class="md-nav__link">
+    Fashion-MNIST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cifar-10" class="md-nav__link">
+    CIFAR-10
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="mnist">手書き文字の認識(MNIST)<a class="headerlink" href="#mnist" title="Permanent link">#</a></h1>
+<p>MNIST は、「0」~「9」の手書き数字の画像データセットです。
+Yann LeCun らによって、手書き文字データセットの NIST データベースから抽出＆加工して、
+機械学習のチュートリアル用に作成されて公開されています。</p>
+<p><img alt="mnist-fs8.png" src="../figs/mnist-fs8.png" style="width:400px" /></p>
+<p>ここは、画像データを説明変数 (X)、ラベルを目的変数 (y) として、多クラス分類問題として、
+学習モデルを作成してみます。</p>
+<p><strong>モジュールの準備</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#matplotlibの日本語化  </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;pip3 install japanize_matplotlib&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
+</code></pre></div>
+<h2 id="mnist_1">MNIST データ<a class="headerlink" href="#mnist_1" title="Permanent link">#</a></h2>
+<p>MNISTは、sklearn のサンプルデータセットに含まれています。
+そこからダウンロードします。</p>
+<div class="highlight"><span class="filename">MNISTデータのダウンロード</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>MNISTデータは、<code>mnist</code>のプロパティに格納されています。</p>
+<ul>
+<li><code>mnist.data</code>: 画像データ 70000件</li>
+<li><code>mnist.shape</code>: ラベル 70000件</li>
+</ul>
+<p>```py　title="画像データとラベルの次元を確認する"
+print('画像データ', mnist.data.shape, type(mnist.data))
+print('ラベル', mnist.target.shape, type(mnist.target))
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>
+</code></pre></div>
+画像データ (70000, 784) <class 'numpy.ndarray'>
+ラベル (70000,) <class 'numpy.ndarray'>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>!!! note &quot;ラベル&quot;
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    機械学習業界では、クラス分類の目的変数（カテゴリデータ）のことをラベルと呼びます。
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>画像データを確認してみましょう。
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>0~255 階調のグレースケールになっています。
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>784要素の配列はみにくいので、28x28の２次元配列に変換し、
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>値を表示してみます。（うっすらと数字が見ませんか？）
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>```py title=&quot;2次元配列(28x28)に変換して表示&quot;
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>d = mnist.data[0].reshape([28,28])
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>for y in range(28):
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    for x in range(28):
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>        print(f&#39;{int(d[y,x]):3d}&#39;, end=&#39; &#39;)
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>    print()
+</code></pre></div>
+<img alt="" src="../figs/mnist_print-fs8.png" /></p>
+<p>Matplotlibを用いると、グレースケール画像として表示されます。
+ただし、グレースケール画像で、0が黒で白が255なので、文字が白くなります。</p>
+<p><div class="highlight"><span class="filename">Matplotlibで画像として表示</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+</code></pre></div>
+<img alt="" src="../figs/mnist_data-fs8.png" style="width:200px" /></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">W</span> <span class="o">=</span> <span class="mi">16</span> <span class="c1"># 横に並べる個数</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">H</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># 縦に並べる個数</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="o">*</span><span class="n">H</span><span class="p">):</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/mnist_data2-fs8.png" /></p>
+<h2 id="_1">訓練データの準備<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p>MNISTの学習モデルを構築するときは、
+機械学習では、28x28のグレースケールの画像を<strong>784次元の多次元データ</strong>として扱います。</p>
+<p>まず、0〜255のグレースケール画像の値を0.0〜1.0の範囲に正規化しておきます。</p>
+<div class="highlight"><span class="filename">訓練データの準備</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">70000</span><span class="p">,</span> <span class="mi">784</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>  <span class="c1"># [0,1]で正規化</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">y</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</code></pre></div>
+<p>今回もまず、ホールドアウト法を用いて学習するので、訓練データとテストデータに分割しておきます。</p>
+<div class="highlight"><span class="filename">訓練データとテストデータに分割</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>  <span class="n">test_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>  <span class="n">stratify</span><span class="o">=</span><span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;訓練データ数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;テストデータ数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">層化</p>
+<p>ラベルの割合は教師データとテストデータで均一になるように「stratify=mnist.target」により層化抽出（比例配分）しています。</p>
+</div>
+<p>さて、学習に進みましょうか？</p>
+<h3 id="_2">画像データの分布 (寄り道)<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>画像データ(768次元)を２次元に次元削減して、
+手書き文字がどのように分布しているかみてみましょう。</p>
+<p>60000個のデータは多すぎるので、とりあえず2000枚選んで、PCAで二次元に削減します。</p>
+<div class="highlight"><span class="filename">PCAで次元圧縮</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">model_pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">pc12</span> <span class="o">=</span> <span class="n">model_pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">2000</span><span class="p">])</span>  <span class="c1"># 2000枚選ぶ</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">ラベルと一緒にデータフレームに</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pc12</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="s1">&#39;pc2&#39;</span><span class="p">]),</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/mnist_df_pca-fs8.png" style="width:300px" /></p>
+<p>散布図を書いてみましょう。</p>
+<div class="highlight"><span class="filename">散布図を描画する</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pc2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/mnist_pca-fs8.png" /></p>
+<p>結構、ごちゃごちゃに重なっている気がしますが、綺麗に分類できるのでしょうか？</p>
+<div class="admonition note">
+<p class="admonition-title">t-SNE</p>
+<p>最近は、次元削減のアルゴリズムとして、PCAよりt-SNEが好まれます。
+<div class="highlight"><span class="filename">PCAの代わりにt-SNEで次元削減</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">2000</span><span class="p">])</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tsne</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="s1">&#39;pc2&#39;</span><span class="p">]),</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">2000</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pc2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+tSNEとはなんぞや -&gt; <a href="https://lvdmaaten.github.io/publications/papers/JMLR_2008.pdf">原著論文</a>
+<img alt="" src="../figs/mnist_tsne-fs8.png" /></p>
+<p>機械学習の世界は、どんどん新しい技法を試していきましょう。</p>
+</div>
+<h2 id="_3">多層パーセプトロン<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<p>MNISTは、綺麗に線形分離できなさそう？なので、
+多層パーセプトロン(MLPClassifier)を使って分類モデルを作ってみます。</p>
+<p>sklearn モジュールでは、<code>MLPClassifier</code>をインポートして用います。</p>
+<div class="highlight"><span class="filename">MLPClassfierの利用</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_4">パラメータ・チューニング<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p><code>MLPClassifier</code> は、豊富なハイパーパラメータが用意されています。
+<a href="../nn/">ニューラルネットワークの原理</a>を確認しながら、適切にパラメータをチューニングしましょう。</p>
+<p><strong>hidden_layer_sizes</strong>: 中間層のサイズを設定します。</p>
+<p>中間層が 3 つ (各中間層のニューロン数が 100 個、200 個、100 個) の 5 層ニューラルネットワークを
+設定したいときは、次のように設定します。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>hidden_layer_sizes=(100, 200, 100)
+</code></pre></div>
+<p><strong>activation</strong>: 中間層の活性化関数</p>
+<ul>
+<li>identity:恒等関数</li>
+<li>logistic:シグモイド関数</li>
+<li>tanh:双曲線正接関数</li>
+<li>relu:ランプ関数</li>
+</ul>
+<p><strong>solver</strong>: 重みの最適化手法</p>
+<ul>
+<li>lbfgs:準ニュートン法に属す BFGS の一種</li>
+<li>sgd:確率的勾配降下法</li>
+<li>adam:確率的勾配降下法にモーメントをつける</li>
+</ul>
+<p><strong>max_iter</strong>: エポック数</p>
+<h3 id="_5">学習の例<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>ここでは、３層パーセプトロンで、活性化関数はシグモイド関数、最適化は確率的勾配降下法を用いてみます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>用意した訓練データを学習させます。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">log</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>Iteration 1, loss = 2.23320721
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>Iteration 2, loss = 2.06989000
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>Iteration 3, loss = 1.87448221
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>Iteration 4, loss = 1.65146930
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>Iteration 5, loss = 1.43223928
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>Iteration 6, loss = 1.24331458
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>Iteration 7, loss = 1.09217506
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>Iteration 8, loss = 0.97428410
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>Iteration 9, loss = 0.88245881
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>Iteration 10, loss = 0.80984222
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a>Iteration 11, loss = 0.75156470
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a>Iteration 12, loss = 0.70398038
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a>Iteration 13, loss = 0.66461657
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a>Iteration 14, loss = 0.63140618
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a>Iteration 15, loss = 0.60303138
+<a id="__codelineno-16-16" name="__codelineno-16-16"></a>Iteration 16, loss = 0.57851333
+<a id="__codelineno-16-17" name="__codelineno-16-17"></a>Iteration 17, loss = 0.55715012
+<a id="__codelineno-16-18" name="__codelineno-16-18"></a>Iteration 18, loss = 0.53832779
+<a id="__codelineno-16-19" name="__codelineno-16-19"></a>Iteration 19, loss = 0.52163356
+<a id="__codelineno-16-20" name="__codelineno-16-20"></a>Iteration 20, loss = 0.50675142
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">ConvergenceWarningとは</p>
+<p>Iteration(Epoch数)が足りないので、学習が不十分だと行われています。</p>
+</div>
+<p><code>log</code>は学習の様子を記録したログデータです。
+グラフで表示してみると、学習の進捗をみることができます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">)</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch数&#39;</span><span class="p">)</span> 
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;損失&#39;</span><span class="p">)</span> 
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/mnist_loss-fs8.png" /></p>
+<p>ニューラルネットワークでは、
+損失 (loss) が減少しているときは、まだ順調に学習が進んでいることになります。</p>
+<div class="admonition warning">
+<p class="admonition-title">Epoch数と過学習</p>
+<p>もう少しEpoch数を増やした方がいいでしょう。
+あまり増やしすぎると、過学習になります。</p>
+</div>
+<h3 id="_6">分類モデルの評価<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>学習済みの分類モデルからテストデータの予測をしてみましょう。
+これは、未知の手書きデータに対する認識した文字となります。</p>
+<p>とりあえず、
+クラス分類モデルができたら正解率を表示してみます。</p>
+<p><div class="highlight"><span class="filename">正解率を見てみる</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正解率(train)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正解率(test)&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>正解率(train) 0.8761166666666667
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>正解率(test) 0.8715
+</code></pre></div></p>
+<p>ひと昔前は、ハガキの郵便番号を読み取って、自動的に仕分けする装置であっても、
+70%の正確さも出ませんでした。それに比べると、素晴らしい正解率といえます。</p>
+<p>混同行列も表示してみましょう。</p>
+<div class="highlight"><span class="filename">混同行列をヒートマップでみる</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../figs/mnist_heatmap-fs8.png" /></p>
+<p>実際にどのように予想されているか、画像と予測値を表示してみましょう。</p>
+<p><div class="highlight"><span class="filename">最初の10個だけ表示しみる</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1">#fig.subplots_adjust(left=0, right=1, bottom=0, top=1.0, hspace=0.05, wspace=0.05)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="k">def</span> <span class="nf">plot_mnist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="n">plot_mnist</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>[0 4 1 2 4 4 7 1 1 7]
+</code></pre></div>
+<img alt="" src="../figs/mnist_result-fs8.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Let's try</p>
+<p>MLPClassfierのパラメータを変更して、正解率がどう変わるか調べてみよう。</p>
+<p><strong>最近のニューラルネットワークの定番パラメータ</strong></p>
+<ul>
+<li>隠れ層を増やす</li>
+<li>活性化関数: <code>relu</code></li>
+<li>最適化: <code>adam</code></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">PyTorch, TensorFlow, Kelas</p>
+<p>深層学習技術は、近年、高度化してきています。
+より細かくネットワークの構成やパラメータを設定できる
+PyTorch, Tensorflow, Kelasなどのニューラルネットワーク専用のライブラリが登場しています。
+（たぶん、後期の情報ゼミでは、PyTorchを使って、より高度な学習に挑戦します。）</p>
+<p>興味のある人は、
+PytorchやTensorflowなどニューラルネットワークを構築してみてください。
+より高い正解度のモデルを構築することができます。
+（なお、研究レベルの予測モデルを使るときは、
+このようなニューラルネットワークフレームワークを活用することになります。）</p>
+</div>
+<h2 id="_7">自分の手書き文字を認識する⭐️<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<p>自分自身で書いた手書き文字を認識してみましょう。</p>
+<p>紙を用意して数字を書いて、スマホで撮影します。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>黒いマジックやサインペンなどで太めにはっきりと書いた方がいいですよ。</p>
+</div>
+<p>１文字だけ適当に切り出して、PNGファイルに保存してみてください。</p>
+<h3 id="pillowpil">Pillow/PIL ライブラリ<a class="headerlink" href="#pillowpil" title="Permanent link">#</a></h3>
+<p>画像は、Pillow/PIL ライブラリを用いて操作します。
+まずColab上で自分のファイル（例.<code>2.png</code>）を読み込めるか、表示して確認しておきます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;2.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;サイズ&#39;</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="n">im</span>
+</code></pre></div>
+<p>MNIST用のモデルの画像ファイルは、
+グレースケールの28x28なので、Pillow/PIL ライブラリを用いて変換します。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;2.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">))</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;サイズ&#39;</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="n">im</span>
+</code></pre></div>
+<p>このPillow画像データをNumPy配列に変換し、784次元のデータにします。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">myimage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="n">myimage</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div>
+<p>MNISTのモデルは、白黒が反転している画像で学習しているため、白黒を反転させて、0.0〜1.0に正規化します。
+これで入力データはできました。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="n">myimage</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">myimage</span><span class="p">)</span><span class="o">/</span><span class="mi">255</span>
+</code></pre></div>
+<p>それでは、学習済みのモデルを使って予測してみましょう。(正しく予想できるかな？)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">myimage</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_8">アプリケーションへの組み込み<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<p>人工知能アプリケーションに学習済みモデルを組み込むときは、
+毎回学習しなくて済むようにモデルだけ、ファイルに保存しておきます。</p>
+<div class="admonition note">
+<p class="admonition-title">pickle形式</p>
+<p>Pythonでのオブジェクトをシリアライズする一般的な方法です。<strong>シリアライズ（直列化）</strong>とは、プログラミング言語においてオブジェクトをバイト列のデータに表現に変換することです。逆に、<strong>デシリアライズ（非直列化）</strong>とは、シリアライズしたバイト列から元のオブジェクトに復元することです。</p>
+</div>
+<div class="highlight"><span class="filename">モデルの保存</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="kn">import</span> <span class="nn">pickle</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mnist-model.pickle&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a>    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+</code></pre></div>
+<p>保存されたファイルの大きさは1.6Mバイト程度になります。
+（もちろん、学習したデータやパラメータにもよります。）</p>
+<div class="highlight"><span class="filename">モデルの読み込み</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="kn">import</span> <span class="nn">pickle</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mnist-model.pickle&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">myimage</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_9">練習<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
+<p>MNISTは、練習用データとしても簡単に高い精度が得られるので、あまり練習にならないと言われています。
+（機械学習の進化は恐ろしいですね。）</p>
+<ul>
+<li><a href="https://dodotechno.com/mnist_evaluate/">参考資料</a></li>
+</ul>
+<p>というわけで、MNIST以外のデータの分類モデルも試してみましょう。</p>
+<h3 id="fashion-mnist">Fashion-MNIST<a class="headerlink" href="#fashion-mnist" title="Permanent link">#</a></h3>
+<p><a href="https://github.com/zalandoresearch/fashion-mnist">Fashin-MNIST</a>の画像データを使って、
+ファッションアイテムの分類をしてみよう。</p>
+<p><img alt="fashionmnist-fs8.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/6de529e7-2652-4429-8b34-a662b61236b8.png" style="width:400px" /></p>
+<div class="highlight"><span class="filename">データの入手方法</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="n">fashion_mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;Fashion-MNIST&#39;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="cifar-10">CIFAR-10<a class="headerlink" href="#cifar-10" title="Permanent link">#</a></h3>
+<p>CIFAR-10データセット（Canadian Institute For Advanced Research)は、次のラベルがつけられた画像データセットです。</p>
+<ul>
+<li>ラベル「0」： airplane（飛行機）</li>
+<li>ラベル「1」： automobile（自動車）</li>
+<li>ラベル「2」： bird（鳥）</li>
+<li>ラベル「3」： cat（猫）</li>
+<li>ラベル「4」： deer（鹿）</li>
+<li>ラベル「5」： dog（犬）</li>
+<li>ラベル「6」： frog（カエル）</li>
+<li>ラベル「7」： horse（馬）</li>
+<li>ラベル「8」： ship（船）</li>
+<li>ラベル「9」： truck（トラック）</li>
+</ul>
+<p>Alex Krizhevsky氏／Vinod Nair氏／Geoffrey Hinton氏によって、オブジェクト認識用画像データセット「80 Million Tiny Images」から収集されて作成されたサブセットに由来しています。</p>
+<p><img alt="" src="https://image.itmedia.co.jp/ait/articles/2006/10/di-01.png" /></p>
+<div class="highlight"><span class="filename">データの入手方法</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="n">cifar10</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;CIFAR_10&#39;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>カラー画像になっているので、より画像認識の雰囲気が楽しめるデータです。
+ただし、データの次元が大きくなりすぎるので、そろそろPyTorchやTensorflow, Kerasを使わないと苦しいかもしれません。</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../nlp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 自然言語処理" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              自然言語処理
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../nn/" class="md-footer__link md-footer__link--next" aria-label="Next: より本格的なAIへ" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              より本格的なAIへ
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

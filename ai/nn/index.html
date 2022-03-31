@@ -1,0 +1,1517 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/nn/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>より本格的なAIへ - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              より本格的なAIへ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク４
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          より本格的なAIへ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        より本格的なAIへ
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ニューラル・ネットワークの原理
+  </a>
+  
+    <nav class="md-nav" aria-label="ニューラル・ネットワークの原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ニューロン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    発火：次のニューロンに信号を伝える
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    単純パーセプトロン
+  </a>
+  
+    <nav class="md-nav" aria-label="単純パーセプトロン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    確率モデルの導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ニューラルネットワークの学習
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    勾配降下法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    NumPyによる原理の確認⭐️⭐️
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPyによる原理の確認⭐️⭐️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    活性化関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    勾配降下法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    単純パーセプトロンの原理
+  </a>
+  
+    <nav class="md-nav" aria-label="単純パーセプトロンの原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xy" class="md-nav__link">
+    入力(x)と出力(y)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ニューロンの数理モデル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    学習モデル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epoch" class="md-nav__link">
+    エポック(epoch)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    多層パーセプトロンと深層学習
+  </a>
+  
+    <nav class="md-nav" aria-label="多層パーセプトロンと深層学習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    線形分離不可能な問題
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    多層パーセプトロン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    深層学習へ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    コースワーク
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ニューラル・ネットワークの原理
+  </a>
+  
+    <nav class="md-nav" aria-label="ニューラル・ネットワークの原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ニューロン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    発火：次のニューロンに信号を伝える
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    単純パーセプトロン
+  </a>
+  
+    <nav class="md-nav" aria-label="単純パーセプトロン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    確率モデルの導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ニューラルネットワークの学習
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    勾配降下法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    NumPyによる原理の確認⭐️⭐️
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPyによる原理の確認⭐️⭐️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    活性化関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    勾配降下法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    単純パーセプトロンの原理
+  </a>
+  
+    <nav class="md-nav" aria-label="単純パーセプトロンの原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xy" class="md-nav__link">
+    入力(x)と出力(y)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ニューロンの数理モデル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    学習モデル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epoch" class="md-nav__link">
+    エポック(epoch)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    多層パーセプトロンと深層学習
+  </a>
+  
+    <nav class="md-nav" aria-label="多層パーセプトロンと深層学習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    線形分離不可能な問題
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    多層パーセプトロン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    深層学習へ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    コースワーク
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="_1">ニューラル・ネットワーク<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>深層学習は、2010年代以降の人工知能ブームの立役者です。
+深層学習を理解するため、ニューラルネットワークと基礎原理をしっかり理解しておきましょう。</p>
+<h2 id="_2">ニューラル・ネットワークの原理<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>ニューラル・ネットワーク(neural network)は、
+人間の脳の構造を模した人工知能アルゴリズムです。</p>
+<h3 id="_3">ニューロン<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>人間の脳は、ニューロン(neuron)と呼ばれる神経細胞から構成されます。</p>
+<p>ニューロンを単純化した数理モデルで考えます。</p>
+<p><img alt="neuron-fs8.png" src="../figs/nn_neuron-fs8.png" /></p>
+<p><strong>ネットワークの重み</strong> を<script type="math/tex">w_1, w_2, ..., w_i, ..</script>とすると、</p>
+<p><strong>ニューロンから伝わる信号の総量</strong> は</p>
+<p>
+<script type="math/tex; mode=display">
+w_1 x_1 + w_2 x_2 + ... + w_i x_i + ...
+</script>
+</p>
+<p>となります。</p>
+<h3 id="_4">発火：次のニューロンに信号を伝える<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>入力の信号量がある閾値（しきい値）<script type="math/tex">\theta</script>を超えるかどうかで決めます。</p>
+<p><strong>発火</strong></p>
+<p>
+<script type="math/tex; mode=display">
+(w_1 x_1 + w_2 x_2 + ... + w_i x_i + ... \ge \theta)
+</script>
+</p>
+<p><strong>発火しない</strong></p>
+<p>
+<script type="math/tex; mode=display">
+(w_1 x_1 + w_2 x_2 + ... w_i x_i + ... < \theta)
+</script>
+</p>
+<h2 id="_5">単純パーセプトロン<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<p>単純パーセプトロンは、ニューラルネットワークの単純な数理モデルです。</p>
+<p>
+<script type="math/tex; mode=display">
+y = f(\mathbf{w}\cdot\mathbf{x}+b)
+</script>
+</p>
+<ul>
+<li><strong>入力</strong>: <script type="math/tex">\mathbf{x} = (x_1, x_2, ..., x_n)</script>
+</li>
+<li><strong>重み</strong>: <script type="math/tex">\mathbf{w} = (w_1, w_2, ..., w_n)</script>
+</li>
+<li><strong>バイアス</strong>: <script type="math/tex">b</script>
+</li>
+<li><strong>活性化関数</strong>: <script type="math/tex">f</script>
+</li>
+</ul>
+<p>活性化関数は、ニューロンの発火を定める関数となります。
+前の説明では、ニューロンの発火を0,1で決定していました。</p>
+<p>それを関数として表すと、次のような<strong>ステップ関数</strong>となります。</p>
+<p><strong>ステップ関数</strong></p>
+<p>
+<script type="math/tex; mode=display">
+f(x) = \begin{cases}
+    1 & (x>0) \\
+    0  & (x\le0)
+  \end{cases}
+</script>
+</p>
+<p>しかし、
+ステップ関数は、発火しそうだけどギリギリ発火しないなどの中間的な状態が表現できません。
+単純関数パーセプトロンでは、ステップ関数の代わりに、
+ロジスティック回帰でも用いた<strong>標準シグモイド関数</strong>を使うことで、
+0から1の連続値を扱えるようになります。
+これで、0.49のようなギリギリ発火しない状態も表現できます。</p>
+<p><strong>標準シグモイド関数</strong></p>
+<p>
+<script type="math/tex; mode=display">
+\sigma(x) = \frac{1}{1+e^{-x}}
+</script>
+</p>
+<div class="admonition note">
+<p class="admonition-title">誤り訂正学習法</p>
+<p>ニューラルネットワークの学習は、
+入力<script type="math/tex">(x_1, x_2, ..., x_i, ...)</script> に対し、出力<script type="math/tex">y</script>を計算します。
+出力が間違っていたら、重み<script type="math/tex">(w_1, w_2, ..., w_i, ...)</script> を調整し、
+正しい出力が得られるように近づけます。</p>
+</div>
+<h3 id="_6">確率モデルの導入<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>シグモイド関数を用いると、確率的分類モデルになります。</p>
+<p><strong>発火する確率</strong></p>
+<p>
+<script type="math/tex; mode=display">
+p(C = 1 ~|~ \mathbf{x}) = \sigma(\mathbf{w} \mathbf{x} + b)
+</script>
+</p>
+<p><strong>発火しない確率</strong>
+<script type="math/tex; mode=display">
+p(C = 0~|~ \mathbf{x}) = 1 - p(C = 1 ~|~ \mathbf{x}) = 1 - \sigma(\mathbf{w} \mathbf{x} + b)
+</script>
+</p>
+<p>確率変数<script type="math/tex">C</script>は、0か1なので、<script type="math/tex">y = \mathbf{w} \mathbf{x} + b</script>とおくと、
+上記の二つの式は、次のように一つの式でまとめられます。</p>
+<p>
+<script type="math/tex; mode=display">
+p(C = t | \mathbf{x}) = y^t(1-y)^{(1-t)}
+</script>
+</p>
+<p><strong>尤度関数(ゆうどかんすう）</strong> は、ある前提条件に従って結果が出現する場合に、
+逆に観察結果からみて前提条件が「何々であった」と推測する尤もらしさ（もっともらしさ）を関数として表したものです。</p>
+<p><strong>尤度関数</strong>: <script type="math/tex">\mathbf{w}</script>と<script type="math/tex">b</script>を尤度推定するための関数</p>
+<p>
+<script type="math/tex; mode=display">
+L(\mathbf{w}, b) = \prod_{n=1}^{N} p(C = t_n|\mathbf{x}_n) = \prod_{n=1}^{N} y_n^{t_n}(1 - y_n)^{1-t_n}
+</script>
+</p>
+<p>なお、突然出てきた<script type="math/tex">n=1,...,N</script>はデータの件数です。</p>
+<h3 id="_7">ニューラルネットワークの学習<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<p>ニューラル・ネットワークの学習は、
+尤度関数<script type="math/tex">L(w, b)</script>を最大化するように<script type="math/tex">w</script>と<script type="math/tex">b</script>を調整することになります。</p>
+<div class="admonition note">
+<p class="admonition-title">最適化問題(optimization problem)</p>
+<p>関数が最大・最小となる状態を求める問題のこと。
+関数の最大化は、符号を反転すると、最小化に置き換えられるので、
+一般に関数を最適化するとは、関数を最小化するパラメータを求めることです。</p>
+</div>
+<p>最適化問題となれば、パラメータの偏微分（勾配）を求め、勾配が<script type="math/tex">0</script>になるパラメータを探します。
+ただし、積の形をしているので、偏微分の計算が煩雑になります。そこで、事前の準備として、対数をとって、和の形に変形しておきます。</p>
+<p><strong>交差エントロピー誤差関数(cross-entropy error function)</strong></p>
+<p>
+<script type="math/tex; mode=display">
+E(\mathbf{w}, b) = - \log{L(\mathbf{w}, b)} = - \sum_{n=1}^{N} t_n \log{y_n} + (1 - t_n)\log{1-y_n}
+</script>
+</p>
+<p>
+<script type="math/tex">E(\mathbf{w}, b)</script>を最小化することがもともとの尤度関数の最適化になります。
+一般的には、<script type="math/tex">E</script>のことを<strong>誤差関数(error function)</strong>、もしくは、<strong>損失関数(loss function)</strong>と呼びます。</p>
+<h3 id="_8">勾配降下法<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<p>交差エントロピー誤差関数<script type="math/tex">E(\mathbf{w},b)</script>を最適化するためには、<script type="math/tex">\mathbf{w}, b</script>で偏微分して0になるパラメータを求めることになります。しかし、解析的にこの値を求めるのは困難な場合があります。
+そこで、パラメータを逐次的に更新することで、最適化を探索するアプローチがとられます。</p>
+<p><strong>勾配降下法(gradient descent)</strong></p>
+<p>
+<script type="math/tex; mode=display">
+\mathbf{w}^{(k+1)} = \mathbf{w}^{(k)} - \eta \frac{\partial E(\mathbf{w}, b)}{\partial w}　
+= \mathbf{w}^{(k)} - \eta \sum_{n=1}^{N}(t_n - y_n)\mathbf{x}_n
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+b^{(k+1)} = b^{(k)} - \eta \frac{\partial E(\mathbf{w}, b)}{\partial b} 
+= b^{(k)} - \eta \sum_{n=1}^N (y_n - t_n)
+</script>
+</p>
+<p>(直感的な解釈)： 予測値と実際の値との誤差(y_n - t_n)を用いて、パラメータが更新されます。つまり、ニューラルネットワークの目標は、「予測値と実際の値」の差をなくすことなので、直感に反しない解釈となります。</p>
+<div class="admonition note">
+<p class="admonition-title">学習率(learning_rate): <script type="math/tex">\eta(>0)</script>
+</p>
+<p>学習率は、収束しやすさを調整するハイパーパラメータです。
+通常は、<script type="math/tex">0.1</script>や<script type="math/tex">0.01</script>などの適当な小さい値を与えます。</p>
+</div>
+<p>ニューラル・ネットワークの数理をより深くみてみたい場合は、
+次の参考資料も参考にしてみてください。</p>
+<ul>
+<li><a href="https://www.slideshare.net/trinmu/ss-226711018">数学で解き明かす深層学習の原理</a></li>
+</ul>
+<h2 id="numpy">NumPyによる原理の確認⭐️⭐️<a class="headerlink" href="#numpy" title="Permanent link">#</a></h2>
+<p>NumPyを使って、単純パーセプトロンの原理を実装しながら確認していきましょう。</p>
+<div class="admonition warning">
+<p class="admonition-title">数式も理解するためには</p>
+<p>少しPythonを使ってコーディングしてみると、理解が深まります。
+(NumPyの練習にもなりますし。)</p>
+</div>
+<div class="highlight"><span class="filename">モジュールの準備</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</code></pre></div>
+<h3 id="_9">活性化関数<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p>まず、ニューロンの発火を表現する活性化関数として、
+ステップ関数と標準シグモイド関数を比較してみましょう。</p>
+<p><strong>ステップ関数</strong></p>
+<p>
+<script type="math/tex; mode=display">
+f(x) = \begin{cases}
+    1 & (x>0) \\
+    0  & (x\le0)
+  \end{cases}
+</script>
+</p>
+<div class="highlight"><span class="filename">ステップ関数とグラフ描画</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frompyfunc</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># ユニバーサル関数へ変換</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="n">y</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>標準シグモイド関数</strong></p>
+<p>
+<script type="math/tex; mode=display">
+\sigma(x) = \frac{1}{1+e^{-x}}
+</script>
+</p>
+<div class="highlight"><span class="filename">標準シグモイド関数とグラフ描画</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">y</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_10">勾配降下法<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p><strong>勾配降下法(GD)</strong>は、
+関数<script type="math/tex">f(x)</script>が与えられたとき、
+<script type="math/tex">f(x)</script>を最小にするような<script type="math/tex">x</script>(<script type="math/tex">{\mathop{\rm arg~max}\limits}_{x}　f(x)</script>とも書く)を求める手法です。
+最急降下法（Gradient descent, steepest descent）と呼ばれることもあります。</p>
+<p><strong>原理</strong>
+<script type="math/tex; mode=display">
+x_{i+1} = x_i - \eta f'(x_i)\\
+(x_{i+1}, y_{i+1}) = (x_i, y_i) - \eta (\frac{\partial f(x_i, y_i)}{\partial x_i}, \frac{\partial f(x_i, y_i)}{\partial y_i})
+</script>
+</p>
+<ul>
+<li>
+<script type="math/tex">f'(x_i), \frac{\partial f(x_i, y_i)}{\partial x_i}, \frac{\partial f(x_i, y_i)}{\partial y_i}</script>: 勾配</li>
+<li>
+<script type="math/tex">\eta</script>: 学習率（ハイパーパラメータ）</li>
+</ul>
+<p><strong>1変数の場合</strong></p>
+<p>例として、次の簡単な放物線を考えることにします。</p>
+<p>
+<script type="math/tex; mode=display">
+f(x) = 3x^4 −4x^3 −12x^2 +3\\
+f'(x) = 12x^3 − 12x^2 − 24x \\
+</script>
+</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">24</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="k">return</span> <span class="mi">12</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">12</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">24</span><span class="o">*</span><span class="n">x</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">def</span> <span class="nf">show_grad2</span><span class="p">():</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="n">show_grad2</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">eta</span> <span class="o">=</span> <span class="mf">0.001</span>   <span class="c1"># 学習率</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># 初期値</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># 勾配降下法</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="n">show_grad2</span><span class="p">()</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+大域最適性と局所最適性
+
+局所最適性とは、最適解のひとつであるが、必ずしも最小にならないこと。
+（最小となる最適解を大域最適解と呼ぶ。）
+</div>
+
+<p>勾配降下法は、大域最小性は保証されません。例えば、上の例でも初期値を<script type="math/tex">x=-3</script>で始めると、局所最適解に収束してしまいます。学習率などを変更して、山を超えるように調整することもできます。
+ただし、機械学習では調整するパラメータの数が多いので、多少、局所最適解になるパラメータがあっても、計算の効率が優先されます。</p>
+<p><strong>2変数の場合</strong></p>
+<p>
+<script type="math/tex; mode=display">
+z = x^2 + y^2 ~~~
+\frac{\partial z}{\partial x} = 2x ~~\frac{\partial z}{\partial y} = 2y 
+</script>
+</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="k">return</span> <span class="n">z</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">def</span> <span class="nf">show_grads</span><span class="p">():</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>    <span class="n">ax1</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span class="n">Z</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="n">ax1</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="n">ax1</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x, y)&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="k">return</span> <span class="n">ax1</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="n">show_grads</span><span class="p">()</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> 
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>  <span class="c1"># 初期値</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 初期値</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="k">def</span> <span class="nf">dfdx</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="k">def</span> <span class="nf">dfdy</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="n">eta</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># 学習率</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dfdx</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># 勾配降下法</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dfdy</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># 勾配降下法</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="n">ax1</span> <span class="o">=</span> <span class="n">show_grads</span><span class="p">()</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="n">ax1</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+最先端のニューラルネットワークでは、勾配降下法に完成項(momentum)を追加させた手法、さらに適応的に学習率を変更するAdaGradが使われています。</p>
+<ul>
+<li>勾配降下法(GD): <script type="math/tex">\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \nabla f</script>
+</li>
+<li>Momentum: <script type="math/tex">\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \nabla f+ \alpha \Delta \mathbf{w}</script>
+</li>
+<li>AdaGrad: <script type="math/tex">\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \frac{1}{\sqrt{h_i}}\nabla f</script>,
+   <script type="math/tex">h_{i+1} = h_i +  (\nabla f)^2</script>
+</li>
+</ul>
+<p><img src="https://watlab-blog.com/wp-content/uploads/2020/03/gd-momentum-adagrad.gif" width="50%"/></p>
+<p><a href="https://watlab-blog.com/2020/03/08/adagrad/">wat氏のわかりやすい解説</a>より引用</p>
+<h2 id="_11">単純パーセプトロンの原理<a class="headerlink" href="#_11" title="Permanent link">#</a></h2>
+<p>単純パーセプトロンの動作原理を確認していましょう。</p>
+<p><strong>サンプルデータ</strong></p>
+<table>
+<thead>
+<tr>
+<th>
+<script type="math/tex">x_1</script>
+</th>
+<th>
+<script type="math/tex">x_2</script>
+</th>
+<th>t</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="xy">入力(x)と出力(y)<a class="headerlink" href="#xy" title="Permanent link">#</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x.shape&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t.shape&#39;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">DIM</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1">#2</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">DIM</span><span class="p">,))</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;w =&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="_12">ニューロンの数理モデル<a class="headerlink" href="#_12" title="Permanent link">#</a></h3>
+<p>次は、ニューロンのモデルを計算してみましょう。
+<script type="math/tex; mode=display">
+y = \mathbf{w} \mathbf{x}^T + b
+</script>
+</p>
+<p>今回の入力は、４回分の入力が<script type="math/tex">\mathbf{x}</script>に入っています。
+これをバッチ処理として、一回で計算してしまいます。</p>
+<div class="admonition note">
+バッチ処理
+
+複数の入力データをまとめて計算すること。
+（GPUの性能を引き出すときに必須のテクニックです。）
+</div>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+活性化関数を適用して、[0.0, 1.0]の範囲にします。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">y</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="_13">学習モデル<a class="headerlink" href="#_13" title="Permanent link">#</a></h3>
+<p>ニューラルネットワークは、誤差を少なくするようにパラメータ（重み）を調整することで、学習します。</p>
+<p>
+<script type="math/tex">y</script>は、ニューロンから予想された出力になります。ここから正解<script type="math/tex">t</script>との差分を計算します。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">delta</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">t</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">delta</span> 
+</code></pre></div>
+勾配降下法で1ステップだけ進めてみましょう。</p>
+<p>
+<script type="math/tex; mode=display">
+\mathbf{w}^{(k+1)} = = \mathbf{w}^{(k)} - \eta \sum_{n=1}^{N}(t_n - y_n)\mathbf{x}_n\\
+b^{(k+1)} == b^{(k)} - \eta \sum_{n=1}^N (y_n - t_n)
+</script>
+</p>
+<p>積の和を<code>np.matmul()</code>を使って一度に計算しています。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">eta</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># 学習率</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;BEFORE&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;w =&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;delta =&#39;</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="n">dw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="n">db</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;w =&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+損失関数は、交差エントロピー誤差から計算します。
+<script type="math/tex; mode=display">
+E(\mathbf{w}, b) = - \sum_{n=1}^{N} t_n \log{y_n} + (1 - t_n)\log{1-y_n}
+</script>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="n">compute_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="epoch">エポック(epoch)<a class="headerlink" href="#epoch" title="Permanent link">#</a></h3>
+<p>何回か繰り返し計算することで誤差が小さく収束していきます。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#乱数を固定</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],))</span> <span class="c1"># 初期の重み</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>    <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="n">eta</span> <span class="o">=</span> <span class="mf">0.2</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="n">epoch</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="n">yloss</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a>    <span class="n">delta</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">t</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a>    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a>    <span class="n">loss</span> <span class="o">=</span> <span class="n">compute_loss</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a>    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">]=&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;loss[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a>    <span class="n">yloss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="c1"># グラフ描画用</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a>
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;最終予測結果: &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;loss:&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正解: &#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;w =&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="s1">&#39;b =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">),</span> <span class="n">yloss</span><span class="p">)</span>
+</code></pre></div>
+エポック100回の予測結果と正解を比べてみると、0.5を境界にして、0と1に分類すれば、正解と等しい予測が得られています。まだ、loss が大きいので、もう少しエポックを増やして学習させることでより明確な結果が得られます。</p>
+<h2 id="_14">多層パーセプトロンと深層学習<a class="headerlink" href="#_14" title="Permanent link">#</a></h2>
+<p>単純パーセプトロンは、原理的にロジスティック回帰と等価です。
+（実装で頑張っても）<strong>線形分離可能な問題</strong>しか解くことができません。</p>
+<div class="admonition note">
+
+**線形分離可能な問題**
+
+幾何学においてふたつの集合が二次元平面上にあるとき、それらの集合を一本の直線で分離できることです。
+
+__線形分離可能な例__
+
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/1dd6e067-1875-27a8-fbf4-e81158f54719.png" width="40%"/>
+
+一般化して、$n$ 次元空間上のふたつの集合を $n − 1$ 次元の超平面で
+分離できることも線形分離可能と呼びます。
+逆に、線形分離不可能な問題を線形分離不可能問題と呼びます。
+
+</div>
+
+<h3 id="_15">線形分離不可能な問題<a class="headerlink" href="#_15" title="Permanent link">#</a></h3>
+<p>線形分離不可能な問題は、日常的に存在します。例えば、論理回路のXOR回路も設計分離不可能です。</p>
+<table>
+<thead>
+<tr>
+<th>
+<script type="math/tex">x_1</script>
+</th>
+<th>
+<script type="math/tex">x_2</script>
+</th>
+<th>t</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>線形分離不可能な例</strong></p>
+<p>赤い部分が分離できていない。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/db9d8fa2-05e1-6dd5-e3ef-09582a1b0b1b.png" width="40%"/></p>
+<div class="admonition note">
+
+Let's try
+
+単純パーセプトロンの実装コードを使って、線形不分離問題を解こうとするとどうなるか調べてみよう。
+
+</div>
+
+<h3 id="_16">多層パーセプトロン<a class="headerlink" href="#_16" title="Permanent link">#</a></h3>
+<p>線形分離不可能な問題を解くためのアイディアは、パーセプトロンを組み合わせて多層化することです。</p>
+<p><strong>３層パーセプトロンの例</strong></p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/1c2f261f-701d-e020-2f49-c3df596b8363.png" width="60%"></p>
+<p>このように多層化することで、各ニューロンの学習結果が組み合わさって、
+線形分離不可能な問題でも複数の分離線の組み合わせで分離可能になります。</p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/5ce7c474-466c-7889-f3d4-19277c815289.png" width="40%"/></p>
+<p>さて、「多層パーセプトロンも実装してみましょう！」としたいところですが、
+ちょっと１回の講義では多すぎる気がしますので重要な概念だけ紹介しておきます。</p>
+<div class="admonition note">
+
+逆誤差伝搬法
+
+ニューロンは、順方向に発火させていきますが、学習を効率よく行うため、誤差を逆に伝搬させます。
+
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/49a140bb-5aa0-45a7-a365-7c3aa5c914b6.png" width="60%">
+
+</div>
+
+<h3 id="_17">深層学習へ<a class="headerlink" href="#_17" title="Permanent link">#</a></h3>
+<p>多層パーセプトロンは、４層以上の局所最適解や勾配消失などの技術的な問題によって、十分に学習させられず、性能も芳しくなく、1990年代は機械学習のメインストリームから外れていました。</p>
+<p>深層学習は、2006年に、ジェフリー・ヒントンらがオートエンコーダを提案し、多層でも十分に学習できるように改善したニューラルネットワークです。</p>
+<div class="admonition note">
+
+オートエンコーダ
+
+ニューラルネットワークを使用した次元圧縮のためのアルゴリズム
+
+</div>
+
+<p><strong>Nature誌に掲載されたDeep Learning の発明者らの論文</strong></p>
+<p>https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf</p>
+<p><img alt="deep1-fs8.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/ebc23dd0-544b-7b72-185e-510a584aae8b.png" /></p>
+<p><img alt="deep2-fs8.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/49663032-edde-3f61-c00b-cc1dcf5d0704.png" /></p>
+<h2 id="_18">コースワーク<a class="headerlink" href="#_18" title="Permanent link">#</a></h2>
+<p>今回は、少々難解な数式が出て、コードも「とっ散らかった」感じになってしまいました。
+このようなコードは、ライブラリとしてまとめておくと、再利用しやすくなります。</p>
+<div class="admonition tip">
+
+**演習（SinglePerceptron クラス）**
+
+Python 言語のクラスを定義を使って、
+単純パーセプトロンのコードを
+sklearn 風に学習と予測ができるようにまとめてみましょう。
+
+モデル生成：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>model = SinglePerceptron(lerning_rate=0.1)
+</code></pre></div>
+
+学習：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>model.fit(X, y)
+</code></pre></div>
+
+予測：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>y_pred = model.predict(X)
+</code></pre></div>
+
+</div>
+
+<div class="admonition warning">
+
+コースワークについて
+
+今回のコースワークは、
+**オブジェクト指向プログラミング（計算機数学II)の復習**です。
+
+オブジェクト指向プログラミングを用いると、複数のパラメータをひとまとまりにして、
+より複雑な深層学習向けのニューラルネットワークが構築しやすくなります。
+本格的に深層学習に進みたいときは、避けては通れませんので、
+クラス、オブジェクト、メソッドの概念をもう一度復習してみてください。
+
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../mnist/" class="md-footer__link md-footer__link--prev" aria-label="Previous: コースワーク４" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              コースワーク４
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

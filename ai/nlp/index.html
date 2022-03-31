@@ -1,0 +1,957 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/nlp/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>自然言語処理 - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              自然言語処理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          自然言語処理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        自然言語処理
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    形態素解析
+  </a>
+  
+    <nav class="md-nav" aria-label="形態素解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    英語と日本語
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spacyginza" class="md-nav__link">
+    spaCy/GINZA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    アンケート分析
+  </a>
+  
+    <nav class="md-nav" aria-label="アンケート分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    コメントを眺める
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    単語レベルの解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    単語の頻出度と視覚化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    満足度の高いキーワード
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コースワーク
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク４
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        より本格的なAIへ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    形態素解析
+  </a>
+  
+    <nav class="md-nav" aria-label="形態素解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    英語と日本語
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spacyginza" class="md-nav__link">
+    spaCy/GINZA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    アンケート分析
+  </a>
+  
+    <nav class="md-nav" aria-label="アンケート分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    コメントを眺める
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    単語レベルの解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    単語の頻出度と視覚化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    満足度の高いキーワード
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コースワーク
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="_1">自然言語処理にむけて<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>画像認識は、もともと画像データが多次元ベクトルとして、よく似た画像が近いベクトルで表現されるなど、機械学習で処理しやすい前提が整っていました。
+一方、自然言語などのテキストは、文字コードが近くても意味が近いわけではありません。</p>
+<p>自然言語を機械学習で処理するためには、テキストの特徴量を多次元ベクトルでうまく表現することが鍵になります。</p>
+<p><img src="https://stg2-cdn.go2senkyo.com/articles/wp-content/uploads/2015/07/0ec9a44365144d96fb771d83b7bcc02e.jpg" width="40%"/> </p>
+<p>AI入門のまとめとして、自然言語を機械学習で扱う方法をみていきます。</p>
+<p><strong>モジュールの準備</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>import numpy as np
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>import pandas as pd
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>import matplotlib.pyplot as plt
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>import seaborn as sns
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>try:
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>except ModuleNotFoundError:
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    !pip install japanize_matplotlib
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    import japanize_matplotlib 
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+</code></pre></div>
+<h2 id="_2">形態素解析<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>言語における意味の基本単位は <strong>語(word)</strong> です。
+まず、語を取り出す方法からみていきましょう。</p>
+<h3 id="_3">英語と日本語<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>自然言語処理は、言語の種類によって難しさや扱い方が異なります。</p>
+<ul>
+<li>(英語文) I bought a book </li>
+<li>(日本語文) 私は本を買った</li>
+</ul>
+<p>英語は、空白で区切られたものを語と考えることができます。
+したがって、Python の標準文字列ライブラリだけで、簡単に語を取り出すことができます。</p>
+<p><strong>英語の字句解析</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>s = &quot;I bought a book&quot;
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>s.split()
+</code></pre></div>
+<p>日本語では、まず語の区切りを判定する必要があります。
+しかし、この語の区切りを判定するのが<strong>かなりの難処理</strong>となります。
+そこで、専用のツール/ライブラリが必要となります。</p>
+<div class="admonition note">
+<p class="admonition-title">形態素解析ツール/ライブラリ</p>
+<p>日本語文から、語の区切りを決定するツール/ライブラリ</p>
+</div>
+<h3 id="spacyginza">spaCy/GINZA<a class="headerlink" href="#spacyginza" title="Permanent link">#</a></h3>
+<p>spaCy は、Explosion AI 社の開発するオープンソースの自然言語処理ライブラリです。
+2019 年に、 リクルート AI 研究所と国立言語研究所の研究成果である <a href="https://megagonlabs.github.io/ginza/">GiNZA</a> が登場し、実用的な日本語処理が手軽に利用できるようになりました。</p>
+<p>まずは、GiNZA の導入から始めましょう。<code>pip install ginza</code> を入力するだけで、
+形態素解析も含め、自然言語処理に必要なライブラリがまとめてインストールされます。</p>
+<div class="highlight"><span class="filename">Colab上でGinzaの準備</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">ginza</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">pkg_resources</span><span class="o">,</span> <span class="nn">imp</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">imp</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">pkg_resources</span><span class="p">)</span>
+</code></pre></div>
+<p>日本語文を形態素解析したいときは、次の通り、使います。</p>
+<div class="highlight"><span class="filename">形態素解析による字句解析</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">spacy</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;ja_ginza&#39;</span><span class="p">)</span> 
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;私は本を買った&quot;</span><span class="p">)</span> <span class="c1">#形態素解析</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">i</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">orth_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span>
+</code></pre></div>
+<p>形態素解析によって得られた各字句(word)は、次のようなプロパティ情報をもっています。
+この中から必要な情報を取り出して利用します。</p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>情報</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>orth_</code></td>
+<td>入力語</td>
+</tr>
+<tr>
+<td><code>lemma_</code></td>
+<td>原型</td>
+</tr>
+<tr>
+<td><code>pos_</code></td>
+<td>品詞(Part of Speech)</td>
+</tr>
+<tr>
+<td><code>tag_</code></td>
+<td>品詞タグ</td>
+</tr>
+<tr>
+<td><code>vector</code></td>
+<td>単語ベクトル</td>
+</tr>
+</tbody>
+</table>
+<p>日本語文を単語単位に分割する関数<code>wakachi(s)</code>を定義しておきましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>def wakachi(s):
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    doc = nlp(s)
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    return [word.lemma_ for word in doc]  # word.lemma_ は標準形
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>print(wakachi(&#39;私は本を買った&#39;))
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">(時間があったら）Let's try</p>
+<p>自然言語処理と形態素解析の良い練習問題は、「自然言語処理１００本ノック」にあります。</p>
+<p>http://www.cl.ecei.tohoku.ac.jp/nlp100/</p>
+<p>Web上には、解説記事がたくさん掲載されていますので、参考にしながら解いてみると実力がつきます。</p>
+</div>
+<h2 id="_4">アンケート分析<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<p>不動産屋による「まちづくりに関するアンケート」に基づいて、アンケート解析を試していきましょう。</p>
+<p><strong>データの入手</strong></p>
+<p>本データは、下山らによる「<a href="https://www.shuwasystem.co.jp/book/9784798058757.html">Python 実践データ分析 100 本ノック</a>」から講義用に編集したものを利用します。</p>
+<div class="highlight"><span class="filename">データのURL</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>https://KuramitsuLab.github.io/df/survey.csv
+</code></pre></div>
+<h3 id="_5">コメントを眺める<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>今まで、様々なデータを扱ってきましたが、
+今回のデータの特徴は、自由記述形式のコメント、
+満足度(5段階評価: 1 不満 - 5 満足)などが含まれています。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>df = pd.read_csv(&quot;survey.csv&quot;)
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>df.head() #最初の5行を表示
+</code></pre></div>
+<p>まず、アンケート中のコメントの分量を把握してみましょう。
+文字数を数えて、新しいカラム(<code>文字数</code>)を作って格納します。</p>
+<div class="highlight"><span class="filename">コメントの文字数</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>plt.hist(df[&quot;コメント&quot;].str.len())
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>plt.xlabel(&#39;文字数&#39;)
+</code></pre></div>
+<p>異常に長いコメントもありますね。</p>
+<h3 id="_6">単語レベルの解析<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>コメントから単語を抽出して、どのような単語が使われているか調べてみましょう。</p>
+<p>ここでは、形態素解析の品詞情報(<code>_pos</code>)から、動詞、形容詞、名詞だけに着目してみます。</p>
+<div class="highlight"><span class="filename">頻出単語を見る</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;コメント&quot;</span><span class="p">]:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>        <span class="c1"># 動詞(VERB), 名詞(NOUN), 形容詞(ADJ)のみ抽出</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>        <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;VERB&#39;</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;NOUN&#39;</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;ADJ&#39;</span><span class="p">:</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>  <span class="c1">#標準形に変換する</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="mi">30</span><span class="p">])</span> <span class="c1">#先頭30語だけ</span>
+</code></pre></div>
+<p>これで、コメント文の中で用いられている名詞、動詞、形容詞をすべて取り出すことができました。</p>
+<p>!!! note　”単語を抽出するコツ"</p>
+<ul>
+<li>標準形変換: 活用のある単語（例. 「買った」）は、買うのように標準形に変換する</li>
+<li><a href="https://mieruca-ai.com/ai/nlp-stopwords/#toc_2-1">ストップワード除外</a>: 解析の精度を上げるために不要な記号や単語を取り除く</li>
+</ul>
+<h3 id="_7">単語の頻出度と視覚化<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<p>単語の抽出ができたら、最初のステップとして、単語の出現頻出度から調べていきます。</p>
+<p>ここは、新しいデータフレームを作り、<code>value_counts()</code>で調べてみましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pd.DataFrame({&quot;words&quot;:words}).value_counts()
+</code></pre></div>
+<p>ワードクラウドは、テキストデータを視覚的に表現する方法です。ちょっと寄り道をして表示してみましょう。</p>
+<p>まず、日本語フォントをインストールしておきます。（これがないと文字化けします。）</p>
+<div class="highlight"><span class="filename">Colab上でのIPA日本語フォントのインストール</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>!apt-get -y install fonts-ipafont-gothic
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>## !pip install wordcloud
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>from wordcloud import WordCloud
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>fpath = &#39;/usr/share/fonts/truetype/fonts-japanese-gothic.ttf&#39;
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>#fpath = &#39;fonts-japanese-gothic.ttf&#39;
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>word_chain = &#39; &#39;.join(words)
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>model = WordCloud(width=800, height=600, background_color=&#39;white&#39;, colormap=&#39;bone&#39;, font_path=fpath)
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>W = model.generate(&#39; &#39;.join(words))
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>plt.imshow(W)
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>plt.axis(&#39;off&#39;)
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>plt.show()
+</code></pre></div>
+<p>アンケートの満足度に影響を与えているキーワードが見えてきました。
+しかし、まだどのキーワードがプラスの評価なのか、マイナスの評価なのかわかりません。</p>
+<h2 id="_8">満足度の高いキーワード<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<p>今回のデータの素晴らしい点は、不動産の満足度が 5 段階評価で回答されている点です。
+各キーワードとこの5段階評価を紐付けてみると、キーワードの満足度が見えて来るかもしれません。 </p>
+<p>コメント内の単語と満足度をペアにして取り出してみます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>words = []
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>scores = []
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>for text, score in zip(df[&quot;コメント&quot;], df[&quot;満足度&quot;]):
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    doc = nlp(text)
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>    for word in doc:
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>        if word.pos_ in [&#39;VERB&#39;, &#39;NOUN&#39;, &#39;ADJ&#39;]:
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>            words.append(word.lemma_)
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>            scores.append(score)
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>print(words[:30])
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>print(scores[:30])
+</code></pre></div>
+<p>Pandas を使って表データにまとめておきましょう。<code>出現数</code>1回のカラムを作って、<code>groupby</code>してみましょう。満足度は平均値(<code>np.nean</code>)をとって、集計します。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>keyword = pd.DataFrame({&quot;キーワード&quot;: words, &quot;満足度&quot;: scores, &quot;出現数&quot;: [1]*len(words)})
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>keyword.groupby(&#39;キーワード&#39;).agg({&#39;満足度&#39;: np.mean, &#39;出現数&#39;: sum}).sort_values(by=&#39;出現数&#39;)
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Let's try</p>
+<p>満足度の高いキーワードと満足度の低いキーワードのトップ 5を出してみよう</p>
+</div>
+<p>今回の分析は、出現頻度のあまりに低い単語を除外した方が良いです。
+このように、データサイエンティスト(分析者)のセンスで、結果は少し変わります。</p>
+<div class="admonition note">
+<p class="admonition-title">極性辞書とセンティメント解析</p>
+<p>極性辞書は、ある単語が一般的にネガティブなのか、
+ポジティブなのかを、-1（ネガティブ）から1（ポジティブ）までのスコアの形で表現したものです。</p>
+</div>
+<ul>
+<li><a href="http://www.cl.ecei.tohoku.ac.jp/Open%20Resources_Japanese%20Sentiment%20Polarity%20Dictionary.html">日本語評価極性辞書</a>：東北大の乾・岡崎研究室が公開</li>
+<li>
+<p><a href="http://www.lr.pi.titech.ac.jp/~takamura/pndic_ja.html">単語感情極性対応表</a>：東工大の高村教授が公開</p>
+<p>センティメント分析などに便利です。（今回の満足を極性辞書と比較してみましょう。）</p>
+</li>
+</ul>
+<h2 id="_9">コースワーク<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
+<p>今回のアンケートでは、自由形式のコメントと満足度を同時に回答するようになっていたため、満 足度の高いキーワードを抽出できました。また、コメント文をベクトル化することで、コメント間 の類似度が求められることも見えてきました。</p>
+<div class="admonition warning">
+<p class="admonition-title">疑問（文書からの満足度）</p>
+<p>満足度は予測できるのでしょうか?</p>
+</div>
+<p>これは、エントリーシートから(採用後の)満足度は予想できるのでしょうか?と同じ質問になります。
+皆さんは AI がエントリーシートを判定しているという噂を聞いたことがありますね。</p>
+<div class="admonition example">
+<p class="admonition-title">演習（エントリシート）</p>
+<p>企業がどのように AI を活用して、エントリーシートを分析しているか考察してみよう。
+（可能であれば、今回のコメント文から満足度を予測するモデルを構築してみよう。）</p>
+</div>
+<p>今まで学んできた知識を総動員して、もし足りなかったら追加で調査して考えてみましょう。</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../pandas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: データ処理" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              データ処理
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../mnist/" class="md-footer__link md-footer__link--next" aria-label="Next: コースワーク４" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              コースワーク４
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

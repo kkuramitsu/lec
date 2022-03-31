@@ -1,0 +1,957 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/kmean/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>クラスタリングしてみよう - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クラスタリングしてみよう
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク３
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corpus/" class="md-nav__link">
+        データ資源とコーパス
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        コースワーク４
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        より本格的なAIへ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    クラスタリング
+  </a>
+  
+    <nav class="md-nav" aria-label="クラスタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-means-k-" class="md-nav__link">
+    K-means法 (K-平均法)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    身長と体重からクラスタリング
+  </a>
+  
+    <nav class="md-nav" aria-label="身長と体重からクラスタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データ用意と確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    散布図でデータを確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    ３クラスターに分類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    エルボー法: 適切なクラスター数を調べる
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    乳がんデータと主成分分析
+  </a>
+  
+    <nav class="md-nav" aria-label="乳がんデータと主成分分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    データの理解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    次元削減
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    スケーリング：標準化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="_1">クラスタリングしてみよう<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>クラスタリング（clustering）とは、データ間の類似度にもとづいて、データをグループ分けする手法です。
+データ分析のはじめにデータの特徴を把握するために活用されます。
+また、機械学習アルゴリズムとしても <strong>教師なし学習</strong> として重要です。</p>
+<p>今回は、代表的なクラスタリングアルゴリズムをハンズオン演習しながら、
+クラスタリングを行う技法を学んでいきましょう。</p>
+<p><strong>モジュールの準備</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>import pandas as pd
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>import numpy as np
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>import matplotlib.pyplot as plt
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>import seaborn as sns
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>try:
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    import japanize_matplotlib #日本語化 matplotlib 
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>except ModuleNotFoundError:
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    !pip install japanize_matplotlib
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    import japanize_matplotlib 
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+</code></pre></div></p>
+<h2 id="_2">クラスタリング<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>クラスタリングとは、データ間の類似度にもとづいて、データをグループ分けする手法です。クラスタリングによってできた、似たもの同士が集まったグループのことをクラスタと呼びます。</p>
+<p><img src="https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png" width="80%" align="center"></p>
+<p><strong>活用例</strong></p>
+<ul>
+<li>顧客のセグメンテーション</li>
+<li>学生をグループ分け</li>
+<li>テキストマイニング</li>
+<li>画像の分類</li>
+</ul>
+<p>「データ間の類似度にもとづいてデータをグループ分けする」という特徴の活かし方次第で、さまざまな問題に応用できます。</p>
+<h3 id="k-means-k-">K-means法 (K-平均法)<a class="headerlink" href="#k-means-k-" title="Permanent link">#</a></h3>
+<p><strong>K-means法</strong>は、クラスタリングで最も広く使われている手法です。
+非階層型クラスタリングのアルゴリズであり、クラスタの平均を用い、与えられたクラスタ数<script type="math/tex">k</script>個に分類します。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/K-means_convergence.gif" width="50%" align="center"/></p>
+<p>原理：k-means法は、<script type="math/tex">n</script>次元のデータを<script type="math/tex">k</script>個のクラスタに分割する。</p>
+<ol>
+<li>ランダムに<script type="math/tex">k</script>個クラスタの重心点（<script type="math/tex">n</script>次元ベクトル）<script type="math/tex">V_{1},\dotsc ,V_{k}</script>をおく</li>
+<li>各データに対し、クラスタと最も近いものをクラスタ所属とする。</li>
+<li>全てのデータに対して、クラスタ番号が決まったのち、それぞれのクラスタの重心（平均）を計算し、新しいクラスタの重心点ととする。</li>
+<li>重心移動距離が十分に小さくなるまで、2 と 3 を繰り返す。</li>
+</ol>
+<p>
+<script type="math/tex; mode=display">
+{\displaystyle \operatorname {arg\,min} _{V_{1},\dotsc ,V_{k}}\sum _{i=1}^{n}\min _{j}\left\|x_{i}-V_{j}\right\|^{2}}
+</script>
+</p>
+<p>結果は、最初のクラスタのランダムな割り振りに大きく依存します。何度か繰り返して行って最良の結果を選択する手法や、<strong>k-means++法</strong>のように最初のクラスタ中心点の振り方を工夫する手法などが使用されることがあります。</p>
+<p>sklearn では、KMeans クラスをインポートして利用できます。</p>
+<p>``` title=""thon
+from sklearn.cluster import KMeans
+model = KMeans(n_clusters=3)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>### 主成分分析(PCA)
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>**主成分分析（principal component analysis; PCA）** は、相関のある多数の変数から相関のない少数で全体のばらつきを最もよく表す主成分と呼ばれる変数を合成する多変量解析の一手法です。
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>原理：主成分を与える変換は、第一主成分の分散を最大化し、観測値の変化に対する説明能力を可能な限り主成分に持たせます。続く主成分はそれまでに決定した主成分と直交するという拘束条件の下で分散を最大化するようにして選びます。
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/f/f5/GaussianScatterPCA.svg&quot; width=&quot;50%&quot; align=&quot;center&quot; /&gt;
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>用途：主成分分析は、**データの次元を削減する**ときの定番的手法です。特に、次元数の多いデータを可視化するとき、主成分分析によってより２次元や３次元に集約することで可視化が容易になります。
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>sklearn では、PCAクラスをインポートして利用できます。
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>``` title=&quot;&quot;thon
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>from sklearn.decomposition import PCA
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>model = PCA(n_components=2)
+</code></pre></div></p>
+<h2 id="_3">身長と体重からクラスタリング<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<p>ここからは、sklearn モジュールの K-means法アルゴリズムを使いながら、
+実際にクラスタリングを行っていきます。</p>
+<p><img src="https://miro.medium.com/max/12094/1*IXGsBrC9FnSHGJVw9lDhQA.png" width="40%" align="center"/></p>
+<h3 id="_4">データ用意と確認<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>データは、第４回目のコースワークで作成したスポーツ選手の身長と体重を集計した表データを用いてみます。
+自分で集計したデータをそのまま利用しても構いませんが、
+一応、以下の通り、ダウンロードもできます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>!wget https://KuramitsuLab.github.io/data/bmi.csv
+</code></pre></div>
+<p>まず、pandasを使って表データの内容を確認しましょう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>data = pd.read_csv(&#39;bmi.csv&#39;)
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>data.head()
+</code></pre></div></p>
+<h3 id="_5">散布図でデータを確認<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>身長と体重の分布の様子を散布図とヒストグラムで表示して見ましょう。
+<strong>散布図</strong></p>
+<p>データは、あらかじめ職業としてクラス分類されているため、
+職業ごとに色分けして散布図を書いてみます。
+後から、K-means法でクラスタリングした結果も描画しますので、比べてみましょう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>colors = [&#39;blue&#39;, &#39;red&#39;, &#39;green&#39;]
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>ax = None
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  ax = group[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, alpha=0.3, c=colors[int(i)], ax=ax)
+</code></pre></div>
+重なり具合を確かめるため、ヒストグラムをみて見ましょう。</p>
+<ul>
+<li>身長は、全ての色が重なっています。</li>
+<li>体重は、重なっていない部分があります。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>  group[1][&#39;身長&#39;].plot(kind=&#39;hist&#39;, alpha=0.5, bins=20, title=&#39;身長&#39;)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  group[1][&#39;体重&#39;].plot(kind=&#39;hist&#39;, alpha=0.5, bins=20, title=&#39;体重&#39;)
+</code></pre></div></li>
+</ul>
+<h3 id="3">３クラスターに分類<a class="headerlink" href="#3" title="Permanent link">#</a></h3>
+<p>K-means 法は、先にクラスター数（グループ数）を指定して、グループ分けをします。</p>
+<ul>
+<li>クラスタ数: ３種類の職業があったので、とりあえず、３グループ</li>
+<li>初期状態: <code>random</code> （指定しなければ、K-means++法になる）</li>
+</ul>
+<p>まず、初期値を与えてモデルを生成します。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>from sklearn.cluster import KMeans
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>model = KMeans(init=&#39;random&#39;, n_clusters=3)
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>model
+</code></pre></div>
+今回は、表データのうち、<code>身長</code>と<code>体重</code>の２属性、つまり２次元データを対象とします。</p>
+<p>実際のクラスタリングは、データをフィット(fit)させることで、学習済みモデルを作ります。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>model.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
+</code></pre></div>
+モデルの学習が済んだら、データに対する予想の形で、クラスタ番号を取り出すことができます。
+クラスタ番号は、0から<script type="math/tex">k-1</script>の番号で表現されます。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>model.predict([(170, 80)])
+</code></pre></div>
+表データに各身長と体重から分類されるクラスタを属性として追加してみましょう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>data[&#39;クラスタ&#39;] = model.predict(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>data.head()
+</code></pre></div>
+<code>クラスタ</code>ごとに色分けして散布図を書いてみましょう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>ax=None
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>for i, gd in enumerate(data.groupby(&#39;クラスタ&#39;)):
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, c=colors[i], alpha=0.3, ax=ax)
+</code></pre></div>
+必ずしも職業ごとの分布と同じグループ分ではありませんが、３つのクラスターに分類された様子が確認できました。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>クラスタリングとクラス分類</p>
+<p>クラスタリングは、クラス分類が目的ではありません。したがって、職業等のクラス分類と異なったものになります。散布図をみると、クラスタリングは境界に曖昧なところがなく、綺麗に分類されているのが特徴です。</p>
+<h2 id="_6">エルボー法: 適切なクラスター数を調べる<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<p>エルボー法は、クラスターの重心点と所属データ点の距離の総和に着目して、クラスター数を事前に見積もる手法です。</p>
+<p><strong>距離の総和の求め方</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>print(model.inertia_)
+</code></pre></div>
+クラスタ数を1から10まで大きくしながら、総和の変化をグラフ化してみます。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>dist = []
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>for i in range(1, 11):
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>  km = KMeans(init=&#39;random&#39;, n_clusters=i)
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>  km.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>  dist.append(km.inertia_)
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>plt.xlabel(&#39;クラスタ数&#39;)
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>plt.ylabel(&#39;距離の総和&#39;)
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>plt.plot(range(1, 11), dist, marker=&#39;+&#39;)
+</code></pre></div>
+クラスター数が適切になるまでは、総和は相応に減少することが期待できます。
+一方、いったん適切な数を超えてしまうと、総和の減少はなくなります。
+したがって、クラスター数は2 か 3の辺りが適切なクラスター数といえます。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>エルボー法の由来</p>
+<p>適切なクラスター数がエルボー（肘）のように見えるところから</p>
+<p>クラスター数２の散布図を調べてみよう</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>model = KMeans(init=&#39;random&#39;, n_clusters=2)
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>model.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>data[&#39;クラスター&#39;] = model.predict(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>ax=None
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>for i, gd in enumerate(data.groupby(&#39;クラスター&#39;)):
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, c=colors[i], alpha=0.3, ax=ax)
+</code></pre></div>
+<h2 id="_7">乳がんデータと主成分分析<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<p>乳がんデータセットは、Breast Cancer Wisconsin (Diagnostic) Data Setに由来し、
+乳腺腫瘤の穿刺吸引細胞診のデジタル画像から計算されたデータです。</p>
+<p><img src="https://cdn-ak.f.st-hatena.com/images/fotolife/e/ensekitt/20181102/20181102002649.jpg" width="40%"/></p>
+<p>1993 W.N. Street, W.H. Wolberg and O.L. Mangasarian
+Nuclear feature extraction for breast tumor diagnosis 
+IS&amp;T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993. (abstract)
+Figure2 図中一部を引用</p>
+<p>乳がんのデータを使って主成分分析も試していきます。</p>
+<p><strong>データの用意</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>!wget https://KuramitsuLab.github.io/data/cancer_ja.csv
+</code></pre></div>
+<p>オリジナルデータを日本語化したデータを用意しました。
+良性は<code>1</code>、悪性は<code>0</code>のフラグがついています。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>import pandas as pd
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>data = pd.read_csv(&#39;cancer_ja.csv&#39;)
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>data.head()
+</code></pre></div>
+<h3 id="_8">データの理解<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<p>データの統計量を調べたり、可視化して、データの特徴を捉えましょう。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Let's try</p>
+<p>良性がんと悪性がんの分布に法則性があるか調べてみましょう</p>
+<p>良性か悪性かで色分けして、分布図を書いてみます。属性の組み合わせは、自由に変えて試してみましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>colors = [&#39;red&#39;, &#39;green&#39;]
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>ax=None
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;平均半径&#39;, y=&#39;平均密集度&#39;, c=colors[i], alpha=0.3, ax=ax)
+</code></pre></div>
+<p>三次元の散布図を作成したいときは、<code>Axes3D</code>をインポートして用います。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>from mpl_toolkits.mplot3d import Axes3D
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>fig = plt.figure(figsize=(8,8))
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>ax = Axes3D(fig)
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>ax.set_xlabel(&quot;平均半径&quot;)
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>ax.set_ylabel(&quot;平均密集度&quot;)
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>ax.set_zlabel(&quot;平均凹部&quot;)
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a>    ax.plot(gd[1][&#39;平均半径&#39;],gd[1][&#39;平均密集度&#39;],gd[1][&#39;平均凹部&#39;],marker=&quot;o&quot;,linestyle=&#39;None&#39;,c=colors[i], alpha=0.3)
+</code></pre></div>
+<h3 id="_9">次元削減<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p>乳がんデータは、30次元の変数からなります。
+データの特徴を残しながら次元を削減し、表示してみます。
+このとき、活用するのが<strong>主成分分析(PCA)</strong>です。</p>
+<p><strong>主成分分析(PCA)による2次元への圧縮</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>from sklearn.decomposition import PCA
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>data_x = data[data.columns[1:]]
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>pca = PCA(n_components=2)
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>pca.fit(data_x)
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>print(&#39;固有ベクトル: &#39;, pca.components_)
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>print(&#39;分散:&#39;, pca.explained_variance_)
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>print(&#39;分散割合:&#39;, pca.explained_variance_ratio_)
+</code></pre></div>
+<strong>主成分分析の結果</strong></p>
+<ul>
+<li><strong>固有ベクトル</strong>: <code>pca.components_</code>: 新しい特徴空間の軸の向き</li>
+<li><strong>各主成分の分散</strong>: <code>pca.explained_variance_</code> </li>
+<li><strong>各主成分の持つ分散割合</strong>: <code>pca.explained_variance_ratio_</code>: 第一主成分で98%の情報を保持</li>
+</ul>
+<p>さて、主成分分析の結果を用いて乳がんデータを変換しましょう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>data_pca = pca.transform(data_x)  #　主成分分析による変換
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>print(&#39;data_std(shape):&#39;, data_x.shape)
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>print(&#39;data_pca(shape):&#39;, data_pca.shape)
+</code></pre></div>
+30次元のデータが2次元に削減されていることが確認できるはずです。
+なお、<code>transform()</code>で得られるデータは、
+NumPyの2次元配列なので、表データに変換して、<code>data_pca</code>としておきます。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]).head()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>data_pca = pd.concat([pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]), data], axis=1)
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>data_pca.head()
+</code></pre></div></p>
+<p>第一主成分(pc1)をx軸、第二主成分(pc2)をy軸として散布図を書いてみます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>ax=None
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>for i, gd in enumerate(data_pca.groupby(&#39;良性&#39;)):
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;pc1&#39;, y=&#39;pc2&#39;, c=colors[i], alpha=0.3, ax=ax)
+</code></pre></div>
+<h3 id="_10">スケーリング：標準化<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p>乳がんデータは、さまざまな属性が含まれており、単位が異なります。最大値や最小値も大きくばらついています。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>data.describe()
+</code></pre></div>
+データ分析では、大きな値の属性があると、分析結果は小さな値の属性の影響が小さくなります。そのような影響を排除するため、スケーリング（標準化）は常套手段です。</p>
+<p><strong>標準化</strong>: サンプル値<script type="math/tex">x</script>から平均<script type="math/tex">\bar{x}</script>を引き、標準偏差<script type="math/tex">\sigma</script>で割る</p>
+<p>
+<script type="math/tex; mode=display">
+z = \frac{x - \bar{x}}{\sigma}
+</script>
+</p>
+<p>sklearnモジュールでは、StandardScaler クラスとして提供されています。
+使用法は、PCAクラスと同じで、モデルを学習し、その後、変換します。</p>
+<p><strong>StandardScalerによる標準化</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>from sklearn.preprocessing import StandardScaler
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>sc = StandardScaler()
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a># print(data.columns) カラム名
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>sc.fit(data[data.columns[1:]])
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a># 標準化
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a>data_std = sc.transform(data[data.columns[1:]])
+<a id="__codelineno-25-8" name="__codelineno-25-8"></a>pd.DataFrame(data_std, columns=data.columns[1:]).head()
+</code></pre></div>
+標準化したデータセットに対し、主成分分析をしてみましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>from sklearn.decomposition import PCA
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a>pca = PCA(n_components=2)
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a>pca.fit(data_std)
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>data_pca = pca.transform(data_std)
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>print(&#39;data_std(shape):&#39;, data_std.shape)
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a>print(&#39;data_pca(shape):&#39;, data_pca.shape)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>data = pd.concat([pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]), data], axis=1)
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>data.head()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>ax=None
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;pc1&#39;, y=&#39;pc2&#39;, c=colors[i], alpha=0.3, ax=ax)
+</code></pre></div>
+<div class="admonition important danger">
+
+Let's try
+
+標準化した乳がんデータセットに対して、k-means法でクラスタリングしてみよう。
+
+
+
+## コースワーク
+
+!!! example
+
+**例題（成績表）**
+
+基本情報処理でおなじみの成績データを用いて、３グループに分割してみよう。
+
+1. 成績順にソートしてグループ分けする (属性名: `成績G`)
+2. k-means 法でグループに分類する (属性名: `K平均G`)
+3. 英数国社理を、理系/文系科目の２次元に減らし、k-means法でグループ分けする
+4. 主成分分析を用いて２次元に削減したのち、k-means法でグループ分けする
+
+それぞれのグループ分けの結果を散布図でグラフ化し、特徴など気づいたことを議論してみよう。
+
+
+
+__データ__
+
+次のテキストデータからCSVファイルを作成して作業しましょう。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>%%file 成績.csv
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>名前,英,数,国,社,理
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a>佐藤,84,45,77,69,48
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a>鈴木,75,69,65,77,69
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a>高橋,69,81,45,82,79
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a>田中,92,75,83,79,62
+<a id="__codelineno-29-7" name="__codelineno-29-7"></a>伊藤,62,91,68,61,93
+<a id="__codelineno-29-8" name="__codelineno-29-8"></a>渡辺,54,63,48,52,50
+<a id="__codelineno-29-9" name="__codelineno-29-9"></a>山本,48,53,71,83,45
+<a id="__codelineno-29-10" name="__codelineno-29-10"></a>中村,77,85,62,55,82
+<a id="__codelineno-29-11" name="__codelineno-29-11"></a>小林,82,88,89,79,85
+<a id="__codelineno-29-12" name="__codelineno-29-12"></a>加藤,47,48,57,53,63
+<a id="__codelineno-29-13" name="__codelineno-29-13"></a>吉田,75,36,85,73,51
+<a id="__codelineno-29-14" name="__codelineno-29-14"></a>山田,66,73,79,65,66
+<a id="__codelineno-29-15" name="__codelineno-29-15"></a>佐々木,64,95,48,59,91
+<a id="__codelineno-29-16" name="__codelineno-29-16"></a>山口,73,86,52,70,77
+<a id="__codelineno-29-17" name="__codelineno-29-17"></a>松本,55,75,63,67,80
+</code></pre></div>
+<link href="admonition.css" rel="stylesheet"></link>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
