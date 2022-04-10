@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/pandas/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -868,28 +868,28 @@ Pandasを使いこなせるようになって、前処理をできるように�
 <p>まず、データ列からデータフレームを作る方法をみましょう。</p>
 <p>基本は、次のように、カラム名をキー、データ列を値とした辞書を定義し、
 そこから<code>pd.DataFrame()</code>を使って、データフレームを作成します。</p>
-<div class="highlight"><span class="filename">辞書からデータフレームへ</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="s1">&#39;名前&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;櫻井翔&#39;</span><span class="p">],</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="s1">&#39;出身&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;千葉&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">],</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="s1">&#39;生年&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">1982</span><span class="p">],</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="s1">&#39;身長&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="mi">171</span><span class="p">],</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="s1">&#39;血液型&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight"><span class="filename">辞書からデータフレームへ</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s1">&#39;名前&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;櫻井翔&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s1">&#39;出身&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;千葉&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">,</span> <span class="s1">&#39;東京&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s1">&#39;生年&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">1982</span><span class="p">],</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s1">&#39;身長&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="mi">171</span><span class="p">],</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s1">&#39;血液型&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>
 <p>もう一つは、データ列をタプルにして、データ列のリストを作ります。</p>
-<div class="highlight"><span class="filename">データ行のリストからデータフレームへ</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="s1">&#39;出身&#39;</span><span class="p">,</span> <span class="s1">&#39;生年&#39;</span><span class="p">,</span> <span class="s1">&#39;身長&#39;</span><span class="p">,</span> <span class="s1">&#39;血液型&#39;</span><span class="p">]</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="p">(</span><span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;千葉&#39;</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="s1">&#39;AB&#39;</span><span class="p">),</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="p">(</span><span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="p">(</span><span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="p">(</span><span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">(</span><span class="s1">&#39;櫻井翔&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">171</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">]</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<div class="highlight"><span class="filename">データ行のリストからデータフレームへ</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="s1">&#39;出身&#39;</span><span class="p">,</span> <span class="s1">&#39;生年&#39;</span><span class="p">,</span> <span class="s1">&#39;身長&#39;</span><span class="p">,</span> <span class="s1">&#39;血液型&#39;</span><span class="p">]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="p">(</span><span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;千葉&#39;</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="s1">&#39;AB&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">(</span><span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="p">(</span><span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">(</span><span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="p">(</span><span class="s1">&#39;櫻井翔&#39;</span><span class="p">,</span> <span class="s1">&#39;東京都&#39;</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">171</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">]</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 </code></pre></div>
 <p>どちらの方法でも同じデータフレームが得られます。</p>
-<div class="highlight"><span class="filename">作成したデータフレームの確認</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight"><span class="filename">作成したデータフレームの確認</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df1-fs8.png" style="width:352px" /></p>
 <div class="admonition check">
@@ -899,7 +899,7 @@ Pandasを使いこなせるようになって、前処理をできるように�
 </div>
 <h3 id="_3">データフレームの保存<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>Pandas で操作した表データは、<code>.to_csv()</code>でCSVファイルに保存できます。</p>
-<div class="highlight"><span class="filename">CSVファイルで保存</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;arashi.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>　<span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf_8_sig&#39;</span><span class="p">)</span>
+<div class="highlight"><span class="filename">CSVファイルで保存</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;arashi.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>　<span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf_8_sig&#39;</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Excelで開いて文字化けするときは？</p>
@@ -908,7 +908,7 @@ Pandasを使いこなせるようになって、前処理をできるように�
 文字化けなくCSVファイルを保存されます。
 <img alt="Excel" src="../figs/pandas_arashi-fs8.png" /></p>
 </div>
-<div class="highlight"><span class="filename">エクセル形式のファイルに保存</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;arashi.xlsx&#39;</span><span class="p">)</span>
+<div class="highlight"><span class="filename">エクセル形式のファイルに保存</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;arashi.xlsx&#39;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="_4">基本操作<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
 <p>Pandas は、表データを効率よく操作できます。
@@ -925,70 +925,70 @@ Pandas 用語では、表データのことをデータフレーム(DataFrame)�
 <h3 id="_5">カラム名からデータ列を取り出す<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>Pandasは、今ままできてきたとおり、カラムごとのデータ処理が多くなります。
 まず、カラム名<code>'名前'</code>のデータを取り出してみましょう。</p>
-<div class="highlight"><span class="filename">データ列の取り出し</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">]</span>
+<div class="highlight"><span class="filename">データ列の取り出し</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">]</span>
 </code></pre></div>
 <p>取り出したデータ列は、Pythonの列(シーケンス）として、
 <code>for</code>文などでひとつずつ処理することができます。</p>
-<p><div class="highlight"><span class="filename">for文によるデータ列の処理</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>for name in df[&#39;名前&#39;]:
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  print(name)
+<p><div class="highlight"><span class="filename">for文によるデータ列の処理</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>for name in df[&#39;名前&#39;]:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  print(name)
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>相葉雅紀
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>松本潤
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>二宮和也
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>大野智
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>櫻井翔
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>相葉雅紀
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>松本潤
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>二宮和也
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>大野智
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>櫻井翔
 </code></pre></div></p>
 <p>複数のデータ列を取り出して同時に処理したい時は、<code>zip</code>を使います。</p>
-<p><div class="highlight"><span class="filename">複数のデータ列の取り出し</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">blood</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;血液型&#39;</span><span class="p">]):</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">blood</span><span class="p">)</span>
+<p><div class="highlight"><span class="filename">複数のデータ列の取り出し</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">blood</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;血液型&#39;</span><span class="p">]):</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">blood</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>相葉雅紀 AB
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a>松本潤 A
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a>二宮和也 A
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a>大野智 A
-<a id="__codelineno-9-5" name="__codelineno-9-5"></a>櫻井翔 A
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>相葉雅紀 AB
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>松本潤 A
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>二宮和也 A
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>大野智 A
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>櫻井翔 A
 </code></pre></div></p>
 <h3 id="_6">列データの追加<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>新しいカラム、つまり縦方向の列データを追加してみましょう。</p>
 <p>表データ中には、５人分のデータがあるため、
 リストとして５人分のデータを代入すると、新しい属性を追加することができます。</p>
-<div class="highlight"><span class="filename">例. 性別を追加する</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;性別&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">]</span>
+<div class="highlight"><span class="filename">例. 性別を追加する</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;性別&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;男性&#39;</span><span class="p">]</span>
 </code></pre></div>
 <p>エクセルのようにカラムの値から計算して、新しいカラムを作ることもできます。</p>
-<div class="highlight"><span class="filename">計算結果による新しいカラム</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;年齢&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2022</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;生年&#39;</span><span class="p">]</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight"><span class="filename">計算結果による新しいカラム</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;年齢&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2022</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;生年&#39;</span><span class="p">]</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df2-fs8.png" style="width:436px" /></p>
 <h3 id="n">n行目のデータを取り出す<a class="headerlink" href="#n" title="Permanent link">#</a></h3>
 <p>表データの行ごとへのアクセスは、<code>.iloc</code>プロパティを通して行ます。</p>
-<p><div class="highlight"><span class="filename">最初の行を抽出</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<p><div class="highlight"><span class="filename">最初の行を抽出</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>名前     相葉雅紀
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>出身       千葉
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>生年     1982
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>身長      175
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a>血液型      AB
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a>性別       男性
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a>年齢       40
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a>Name: 0, dtype: object
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>名前     相葉雅紀
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>出身       千葉
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>生年     1982
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>身長      175
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>血液型      AB
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>性別       男性
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>年齢       40
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>Name: 0, dtype: object
 </code></pre></div></p>
 <p>Pandasは強力なデータ操作の機能を持っているのであまり使うことはありませんが、
 データフレームから１行ずつ取り出して処理することもできます。</p>
-<p><div class="highlight"><span class="filename">１行ずつ処理する</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">:</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<p><div class="highlight"><span class="filename">１行ずつ処理する</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>[&#39;相葉雅紀&#39; &#39;千葉&#39; 1982 175 &#39;AB&#39; &#39;男性&#39; 40]
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a>[&#39;松本潤&#39; &#39;東京都&#39; 1983 172 &#39;A&#39; &#39;男性&#39; 39]
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>[&#39;二宮和也&#39; &#39;東京都&#39; 1983 168 &#39;A&#39; &#39;男性&#39; 39]
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>[&#39;大野智&#39; &#39;東京都&#39; 1980 166 &#39;A&#39; &#39;男性&#39; 42]
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>[&#39;櫻井翔&#39; &#39;東京都&#39; 1982 171 &#39;A&#39; &#39;男性&#39; 40]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[&#39;相葉雅紀&#39; &#39;千葉&#39; 1982 175 &#39;AB&#39; &#39;男性&#39; 40]
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>[&#39;松本潤&#39; &#39;東京都&#39; 1983 172 &#39;A&#39; &#39;男性&#39; 39]
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>[&#39;二宮和也&#39; &#39;東京都&#39; 1983 168 &#39;A&#39; &#39;男性&#39; 39]
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>[&#39;大野智&#39; &#39;東京都&#39; 1980 166 &#39;A&#39; &#39;男性&#39; 42]
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>[&#39;櫻井翔&#39; &#39;東京都&#39; 1982 171 &#39;A&#39; &#39;男性&#39; 40]
 </code></pre></div></p>
 <h3 id="_7">セルの値<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>カラム名とインデックスの組み合わせで、
 表データをセルの値を指定して取り出すことができます。</p>
-<p><div class="highlight"><span class="filename">セルの値</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>df[&#39;出身&#39;][0]
+<p><div class="highlight"><span class="filename">セルの値</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>df[&#39;出身&#39;][0]
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>千葉
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>千葉
 </code></pre></div></p>
 <h2 id="_8">データベースの操作<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
 <p>Pandas の<a href="https://ja.wikipedia.org/wiki/%E9%96%A2%E4%BF%82%E4%BB%A3%E6%95%B0_(%E9%96%A2%E4%BF%82%E3%83%A2%E3%83%87%E3%83%AB)">リレーショナル代数</a>の操作をみていきましょう。</p>
@@ -1000,10 +1000,10 @@ Pandas 用語では、表データのことをデータフレーム(DataFrame)�
 </div>
 <h3 id="projection">射影(projection)<a class="headerlink" href="#projection" title="Permanent link">#</a></h3>
 <p>射影（projection）は、表データからカラムを限定した表データを取り出す操作です。</p>
-<div class="highlight"><span class="filename">SQLの例; 名前と生年、血液型のみ抽出</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">SELECT</span> <span class="err">名前</span><span class="p">,</span><span class="err">生年</span><span class="p">,</span><span class="err">血液型</span> <span class="k">FROM</span> <span class="n">df</span>
+<div class="highlight"><span class="filename">SQLの例; 名前と生年、血液型のみ抽出</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="err">名前</span><span class="p">,</span><span class="err">生年</span><span class="p">,</span><span class="err">血液型</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">df</span><span class="w"></span>
 </code></pre></div>
 <p>Pandasでは、抽出したいカラム名をリストにして渡します。</p>
-<div class="highlight"><span class="filename">pandas</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>df[[&#39;名前&#39;, &#39;生年&#39;, &#39;血液型&#39;]]
+<div class="highlight"><span class="filename">pandas</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>df[[&#39;名前&#39;, &#39;生年&#39;, &#39;血液型&#39;]]
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df3-fs8.png" style="width:232px" /></p>
 <p>機械学習では、
@@ -1013,43 +1013,43 @@ Pandas 用語では、表データのことをデータフレーム(DataFrame)�
 <p>Pandasでは、
 <code>query()</code>メソッドでSQL風の条件を記述する方法と
 NumPy風にマスクしてフィルタする方法の２種類あります。</p>
-<div class="highlight"><span class="filename">SQLクエリー</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df</span> <span class="k">WHERE</span> <span class="err">身長</span> <span class="o">&gt;=</span> <span class="mi">170</span>
+<div class="highlight"><span class="filename">SQLクエリー</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="err">身長</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">170</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Pandas: query()</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;身長 &gt;= 170&#39;</span><span class="p">)</span>
+<div class="highlight"><span class="filename">Pandas: query()</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;身長 &gt;= 170&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Pandas: NumPy風フィルタ</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;身長&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">]</span>
+<div class="highlight"><span class="filename">Pandas: NumPy風フィルタ</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;身長&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">]</span>
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df4-fs8.png" style="width:401px" /></p>
 <p>より複雑な条件も書くことができます。</p>
-<div class="highlight"><span class="filename">SQL</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df</span> <span class="k">WHERE</span> <span class="err">身長</span> <span class="o">&gt;=</span> <span class="mi">170</span> <span class="k">AND</span> <span class="err">血液型</span> <span class="o">==</span> <span class="ss">&quot;A&quot;</span>
+<div class="highlight"><span class="filename">SQL</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="err">身長</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">170</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="err">血液型</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;A&quot;</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><span class="filename">query()を使う</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;身長 &gt;= 170 and 血液型 == &quot;A&quot;&#39;</span><span class="p">)</span>
+<div class="highlight"><span class="filename">query()を使う</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;身長 &gt;= 170 and 血液型 == &quot;A&quot;&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">NumPy風フィルタ</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;身長&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;血液型&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)]</span>
+<div class="highlight"><span class="filename">NumPy風フィルタ</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;身長&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;血液型&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">)]</span>
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df5-fs8.png" style="width:380px" /></p>
 <h3 id="_9">グループごとの集計<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <p><code>groupby()</code> は、同じ値を持つデータをまとめて、統計処理を行いときに使います。</p>
-<div class="highlight"><span class="filename">例. 血液型ごとに平均(mean)をとる</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>df.groupby(&#39;血液型&#39;).mean()
+<div class="highlight"><span class="filename">例. 血液型ごとに平均(mean)をとる</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>df.groupby(&#39;血液型&#39;).mean()
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df6-fs8.png" style="width:235px" /></p>
-<div class="highlight"><span class="filename">基礎統計量を全てみたいとき</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>df.groupby(&#39;血液型&#39;).describe()
+<div class="highlight"><span class="filename">基礎統計量を全てみたいとき</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>df.groupby(&#39;血液型&#39;).describe()
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df7-fs8.png" style="width:750px" /></p>
 <p><code>groupby()</code>は、グループごとに集計して操作するときに、重宝します。
 それぞれのグループごとに表(df)を取り出すときは、次のように操作します。</p>
-<p><div class="highlight"><span class="filename">グループごとにデータフレームを取り出す</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>for key, df2 in df.groupby(&#39;血液型&#39;):
-<a id="__codelineno-28-2" name="__codelineno-28-2"></a>  print(key, df2)
+<p><div class="highlight"><span class="filename">グループごとにデータフレームを取り出す</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>for key, df2 in df.groupby(&#39;血液型&#39;):
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  print(key, df2)
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>A
-<a id="__codelineno-29-2" name="__codelineno-29-2"></a>     名前   出身    生年   身長 血液型  性別  年齢
-<a id="__codelineno-29-3" name="__codelineno-29-3"></a>1   松本潤  東京都  1983  172   A  男性  39
-<a id="__codelineno-29-4" name="__codelineno-29-4"></a>2  二宮和也  東京都  1983  168   A  男性  39
-<a id="__codelineno-29-5" name="__codelineno-29-5"></a>3   大野智  東京都  1980  166   A  男性  42
-<a id="__codelineno-29-6" name="__codelineno-29-6"></a>4   櫻井翔  東京都  1982  171   A  男性  40
-<a id="__codelineno-29-7" name="__codelineno-29-7"></a>AB
-<a id="__codelineno-29-8" name="__codelineno-29-8"></a>     名前  出身    生年   身長 血液型  性別  年齢
-<a id="__codelineno-29-9" name="__codelineno-29-9"></a>0  相葉雅紀  千葉  1982  175  AB  男性  40
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>A
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>     名前   出身    生年   身長 血液型  性別  年齢
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>1   松本潤  東京都  1983  172   A  男性  39
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>2  二宮和也  東京都  1983  168   A  男性  39
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>3   大野智  東京都  1980  166   A  男性  42
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>4   櫻井翔  東京都  1982  171   A  男性  40
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>AB
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>     名前  出身    生年   身長 血液型  性別  年齢
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>0  相葉雅紀  千葉  1982  175  AB  男性  40
 </code></pre></div></p>
 <h3 id="_10">ピボットテーブルとクロス集計⭐️<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
 <p>ピボットテーブルは、クロス集計に使われる便利ツールです。</p>
@@ -1060,18 +1060,18 @@ NumPy風にマスクしてフィルタする方法の２種類あります。</p
 <li><code>aggfunc</code>: 集約方法を指定</li>
 </ul>
 <p>ピボットテーブルを用いると、集計結果を表データに変換して取り出せるようになります。</p>
-<div class="highlight"><span class="filename">ピボットテーブル: インデックスのみ指定</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>pd.pivot_table(df, index=&quot;血液型&quot;)
+<div class="highlight"><span class="filename">ピボットテーブル: インデックスのみ指定</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>pd.pivot_table(df, index=&quot;血液型&quot;)
 </code></pre></div>
 <h2 id="_11">表の連結<a class="headerlink" href="#_11" title="Permanent link">#</a></h2>
 <p>必要なデータが複数のファイルに保存されていて、
 複数のデータフレームの一つにまとめてデータ分析する機会は多くあります。</p>
 <p>まず、もうひとつデータフレームを用意します。</p>
-<p><div class="highlight"><span class="filename">もう一つ、表を用意</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2"></a>    <span class="s1">&#39;名前&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;カビゴン&#39;</span><span class="p">],</span>
-<a id="__codelineno-31-3" name="__codelineno-31-3"></a>    <span class="s1">&#39;身長&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">166</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4"></a>    <span class="s1">&#39;体重&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">52.0</span><span class="p">,</span> <span class="mf">58.0</span><span class="p">,</span> <span class="mf">52.0</span><span class="p">,</span> <span class="mf">62.0</span><span class="p">,</span> <span class="mf">460.0</span><span class="p">],</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="p">})</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6"></a><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<p><div class="highlight"><span class="filename">もう一つ、表を用意</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="s1">&#39;名前&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;大野智&#39;</span><span class="p">,</span> <span class="s1">&#39;相葉雅紀&#39;</span><span class="p">,</span> <span class="s1">&#39;二宮和也&#39;</span><span class="p">,</span> <span class="s1">&#39;松本潤&#39;</span><span class="p">,</span> <span class="s1">&#39;カビゴン&#39;</span><span class="p">],</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="s1">&#39;身長&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">166</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="s1">&#39;体重&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">52.0</span><span class="p">,</span> <span class="mf">58.0</span><span class="p">,</span> <span class="mf">52.0</span><span class="p">,</span> <span class="mf">62.0</span><span class="p">,</span> <span class="mf">460.0</span><span class="p">],</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="p">})</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 <img alt="" src="../figs/pandas_df8-fs8.png" style="width:233px" /></p>
 <div class="admonition warning">
@@ -1081,18 +1081,18 @@ NumPy風にマスクしてフィルタする方法の２種類あります。</p
 <h3 id="_12">単純な連結<a class="headerlink" href="#_12" title="Permanent link">#</a></h3>
 <p>最も簡単方法は、単純に表を連結することです。</p>
 <p>単純に縦方向に連結したいときは、<code>pd.concat()</code>を使って連結します。</p>
-<div class="highlight"><span class="filename">縦方向に表を連結する</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>pd.concat([df, df2]) 
+<div class="highlight"><span class="filename">縦方向に表を連結する</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>pd.concat([df, df2]) 
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df9-fs8.png" style="width:500px" /></p>
 <p>横方向に連結したいときは、<code>axis=1</code>のオプションをつけます。</p>
-<div class="highlight"><span class="filename">横方向に連結する</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>pd.concat([df, df2], axis=1)
+<div class="highlight"><span class="filename">横方向に連結する</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>pd.concat([df, df2], axis=1)
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df91-fs8.png" style="width:600px" /></p>
 <h3 id="join">表データの結合(join)<a class="headerlink" href="#join" title="Permanent link">#</a></h3>
 <p>表データの結合は、ふたつの表データのある属性をキーにして、
 キーが同じ値であれば一つの行にまとめる操作です。</p>
 <p>Pandasでは、<code>pd.merge()</code>で結合します。</p>
-<div class="highlight"><span class="filename">`名前`をキーにして連結する</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>pd.merge(df, df2, on=&#39;名前&#39;)
+<div class="highlight"><span class="filename">`名前`をキーにして連結する</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>pd.merge(df, df2, on=&#39;名前&#39;)
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df92-fs8.png" style="width:600px" /></p>
 <p>ふたつの表データは結合されましたが、データが一部消えてしまいました。
@@ -1107,39 +1107,39 @@ NumPy風にマスクしてフィルタする方法の２種類あります。</p
 </ul>
 </div>
 <p><code>left</code>が良さそうですが、<code>outer</code>で結合してみます。</p>
-<div class="highlight"><span class="filename">df, df2を外部結合する</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>df3 = pd.merge(df, df2, on=&#39;名前&#39;, how=&#39;outer&#39;)
-<a id="__codelineno-35-2" name="__codelineno-35-2"></a>df3.head()
+<div class="highlight"><span class="filename">df, df2を外部結合する</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>df3 = pd.merge(df, df2, on=&#39;名前&#39;, how=&#39;outer&#39;)
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>df3.head()
 </code></pre></div>
 <p><img alt="" src="../figs/pandas_df93-fs8.png" style="width:600px" /></p>
 <h3 id="inplace">テーブルの変更(inplace)<a class="headerlink" href="#inplace" title="Permanent link">#</a></h3>
 <p>少しデータを整頓しておきましょう。</p>
 <p>===</p>
 <p>また、カラム名が英語だったり、日本だったり不統一です。少し整頓しておきましょう。</p>
-<div class="highlight"><span class="filename">df, df2を外部結合し、df3</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>df3 = pd.merge(df, df2, on=&#39;名前&#39;, how=&#39;outer&#39;)
-<a id="__codelineno-36-2" name="__codelineno-36-2"></a>
-<a id="__codelineno-36-3" name="__codelineno-36-3"></a>df3.drop(5, axis=0, inplace=True)  #index=5を消す
-<a id="__codelineno-36-4" name="__codelineno-36-4"></a>df3.drop(&#39;身長_y&#39;, axis=1, inplace=True)  # &#39;身長_y&#39;を消す
-<a id="__codelineno-36-5" name="__codelineno-36-5"></a>df3.rename(columns={&#39;身長_x&#39;: &#39; 身長&#39;}, inplace=True)
-<a id="__codelineno-36-6" name="__codelineno-36-6"></a>df.reindex(columns=[&#39;名前&#39;, &#39;出身&#39;, &#39;年齢&#39;, &#39;身長&#39;, &#39;体重&#39;])
-<a id="__codelineno-36-7" name="__codelineno-36-7"></a>df3.head()
+<div class="highlight"><span class="filename">df, df2を外部結合し、df3</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>df3 = pd.merge(df, df2, on=&#39;名前&#39;, how=&#39;outer&#39;)
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>df3.drop(5, axis=0, inplace=True)  #index=5を消す
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>df3.drop(&#39;身長_y&#39;, axis=1, inplace=True)  # &#39;身長_y&#39;を消す
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>df3.rename(columns={&#39;身長_x&#39;: &#39; 身長&#39;}, inplace=True)
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>df.reindex(columns=[&#39;名前&#39;, &#39;出身&#39;, &#39;年齢&#39;, &#39;身長&#39;, &#39;体重&#39;])
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>df3.head()
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">pandas の表操作は書き換えない</p>
 <p>pandas の表操作は、新しい表データを返すようになっています。だから、別の変数名で別の表データとして操作することもできます。
-<div class="highlight"><span class="filename">新しい表を df2 として操作する</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><span class="filename">新しい表を df2 として操作する</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 だから、同じ変数名で置き換えることもできます。
-<div class="highlight"><span class="filename">python</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>df = df.drop(&#39;名前&#39;, axis=1)
+<div class="highlight"><span class="filename">python</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>df = df.drop(&#39;名前&#39;, axis=1)
 </code></pre></div>
 データを直接、書き換えたいときは、<code>inplace=True</code>をつけます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a>df.drop(&#39;名前&#39;, axis=1, inplace=True)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>df.drop(&#39;名前&#39;, axis=1, inplace=True)
 </code></pre></div></p>
 </div>
 <h2 id="_13">練習問題<a class="headerlink" href="#_13" title="Permanent link">#</a></h2>
 <p>Pandas を使ってデータの前処理の練習をしましょう。</p>
 <h3 id="j">Jリーガー、プロ野球、大相撲<a class="headerlink" href="#j" title="Permanent link">#</a></h3>
 <p>プロ野球、Jリーガー、大相撲に関するデータをひとつにまとめよう。</p>
-<div class="highlight"><span class="filename">カラムの例</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>名前　職業  所属  身長  体重  BMI
+<div class="highlight"><span class="filename">カラムの例</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>名前　職業  所属  身長  体重  BMI
 </code></pre></div>
 <ol>
 <li><code>職業</code>は、<code>プロ野球</code>、<code>Jリーガー</code>、<code>相撲</code>とする</li>
@@ -1150,27 +1150,27 @@ NumPy風にマスクしてフィルタする方法の２種類あります。</p
 <p><strong>データの入手先</strong></p>
 <p>鈴木 雅也、渡辺 将人、井上 史斗.
 「<a href="https://github.com/massongit/math-program-book">数式をプログラムするってつまりこういうこと</a>」より、公開データを使わせてもらいます。</p>
-<p><div class="highlight"><span class="filename">JリーガーのデータのURL</span><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/サッカー/Jリーグ選手身長体重.csv
+<p><div class="highlight"><span class="filename">JリーガーのデータのURL</span><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/サッカー/Jリーグ選手身長体重.csv
 </code></pre></div>
-<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a>チーム,ポジション,背番号,名前,生年月日,身長,体重
-<a id="__codelineno-42-2" name="__codelineno-42-2"></a>川崎フロンターレ,GK,1,チョン　ソンリョン,1985/01/04,191,90
-<a id="__codelineno-42-3" name="__codelineno-42-3"></a>川崎フロンターレ,GK,24,安藤　駿介,1990/08/10,185,79
+<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>チーム,ポジション,背番号,名前,生年月日,身長,体重
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>川崎フロンターレ,GK,1,チョン　ソンリョン,1985/01/04,191,90
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>川崎フロンターレ,GK,24,安藤　駿介,1990/08/10,185,79
 </code></pre></div></p>
-<p><div class="highlight"><span class="filename">プロ野球選手のデータURL</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>!wget https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/プロ野球/プロ野球選手身長体重.csv
+<p><div class="highlight"><span class="filename">プロ野球選手のデータURL</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>!wget https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/プロ野球/プロ野球選手身長体重.csv
 </code></pre></div>
-<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>チーム,背番号,氏名,生年月日,身長,体重,投,打
-<a id="__codelineno-44-2" name="__codelineno-44-2"></a>広島,11,福井　優也,1988.02.08,178,85,右,右
-<a id="__codelineno-44-3" name="__codelineno-44-3"></a>広島,12,九里　亜蓮,1991.09.01,187,92,右,右
+<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>チーム,背番号,氏名,生年月日,身長,体重,投,打
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>広島,11,福井　優也,1988.02.08,178,85,右,右
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>広島,12,九里　亜蓮,1991.09.01,187,92,右,右
 </code></pre></div></p>
-<p><div class="highlight"><span class="filename">大相撲のデータURL</span><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a>!wget https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/相撲/力士身長体重.csv
+<p><div class="highlight"><span class="filename">大相撲のデータURL</span><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>!wget https://raw.githubusercontent.com/massongit/math-program-book/master/9_data/相撲/力士身長体重.csv
 </code></pre></div>
-<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>しこ名,身長,体重
-<a id="__codelineno-46-2" name="__codelineno-46-2"></a>玉鷲 一朗,188.0,174.0
-<a id="__codelineno-46-3" name="__codelineno-46-3"></a>旭秀鵬 滉規,190.0,147.0
+<div class="highlight"><span class="filename">ファイルの内容（抜粋）</span><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>しこ名,身長,体重
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>玉鷲 一朗,188.0,174.0
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>旭秀鵬 滉規,190.0,147.0
 </code></pre></div></p>
 <h3 id="j_1">Jリーガー、プロ野球、アイドルデータ<a class="headerlink" href="#j_1" title="Permanent link">#</a></h3>
 <p>プロ野球、Jリーガー、アイドルに関するデータをひとつにまとめよう。</p>
-<div class="highlight"><span class="filename">カラムの例</span><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>名前　職業  所属  生年  身長  体重  年齢  BMI
+<div class="highlight"><span class="filename">カラムの例</span><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>名前　職業  所属  生年  身長  体重  年齢  BMI
 </code></pre></div>
 <ol>
 <li><code>職業</code>は、<code>プロ野球</code>、<code>Jリーガー</code>、<code>アイドル</code>とする</li>
@@ -1250,9 +1250,9 @@ NumPy風にマスクしてフィルタする方法の２種類あります。</p
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
-        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>

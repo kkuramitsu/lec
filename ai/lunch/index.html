@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/lunch/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#2" class="md-skip">
           Skip to content
         </a>
       
@@ -285,6 +285,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           コースワーク２
@@ -301,6 +303,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -310,8 +314,63 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    コースワーク
+    スタート地点
   </a>
+  
+    <nav class="md-nav" aria-label="スタート地点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ポイント： 欠損値と前処理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    シンプルな対処法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nan" class="md-nav__link">
+    NaNを補間する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    中級向け: カテゴリーデータの数値化⭐️
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    中級向け: メニュー名のベクトル化⭐️
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    (上級者向け） トレンド解析を加える
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xgboost-lightgbm" class="md-nav__link">
+    XGBoost と LightGBM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -490,6 +549,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -499,8 +560,63 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    コースワーク
+    スタート地点
   </a>
+  
+    <nav class="md-nav" aria-label="スタート地点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ポイント： 欠損値と前処理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    シンプルな対処法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nan" class="md-nav__link">
+    NaNを補間する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    中級向け: カテゴリーデータの数値化⭐️
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    中級向け: メニュー名のベクトル化⭐️
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    (上級者向け） トレンド解析を加える
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xgboost-lightgbm" class="md-nav__link">
+    XGBoost と LightGBM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -517,15 +633,12 @@
               
                 
 
-  <h1>コースワーク２</h1>
-
-<h2 id="_1">コースワーク<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-</div>
-<p><strong>演習（ランチボックス）</strong></p>
-<p>カフェフロアで販売されているお弁当の販売数のデータを可視化して、
-販売数<code>y</code>を増やすため、特徴をつかんでみよう。</p>
+<h1 id="2">コースワーク２：お弁当の販売予測<a class="headerlink" href="#2" title="Permanent link">#</a></h1>
+<p>カフェフロアで販売されているお弁当の販売数のデータから
+販売数<code>y</code>を予測する回帰モデルを作ろう。</p>
+<p><a href="https://signate.jp/competitions/24">SIGNATE社のコンテスト用データ</a>を利用させていただきます。
+SIGNATEにユーザ登録すると、ダウンロードすることができます。
+（データの入手法の詳細は授業中にも紹介します。）</p>
 <table>
 <thead>
 <tr>
@@ -584,17 +697,192 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li>販売数<code>y</code>の影響を与える属性は？</li>
-<li>販売数<code>y</code></li>
-</ul>
-<p><strong>データの入手方法</strong></p>
-<p><a href="https://signate.jp/competitions/24">SIGNATE社のコンテスト用データ</a>を
-利用させていただきます。データの入手法の詳細は授業中に紹介します。</p>
-<!--
-! wget http://kuramitsulab.github.io/data/bento_train.csv
-! wget http://kuramitsulab.github.io/data/bento_test.csv
--->
+<h2 id="_1">スタート地点<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p>まず、訓練データを読み込んでみましょう。</p>
+<p><div class="highlight"><span class="filename">訓練データ</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;bento_train.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/bento_df-fs8.png" /></p>
+<p>データフレームを確認すると、最初に目につくのは、<strong>NaN</strong> です。
+これが今回のポイントです。</p>
+<h3 id="_2">ポイント： 欠損値と前処理<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p><strong>NaN</strong> とは、欠損値、つまりデータの記載がなくて欠けていることを表します。</p>
+<p><code>df.info()</code>で見ると、より欠損値の状況がわかります。</p>
+<p><div class="highlight"><span class="filename">欠損値の状況を確認する</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>df.info()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>RangeIndex: 207 entries, 0 to 206
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Data columns (total 12 columns):
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> #   Column         Non-Null Count  Dtype  
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>---  ------         --------------  -----  
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a> 0   datetime       207 non-null    object 
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a> 1   y              207 non-null    int64  
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a> 2   week           207 non-null    object 
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a> 3   soldout        207 non-null    int64  
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> 4   name           207 non-null    object 
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> 5   kcal           166 non-null    float64
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a> 6   remarks        21 non-null     object 
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a> 7   event          14 non-null     object 
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> 8   payday         10 non-null     float64
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a> 9   weather        207 non-null    object 
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a> 10  precipitation  207 non-null    object 
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a> 11  temperature    207 non-null    float64
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>dtypes: float64(3), int64(2), object(7)
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>memory usage: 19.5+ KB
+</code></pre></div></p>
+<p>今回は、207件ないカラム、<code>kcal</code>, <code>remarks</code>, <code>event</code>, <code>payday</code>は欠損しています。
+欠損しているカラムをそのまま、モデルの説明変数に用いると、エラーになるので、
+欠損値を処理する必要があります。</p>
+<div class="admonition note">
+<p class="admonition-title">欠損値</p>
+<p>データセットには、（意地悪とかではなく頻繁に色々な理由から）データが欠損することがあります。
+データの欠損値を取り除いて、もしくは補完して高い精度のモデルを作るのが腕の見せ所です。</p>
+</div>
+<h3 id="_3">シンプルな対処法<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>最もシンプルな対処法は、欠損値のあるカラムを削除してしまうことです。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<img alt="" src="../figs/bento_df_dropna-fs8.png" /></p>
+<p>しかし、このようにカラムごと消してしまうと、説明変数に使えるデータが少なくなってしまいます。
+あまりおすすめではありません。(特に、<code>kcal</code>が使えないのは惜しい)</p>
+<h3 id="nan">NaNを補間する<a class="headerlink" href="#nan" title="Permanent link">#</a></h3>
+<p><code>kcal</code>カラムの要約統計量を見て見ましょう。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>df[&#39;kcal&#39;].describe()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>count    166.000000
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mean     404.409639
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>std       29.884641
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>min      315.000000
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>25%      386.000000
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>50%      408.500000
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>75%      426.000000
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>max      462.000000
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>Name: kcal, dtype: float64
+</code></pre></div></p>
+<p>あまり、大きなばらつきがないことに気づきませんか？
+このような場合は、消してしまうよりも、平均値で補完してしまうこともできます。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df[&#39;kcal&#39;] = df[&#39;kcal&#39;].fillna(df[&#39;kcal&#39;].mean()).astype(int)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>df.head()
+</code></pre></div>
+<img alt="" src="../figs/bento_df_kcal-fs8.png" /></p>
+<p>給料日<code>payday</code>のNaNは、フラグが立っていないだけなので、NaNを<code>0</code>にします。
+<code>event</code>や<code>remarks</code>のNaNも、<code>'なし'</code>や<code>'特になし'</code>にしておきましょう。</p>
+<p><div class="highlight"><span class="filename">給料日のフラグ</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>df[&#39;payday&#39;] = df[&#39;payday&#39;].fillna(0)
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>df[&#39;event&#39;] = df[&#39;event&#39;].fillna(&#39;なし&#39;)
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>df[&#39;remarks&#39;] = df[&#39;remarks&#39;].fillna(&#39;特になし&#39;)
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>df.head()
+</code></pre></div>
+<img alt="" src="../figs/bento_df_kcal-fs8.png" /></p>
+<p>これで、欠損値はなくなりました。</p>
+<p><div class="highlight"><span class="filename">欠損値の状況を再度、確認する</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>df.info()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>RangeIndex: 207 entries, 0 to 206
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Data columns (total 12 columns):
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a> #   Column         Non-Null Count  Dtype  
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>---  ------         --------------  -----  
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a> 0   datetime       207 non-null    object 
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a> 1   y              207 non-null    int64  
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a> 2   week           207 non-null    object 
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a> 3   soldout        207 non-null    int64  
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a> 4   name           207 non-null    object 
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a> 5   kcal           207 non-null    float64
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a> 6   remarks        207 non-null    object 
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a> 7   event          207 non-null    object 
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a> 8   payday         207 non-null    float64
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a> 9   weather        207 non-null    object 
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a> 10  precipitation  207 non-null    object 
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a> 11  temperature    207 non-null    float64
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>dtypes: float64(3), int64(2), object(7)
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>memory usage: 19.5+ KB
+</code></pre></div></p>
+<p>もし余力があれば、文字列で表現されたカテゴリデータにも注目して見ましょう。</p>
+<h3 id="_4">中級向け: カテゴリーデータの数値化⭐️<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>データセットには、<code>object</code>型で示されるカテゴリーデータが入っています。
+カテゴリーデータは、このままでは説明変数に用いることはできませんが、
+お弁当の販売に有益な情報が含まれているかも知れません。
+そこで、数値データに変換することを考えてみます。</p>
+<ol>
+<li>手作業で数値に変換する</li>
+<li>One-Hot ベクトル（ダミー変数）に変換する</li>
+<li>Medean-Encodingする</li>
+</ol>
+<p>例で、<code>weather</code>カラムに着目します。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/bento_weather-fs8.png" /></p>
+<p>カテゴリーデータを数値化する方法はいくつかあります。</p>
+<p><strong>手作業のスコア化</strong>: 一番簡単なのは、手作業でスコア付けしてしまう方法です。</p>
+<div class="highlight"><span class="filename">スコア化</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="s1">&#39;快晴&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;晴&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;薄曇&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;曇&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;雨&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;雷雨&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;雪&#39;</span><span class="p">:</span> <span class="mi">6</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">})</span>
+</code></pre></div>
+<p><strong>OneHotベクトル化</strong>: 定番です。（ダミー変数化とも言います。）</p>
+<p><div class="highlight"><span class="filename">スコア化</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">df_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">],</span> <span class="n">dummy_na</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">df_weather</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/bento_weather_df-fs8.png" style="width: 300px" /></p>
+<p><strong>Medianエンコーディング</strong>: データサイエンス上級者がよく使うのが目的変数の中央値を採用する方法です。</p>
+<p><div class="highlight"><span class="filename">medianエンコーディング</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>df.groupby(&#39;weather&#39;)[&#39;y&#39;].median()
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>快晴    107.0
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>晴れ     68.5
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>曇      70.0
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>薄曇     65.0
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>雨      74.0
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>雪      86.0
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>雷電     54.0
+</code></pre></div></p>
+<p>とりあえず、次元数は多くなりますが、OneHotエンコーディングを練習してみるのは良いですね。</p>
+<h3 id="_5">中級向け: メニュー名のベクトル化⭐️<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>お客さんは、メニューを見てお弁当を買うわけなので、
+メニュー名は販売に大きな影響を与えます。
+というわけで、メニュー名を説明変数として使えるようにベクトル化してしまいます。</p>
+<div class="admonition danger">
+<p class="admonition-title">混乱しない人だけ読んでね</p>
+<p>原則、自然言語処理と言われる方法を使うことになります</p>
+</div>
+<p>メニュー名をベクトル化する方法も色々あります。</p>
+<p>数物情報科学科の３年生が原理を既に習っているはずの
+形態素解析とTF/IDFを使う方法を紹介します。</p>
+<p>Python版の形態素解析ライブラリ janomeを使って、分かち書きをします。</p>
+<div class="highlight"><span class="filename">分かち書き</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span> <span class="nn">janome.tokenizer</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">nlp</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">def</span> <span class="nf">wakachi</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">surface</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nlp</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">s</span><span class="p">)])</span>
+</code></pre></div>
+<p>分かち書きというは、英語のように、単語間に空白を入れる処理です。
+<div class="highlight"><span class="filename">メニューを全て分かち書き</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">words</span> <span class="o">=</span><span class="p">[]</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wakachi</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[&#39;厚 切り イカ フライ&#39;, &#39;手作り ヒレ カツ&#39;, &#39;白身 魚 唐 揚げ 野菜 あん&#39;, ...]
+</code></pre></div></p>
+<p>TF/IDFでベクトルモデルを作ります。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">use_idf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">df_name</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vec</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">words</span><span class="p">)</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">df_name</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/bento_tfidf_df-fs8.png" /></p>
+<h3 id="_6">(上級者向け） トレンド解析を加える<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>今回のお弁当屋さんの解析は、売り上げをグラフで図示すると、少し売り上げが落ちているトレンドが見えます。</p>
+<p><img alt="" src="../figs/bento_trend-fs8.png" /></p>
+<p>トレンド</p>
+<h3 id="xgboost-lightgbm">XGBoost と LightGBM<a class="headerlink" href="#xgboost-lightgbm" title="Permanent link">#</a></h3>
+<p>勾配ブーストを用いた決定木(GBDT)によるクラス分類や回帰はデータ分析コンペでも非常によく使われています。</p>
+<p>https://arxiv.org/abs/1603.02754</p>
+<p>ぜひ、Webで調べながら威力を試してみてください。</p>
+<div class="highlight"><span class="filename">XGBoostの例</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">(</span><span class="n">objective</span> <span class="o">=</span><span class="s1">&#39;reg:squarederror&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span> 
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1">#xgb.plot_importance(model)</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="c1">#xgb.to_graphviz(model, num_trees=5)</span>
+</code></pre></div>
 
               
             </article>
@@ -667,9 +955,9 @@
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
-        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>

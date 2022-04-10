@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/kmean/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -577,16 +577,16 @@
 <p>今回は、代表的なクラスタリングアルゴリズムをハンズオン演習しながら、
 クラスタリングを行う技法を学んでいきましょう。</p>
 <p><strong>モジュールの準備</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>import pandas as pd
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>import numpy as np
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>import matplotlib.pyplot as plt
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>import seaborn as sns
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>try:
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    import japanize_matplotlib #日本語化 matplotlib 
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>except ModuleNotFoundError:
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    !pip install japanize_matplotlib
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    import japanize_matplotlib 
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import pandas as pd
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>import numpy as np
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>import matplotlib.pyplot as plt
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>import seaborn as sns
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>try:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    import japanize_matplotlib #日本語化 matplotlib 
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>except ModuleNotFoundError:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    !pip install japanize_matplotlib
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    import japanize_matplotlib 
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
 </code></pre></div></p>
 <h2 id="_2">クラスタリング<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <p>クラスタリングとは、データ間の類似度にもとづいて、データをグループ分けする手法です。クラスタリングによってできた、似たもの同士が集まったグループのことをクラスタと呼びます。</p>
@@ -620,21 +620,21 @@
 <p>``` title=""thon
 from sklearn.cluster import KMeans
 model = KMeans(n_clusters=3)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>### 主成分分析(PCA)
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>**主成分分析（principal component analysis; PCA）** は、相関のある多数の変数から相関のない少数で全体のばらつきを最もよく表す主成分と呼ばれる変数を合成する多変量解析の一手法です。
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>原理：主成分を与える変換は、第一主成分の分散を最大化し、観測値の変化に対する説明能力を可能な限り主成分に持たせます。続く主成分はそれまでに決定した主成分と直交するという拘束条件の下で分散を最大化するようにして選びます。
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/f/f5/GaussianScatterPCA.svg&quot; width=&quot;50%&quot; align=&quot;center&quot; /&gt;
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>用途：主成分分析は、**データの次元を削減する**ときの定番的手法です。特に、次元数の多いデータを可視化するとき、主成分分析によってより２次元や３次元に集約することで可視化が容易になります。
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>sklearn では、PCAクラスをインポートして利用できます。
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>``` title=&quot;&quot;thon
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>from sklearn.decomposition import PCA
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a>model = PCA(n_components=2)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>### 主成分分析(PCA)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>**主成分分析（principal component analysis; PCA）** は、相関のある多数の変数から相関のない少数で全体のばらつきを最もよく表す主成分と呼ばれる変数を合成する多変量解析の一手法です。
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>原理：主成分を与える変換は、第一主成分の分散を最大化し、観測値の変化に対する説明能力を可能な限り主成分に持たせます。続く主成分はそれまでに決定した主成分と直交するという拘束条件の下で分散を最大化するようにして選びます。
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/f/f5/GaussianScatterPCA.svg&quot; width=&quot;50%&quot; align=&quot;center&quot; /&gt;
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>用途：主成分分析は、**データの次元を削減する**ときの定番的手法です。特に、次元数の多いデータを可視化するとき、主成分分析によってより２次元や３次元に集約することで可視化が容易になります。
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>sklearn では、PCAクラスをインポートして利用できます。
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>``` title=&quot;&quot;thon
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>from sklearn.decomposition import PCA
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>model = PCA(n_components=2)
 </code></pre></div></p>
 <h2 id="_3">身長と体重からクラスタリング<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
 <p>ここからは、sklearn モジュールの K-means法アルゴリズムを使いながら、
@@ -644,11 +644,11 @@ model = KMeans(n_clusters=3)
 <p>データは、第４回目のコースワークで作成したスポーツ選手の身長と体重を集計した表データを用いてみます。
 自分で集計したデータをそのまま利用しても構いませんが、
 一応、以下の通り、ダウンロードもできます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>!wget https://KuramitsuLab.github.io/data/bmi.csv
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>!wget https://KuramitsuLab.github.io/data/bmi.csv
 </code></pre></div>
 <p>まず、pandasを使って表データの内容を確認しましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>data = pd.read_csv(&#39;bmi.csv&#39;)
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>data.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>data = pd.read_csv(&#39;bmi.csv&#39;)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>data.head()
 </code></pre></div></p>
 <h3 id="_5">散布図でデータを確認<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>身長と体重の分布の様子を散布図とヒストグラムで表示して見ましょう。
@@ -656,20 +656,20 @@ model = KMeans(n_clusters=3)
 <p>データは、あらかじめ職業としてクラス分類されているため、
 職業ごとに色分けして散布図を書いてみます。
 後から、K-means法でクラスタリングした結果も描画しますので、比べてみましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>colors = [&#39;blue&#39;, &#39;red&#39;, &#39;green&#39;]
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>ax = None
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  ax = group[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, alpha=0.3, c=colors[int(i)], ax=ax)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>colors = [&#39;blue&#39;, &#39;red&#39;, &#39;green&#39;]
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ax = None
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  ax = group[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, alpha=0.3, c=colors[int(i)], ax=ax)
 </code></pre></div>
 重なり具合を確かめるため、ヒストグラムをみて見ましょう。</p>
 <ul>
 <li>身長は、全ての色が重なっています。</li>
 <li>体重は、重なっていない部分があります。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>  group[1][&#39;身長&#39;].plot(kind=&#39;hist&#39;, alpha=0.5, bins=20, title=&#39;身長&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  group[1][&#39;身長&#39;].plot(kind=&#39;hist&#39;, alpha=0.5, bins=20, title=&#39;身長&#39;)
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  group[1][&#39;体重&#39;].plot(kind=&#39;hist&#39;, alpha=0.5, bins=20, title=&#39;体重&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>for i, group in enumerate(data.groupby(&#39;職業&#39;)):
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  group[1][&#39;体重&#39;].plot(kind=&#39;hist&#39;, alpha=0.5, bins=20, title=&#39;体重&#39;)
 </code></pre></div></li>
 </ul>
 <h3 id="3">３クラスターに分類<a class="headerlink" href="#3" title="Permanent link">#</a></h3>
@@ -679,27 +679,27 @@ model = KMeans(n_clusters=3)
 <li>初期状態: <code>random</code> （指定しなければ、K-means++法になる）</li>
 </ul>
 <p>まず、初期値を与えてモデルを生成します。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>from sklearn.cluster import KMeans
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>model = KMeans(init=&#39;random&#39;, n_clusters=3)
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>model
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>from sklearn.cluster import KMeans
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>model = KMeans(init=&#39;random&#39;, n_clusters=3)
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>model
 </code></pre></div>
 今回は、表データのうち、<code>身長</code>と<code>体重</code>の２属性、つまり２次元データを対象とします。</p>
 <p>実際のクラスタリングは、データをフィット(fit)させることで、学習済みモデルを作ります。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>model.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>model.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
 </code></pre></div>
 モデルの学習が済んだら、データに対する予想の形で、クラスタ番号を取り出すことができます。
 クラスタ番号は、0から<script type="math/tex">k-1</script>の番号で表現されます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>model.predict([(170, 80)])
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>model.predict([(170, 80)])
 </code></pre></div>
 表データに各身長と体重から分類されるクラスタを属性として追加してみましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>data[&#39;クラスタ&#39;] = model.predict(data[[&#39;身長&#39;, &#39;体重&#39;]])
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a>data.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>data[&#39;クラスタ&#39;] = model.predict(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>data.head()
 </code></pre></div>
 <code>クラスタ</code>ごとに色分けして散布図を書いてみましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>ax=None
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a>for i, gd in enumerate(data.groupby(&#39;クラスタ&#39;)):
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, c=colors[i], alpha=0.3, ax=ax)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ax=None
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>for i, gd in enumerate(data.groupby(&#39;クラスタ&#39;)):
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, c=colors[i], alpha=0.3, ax=ax)
 </code></pre></div>
 必ずしも職業ごとの分布と同じグループ分ではありませんが、３つのクラスターに分類された様子が確認できました。</p>
 <div class="admonition warning">
@@ -710,18 +710,18 @@ model = KMeans(n_clusters=3)
 <h2 id="_6">エルボー法: 適切なクラスター数を調べる<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
 <p>エルボー法は、クラスターの重心点と所属データ点の距離の総和に着目して、クラスター数を事前に見積もる手法です。</p>
 <p><strong>距離の総和の求め方</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>print(model.inertia_)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>print(model.inertia_)
 </code></pre></div>
 クラスタ数を1から10まで大きくしながら、総和の変化をグラフ化してみます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>dist = []
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>for i in range(1, 11):
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>  km = KMeans(init=&#39;random&#39;, n_clusters=i)
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>  km.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a>  dist.append(km.inertia_)
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a>plt.xlabel(&#39;クラスタ数&#39;)
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a>plt.ylabel(&#39;距離の総和&#39;)
-<a id="__codelineno-13-9" name="__codelineno-13-9"></a>plt.plot(range(1, 11), dist, marker=&#39;+&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dist = []
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>for i in range(1, 11):
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  km = KMeans(init=&#39;random&#39;, n_clusters=i)
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  km.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>  dist.append(km.inertia_)
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>plt.xlabel(&#39;クラスタ数&#39;)
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>plt.ylabel(&#39;距離の総和&#39;)
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>plt.plot(range(1, 11), dist, marker=&#39;+&#39;)
 </code></pre></div>
 クラスター数が適切になるまでは、総和は相応に減少することが期待できます。
 一方、いったん適切な数を超えてしまうと、総和の減少はなくなります。
@@ -732,13 +732,13 @@ model = KMeans(n_clusters=3)
 <p>エルボー法の由来</p>
 <p>適切なクラスター数がエルボー（肘）のように見えるところから</p>
 <p>クラスター数２の散布図を調べてみよう</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>model = KMeans(init=&#39;random&#39;, n_clusters=2)
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>model.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>data[&#39;クラスター&#39;] = model.predict(data[[&#39;身長&#39;, &#39;体重&#39;]])
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a>ax=None
-<a id="__codelineno-14-5" name="__codelineno-14-5"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-14-6" name="__codelineno-14-6"></a>for i, gd in enumerate(data.groupby(&#39;クラスター&#39;)):
-<a id="__codelineno-14-7" name="__codelineno-14-7"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, c=colors[i], alpha=0.3, ax=ax)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>model = KMeans(init=&#39;random&#39;, n_clusters=2)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>model.fit(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>data[&#39;クラスター&#39;] = model.predict(data[[&#39;身長&#39;, &#39;体重&#39;]])
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>ax=None
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>for i, gd in enumerate(data.groupby(&#39;クラスター&#39;)):
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;身長&#39;, y=&#39;体重&#39;, c=colors[i], alpha=0.3, ax=ax)
 </code></pre></div>
 <h2 id="_7">乳がんデータと主成分分析<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
 <p>乳がんデータセットは、Breast Cancer Wisconsin (Diagnostic) Data Setに由来し、
@@ -750,13 +750,13 @@ IS&amp;T/SPIE 1993 International Symposium on Electronic Imaging: Science and Te
 Figure2 図中一部を引用</p>
 <p>乳がんのデータを使って主成分分析も試していきます。</p>
 <p><strong>データの用意</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>!wget https://KuramitsuLab.github.io/data/cancer_ja.csv
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>!wget https://KuramitsuLab.github.io/data/cancer_ja.csv
 </code></pre></div>
 <p>オリジナルデータを日本語化したデータを用意しました。
 良性は<code>1</code>、悪性は<code>0</code>のフラグがついています。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>import pandas as pd
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a>data = pd.read_csv(&#39;cancer_ja.csv&#39;)
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a>data.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>import pandas as pd
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>data = pd.read_csv(&#39;cancer_ja.csv&#39;)
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>data.head()
 </code></pre></div>
 <h3 id="_8">データの理解<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
 <p>データの統計量を調べたり、可視化して、データの特徴を捉えましょう。</p>
@@ -766,37 +766,37 @@ Figure2 図中一部を引用</p>
 <p>Let's try</p>
 <p>良性がんと悪性がんの分布に法則性があるか調べてみましょう</p>
 <p>良性か悪性かで色分けして、分布図を書いてみます。属性の組み合わせは、自由に変えて試してみましょう。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>colors = [&#39;red&#39;, &#39;green&#39;]
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a>ax=None
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;平均半径&#39;, y=&#39;平均密集度&#39;, c=colors[i], alpha=0.3, ax=ax)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>colors = [&#39;red&#39;, &#39;green&#39;]
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>ax=None
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;平均半径&#39;, y=&#39;平均密集度&#39;, c=colors[i], alpha=0.3, ax=ax)
 </code></pre></div>
 <p>三次元の散布図を作成したいときは、<code>Axes3D</code>をインポートして用います。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>from mpl_toolkits.mplot3d import Axes3D
-<a id="__codelineno-18-2" name="__codelineno-18-2"></a>fig = plt.figure(figsize=(8,8))
-<a id="__codelineno-18-3" name="__codelineno-18-3"></a>ax = Axes3D(fig)
-<a id="__codelineno-18-4" name="__codelineno-18-4"></a>ax.set_xlabel(&quot;平均半径&quot;)
-<a id="__codelineno-18-5" name="__codelineno-18-5"></a>ax.set_ylabel(&quot;平均密集度&quot;)
-<a id="__codelineno-18-6" name="__codelineno-18-6"></a>ax.set_zlabel(&quot;平均凹部&quot;)
-<a id="__codelineno-18-7" name="__codelineno-18-7"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
-<a id="__codelineno-18-8" name="__codelineno-18-8"></a>    ax.plot(gd[1][&#39;平均半径&#39;],gd[1][&#39;平均密集度&#39;],gd[1][&#39;平均凹部&#39;],marker=&quot;o&quot;,linestyle=&#39;None&#39;,c=colors[i], alpha=0.3)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>from mpl_toolkits.mplot3d import Axes3D
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>fig = plt.figure(figsize=(8,8))
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>ax = Axes3D(fig)
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>ax.set_xlabel(&quot;平均半径&quot;)
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>ax.set_ylabel(&quot;平均密集度&quot;)
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>ax.set_zlabel(&quot;平均凹部&quot;)
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    ax.plot(gd[1][&#39;平均半径&#39;],gd[1][&#39;平均密集度&#39;],gd[1][&#39;平均凹部&#39;],marker=&quot;o&quot;,linestyle=&#39;None&#39;,c=colors[i], alpha=0.3)
 </code></pre></div>
 <h3 id="_9">次元削減<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <p>乳がんデータは、30次元の変数からなります。
 データの特徴を残しながら次元を削減し、表示してみます。
 このとき、活用するのが<strong>主成分分析(PCA)</strong>です。</p>
 <p><strong>主成分分析(PCA)による2次元への圧縮</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>from sklearn.decomposition import PCA
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a>
-<a id="__codelineno-19-3" name="__codelineno-19-3"></a>data_x = data[data.columns[1:]]
-<a id="__codelineno-19-4" name="__codelineno-19-4"></a>
-<a id="__codelineno-19-5" name="__codelineno-19-5"></a>pca = PCA(n_components=2)
-<a id="__codelineno-19-6" name="__codelineno-19-6"></a>pca.fit(data_x)
-<a id="__codelineno-19-7" name="__codelineno-19-7"></a>
-<a id="__codelineno-19-8" name="__codelineno-19-8"></a>print(&#39;固有ベクトル: &#39;, pca.components_)
-<a id="__codelineno-19-9" name="__codelineno-19-9"></a>print(&#39;分散:&#39;, pca.explained_variance_)
-<a id="__codelineno-19-10" name="__codelineno-19-10"></a>print(&#39;分散割合:&#39;, pca.explained_variance_ratio_)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>from sklearn.decomposition import PCA
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>data_x = data[data.columns[1:]]
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>pca = PCA(n_components=2)
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>pca.fit(data_x)
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>print(&#39;固有ベクトル: &#39;, pca.components_)
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>print(&#39;分散:&#39;, pca.explained_variance_)
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>print(&#39;分散割合:&#39;, pca.explained_variance_ratio_)
 </code></pre></div>
 <strong>主成分分析の結果</strong></p>
 <ul>
@@ -805,27 +805,27 @@ Figure2 図中一部を引用</p>
 <li><strong>各主成分の持つ分散割合</strong>: <code>pca.explained_variance_ratio_</code>: 第一主成分で98%の情報を保持</li>
 </ul>
 <p>さて、主成分分析の結果を用いて乳がんデータを変換しましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>data_pca = pca.transform(data_x)  #　主成分分析による変換
-<a id="__codelineno-20-2" name="__codelineno-20-2"></a>print(&#39;data_std(shape):&#39;, data_x.shape)
-<a id="__codelineno-20-3" name="__codelineno-20-3"></a>print(&#39;data_pca(shape):&#39;, data_pca.shape)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>data_pca = pca.transform(data_x)  #　主成分分析による変換
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>print(&#39;data_std(shape):&#39;, data_x.shape)
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>print(&#39;data_pca(shape):&#39;, data_pca.shape)
 </code></pre></div>
 30次元のデータが2次元に削減されていることが確認できるはずです。
 なお、<code>transform()</code>で得られるデータは、
 NumPyの2次元配列なので、表データに変換して、<code>data_pca</code>としておきます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]).head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]).head()
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>data_pca = pd.concat([pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]), data], axis=1)
-<a id="__codelineno-22-2" name="__codelineno-22-2"></a>data_pca.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>data_pca = pd.concat([pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]), data], axis=1)
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>data_pca.head()
 </code></pre></div></p>
 <p>第一主成分(pc1)をx軸、第二主成分(pc2)をy軸として散布図を書いてみます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-23-2" name="__codelineno-23-2"></a>ax=None
-<a id="__codelineno-23-3" name="__codelineno-23-3"></a>for i, gd in enumerate(data_pca.groupby(&#39;良性&#39;)):
-<a id="__codelineno-23-4" name="__codelineno-23-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;pc1&#39;, y=&#39;pc2&#39;, c=colors[i], alpha=0.3, ax=ax)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>ax=None
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>for i, gd in enumerate(data_pca.groupby(&#39;良性&#39;)):
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;pc1&#39;, y=&#39;pc2&#39;, c=colors[i], alpha=0.3, ax=ax)
 </code></pre></div>
 <h3 id="_10">スケーリング：標準化<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
 <p>乳がんデータは、さまざまな属性が含まれており、単位が異なります。最大値や最小値も大きくばらついています。</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>data.describe()
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>data.describe()
 </code></pre></div>
 データ分析では、大きな値の属性があると、分析結果は小さな値の属性の影響が小さくなります。そのような影響を排除するため、スケーリング（標準化）は常套手段です。</p>
 <p><strong>標準化</strong>: サンプル値<script type="math/tex">x</script>から平均<script type="math/tex">\bar{x}</script>を引き、標準偏差<script type="math/tex">\sigma</script>で割る</p>
@@ -837,31 +837,31 @@ z = \frac{x - \bar{x}}{\sigma}
 <p>sklearnモジュールでは、StandardScaler クラスとして提供されています。
 使用法は、PCAクラスと同じで、モデルを学習し、その後、変換します。</p>
 <p><strong>StandardScalerによる標準化</strong></p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>from sklearn.preprocessing import StandardScaler
-<a id="__codelineno-25-2" name="__codelineno-25-2"></a>sc = StandardScaler()
-<a id="__codelineno-25-3" name="__codelineno-25-3"></a># print(data.columns) カラム名
-<a id="__codelineno-25-4" name="__codelineno-25-4"></a>sc.fit(data[data.columns[1:]])
-<a id="__codelineno-25-5" name="__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6"></a># 標準化
-<a id="__codelineno-25-7" name="__codelineno-25-7"></a>data_std = sc.transform(data[data.columns[1:]])
-<a id="__codelineno-25-8" name="__codelineno-25-8"></a>pd.DataFrame(data_std, columns=data.columns[1:]).head()
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>from sklearn.preprocessing import StandardScaler
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>sc = StandardScaler()
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a># print(data.columns) カラム名
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>sc.fit(data[data.columns[1:]])
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a># 標準化
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>data_std = sc.transform(data[data.columns[1:]])
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>pd.DataFrame(data_std, columns=data.columns[1:]).head()
 </code></pre></div>
 標準化したデータセットに対し、主成分分析をしてみましょう。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>from sklearn.decomposition import PCA
-<a id="__codelineno-26-2" name="__codelineno-26-2"></a>
-<a id="__codelineno-26-3" name="__codelineno-26-3"></a>pca = PCA(n_components=2)
-<a id="__codelineno-26-4" name="__codelineno-26-4"></a>pca.fit(data_std)
-<a id="__codelineno-26-5" name="__codelineno-26-5"></a>data_pca = pca.transform(data_std)
-<a id="__codelineno-26-6" name="__codelineno-26-6"></a>print(&#39;data_std(shape):&#39;, data_std.shape)
-<a id="__codelineno-26-7" name="__codelineno-26-7"></a>print(&#39;data_pca(shape):&#39;, data_pca.shape)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>from sklearn.decomposition import PCA
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>pca = PCA(n_components=2)
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>pca.fit(data_std)
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>data_pca = pca.transform(data_std)
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>print(&#39;data_std(shape):&#39;, data_std.shape)
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>print(&#39;data_pca(shape):&#39;, data_pca.shape)
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>data = pd.concat([pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]), data], axis=1)
-<a id="__codelineno-27-2" name="__codelineno-27-2"></a>data.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>data = pd.concat([pd.DataFrame(data_pca, columns=[&#39;pc1&#39;, &#39;pc2&#39;]), data], axis=1)
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>data.head()
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-28-2" name="__codelineno-28-2"></a>ax=None
-<a id="__codelineno-28-3" name="__codelineno-28-3"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
-<a id="__codelineno-28-4" name="__codelineno-28-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;pc1&#39;, y=&#39;pc2&#39;, c=colors[i], alpha=0.3, ax=ax)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>ax=None
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>for i, gd in enumerate(data.groupby(&#39;良性&#39;)):
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>  ax = gd[1].plot(kind=&#39;scatter&#39;, x=&#39;pc1&#39;, y=&#39;pc2&#39;, c=colors[i], alpha=0.3, ax=ax)
 </code></pre></div>
 <div class="admonition important danger">
 
@@ -892,23 +892,23 @@ __データ__
 
 次のテキストデータからCSVファイルを作成して作業しましょう。
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>%%file 成績.csv
-<a id="__codelineno-29-2" name="__codelineno-29-2"></a>名前,英,数,国,社,理
-<a id="__codelineno-29-3" name="__codelineno-29-3"></a>佐藤,84,45,77,69,48
-<a id="__codelineno-29-4" name="__codelineno-29-4"></a>鈴木,75,69,65,77,69
-<a id="__codelineno-29-5" name="__codelineno-29-5"></a>高橋,69,81,45,82,79
-<a id="__codelineno-29-6" name="__codelineno-29-6"></a>田中,92,75,83,79,62
-<a id="__codelineno-29-7" name="__codelineno-29-7"></a>伊藤,62,91,68,61,93
-<a id="__codelineno-29-8" name="__codelineno-29-8"></a>渡辺,54,63,48,52,50
-<a id="__codelineno-29-9" name="__codelineno-29-9"></a>山本,48,53,71,83,45
-<a id="__codelineno-29-10" name="__codelineno-29-10"></a>中村,77,85,62,55,82
-<a id="__codelineno-29-11" name="__codelineno-29-11"></a>小林,82,88,89,79,85
-<a id="__codelineno-29-12" name="__codelineno-29-12"></a>加藤,47,48,57,53,63
-<a id="__codelineno-29-13" name="__codelineno-29-13"></a>吉田,75,36,85,73,51
-<a id="__codelineno-29-14" name="__codelineno-29-14"></a>山田,66,73,79,65,66
-<a id="__codelineno-29-15" name="__codelineno-29-15"></a>佐々木,64,95,48,59,91
-<a id="__codelineno-29-16" name="__codelineno-29-16"></a>山口,73,86,52,70,77
-<a id="__codelineno-29-17" name="__codelineno-29-17"></a>松本,55,75,63,67,80
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>%%file 成績.csv
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>名前,英,数,国,社,理
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>佐藤,84,45,77,69,48
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>鈴木,75,69,65,77,69
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>高橋,69,81,45,82,79
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>田中,92,75,83,79,62
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>伊藤,62,91,68,61,93
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>渡辺,54,63,48,52,50
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>山本,48,53,71,83,45
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>中村,77,85,62,55,82
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>小林,82,88,89,79,85
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>加藤,47,48,57,53,63
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>吉田,75,36,85,73,51
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>山田,66,73,79,65,66
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>佐々木,64,95,48,59,91
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>山口,73,86,52,70,77
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>松本,55,75,63,67,80
 </code></pre></div>
 <link href="admonition.css" rel="stylesheet"></link>
 
@@ -948,9 +948,9 @@ __データ__
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
-        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/nlp/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -666,16 +666,16 @@
 <p><img src="https://stg2-cdn.go2senkyo.com/articles/wp-content/uploads/2015/07/0ec9a44365144d96fb771d83b7bcc02e.jpg" width="40%"/> </p>
 <p>AI入門のまとめとして、自然言語を機械学習で扱う方法をみていきます。</p>
 <p><strong>モジュールの準備</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>import numpy as np
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>import pandas as pd
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>import matplotlib.pyplot as plt
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>import seaborn as sns
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>try:
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>except ModuleNotFoundError:
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    !pip install japanize_matplotlib
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    import japanize_matplotlib 
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import numpy as np
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>import pandas as pd
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>import matplotlib.pyplot as plt
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>import seaborn as sns
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>try:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>except ModuleNotFoundError:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    !pip install japanize_matplotlib
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    import japanize_matplotlib 
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
 </code></pre></div>
 <h2 id="_2">形態素解析<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <p>言語における意味の基本単位は <strong>語(word)</strong> です。
@@ -689,8 +689,8 @@
 <p>英語は、空白で区切られたものを語と考えることができます。
 したがって、Python の標準文字列ライブラリだけで、簡単に語を取り出すことができます。</p>
 <p><strong>英語の字句解析</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>s = &quot;I bought a book&quot;
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>s.split()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>s = &quot;I bought a book&quot;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>s.split()
 </code></pre></div>
 <p>日本語では、まず語の区切りを判定する必要があります。
 しかし、この語の区切りを判定するのが<strong>かなりの難処理</strong>となります。
@@ -704,18 +704,18 @@
 2019 年に、 リクルート AI 研究所と国立言語研究所の研究成果である <a href="https://megagonlabs.github.io/ginza/">GiNZA</a> が登場し、実用的な日本語処理が手軽に利用できるようになりました。</p>
 <p>まずは、GiNZA の導入から始めましょう。<code>pip install ginza</code> を入力するだけで、
 形態素解析も含め、自然言語処理に必要なライブラリがまとめてインストールされます。</p>
-<div class="highlight"><span class="filename">Colab上でGinzaの準備</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">ginza</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">pkg_resources</span><span class="o">,</span> <span class="nn">imp</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">imp</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">pkg_resources</span><span class="p">)</span>
+<div class="highlight"><span class="filename">Colab上でGinzaの準備</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">ginza</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">pkg_resources</span><span class="o">,</span> <span class="nn">imp</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">imp</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">pkg_resources</span><span class="p">)</span>
 </code></pre></div>
 <p>日本語文を形態素解析したいときは、次の通り、使います。</p>
-<div class="highlight"><span class="filename">形態素解析による字句解析</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">spacy</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;ja_ginza&#39;</span><span class="p">)</span> 
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;私は本を買った&quot;</span><span class="p">)</span> <span class="c1">#形態素解析</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">i</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">orth_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span>
+<div class="highlight"><span class="filename">形態素解析による字句解析</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">spacy</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;ja_ginza&#39;</span><span class="p">)</span> 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;私は本を買った&quot;</span><span class="p">)</span> <span class="c1">#形態素解析</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">i</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">orth_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span>
 </code></pre></div>
 <p>形態素解析によって得られた各字句(word)は、次のようなプロパティ情報をもっています。
 この中から必要な情報を取り出して利用します。</p>
@@ -750,11 +750,11 @@
 </tbody>
 </table>
 <p>日本語文を単語単位に分割する関数<code>wakachi(s)</code>を定義しておきましょう。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>def wakachi(s):
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    doc = nlp(s)
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    return [word.lemma_ for word in doc]  # word.lemma_ は標準形
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>print(wakachi(&#39;私は本を買った&#39;))
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>def wakachi(s):
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    doc = nlp(s)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    return [word.lemma_ for word in doc]  # word.lemma_ は標準形
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>print(wakachi(&#39;私は本を買った&#39;))
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">(時間があったら）Let's try</p>
@@ -766,33 +766,33 @@
 <p>不動産屋による「まちづくりに関するアンケート」に基づいて、アンケート解析を試していきましょう。</p>
 <p><strong>データの入手</strong></p>
 <p>本データは、下山らによる「<a href="https://www.shuwasystem.co.jp/book/9784798058757.html">Python 実践データ分析 100 本ノック</a>」から講義用に編集したものを利用します。</p>
-<div class="highlight"><span class="filename">データのURL</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>https://KuramitsuLab.github.io/df/survey.csv
+<div class="highlight"><span class="filename">データのURL</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>https://KuramitsuLab.github.io/df/survey.csv
 </code></pre></div>
 <h3 id="_5">コメントを眺める<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>今まで、様々なデータを扱ってきましたが、
 今回のデータの特徴は、自由記述形式のコメント、
 満足度(5段階評価: 1 不満 - 5 満足)などが含まれています。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>df = pd.read_csv(&quot;survey.csv&quot;)
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>df.head() #最初の5行を表示
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df = pd.read_csv(&quot;survey.csv&quot;)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>df.head() #最初の5行を表示
 </code></pre></div>
 <p>まず、アンケート中のコメントの分量を把握してみましょう。
 文字数を数えて、新しいカラム(<code>文字数</code>)を作って格納します。</p>
-<div class="highlight"><span class="filename">コメントの文字数</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>plt.hist(df[&quot;コメント&quot;].str.len())
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>plt.xlabel(&#39;文字数&#39;)
+<div class="highlight"><span class="filename">コメントの文字数</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>plt.hist(df[&quot;コメント&quot;].str.len())
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>plt.xlabel(&#39;文字数&#39;)
 </code></pre></div>
 <p>異常に長いコメントもありますね。</p>
 <h3 id="_6">単語レベルの解析<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>コメントから単語を抽出して、どのような単語が使われているか調べてみましょう。</p>
 <p>ここでは、形態素解析の品詞情報(<code>_pos</code>)から、動詞、形容詞、名詞だけに着目してみます。</p>
-<div class="highlight"><span class="filename">頻出単語を見る</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;コメント&quot;</span><span class="p">]:</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a>    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a>        <span class="c1"># 動詞(VERB), 名詞(NOUN), 形容詞(ADJ)のみ抽出</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6"></a>        <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;VERB&#39;</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;NOUN&#39;</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;ADJ&#39;</span><span class="p">:</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7"></a>            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>  <span class="c1">#標準形に変換する</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="mi">30</span><span class="p">])</span> <span class="c1">#先頭30語だけ</span>
+<div class="highlight"><span class="filename">頻出単語を見る</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;コメント&quot;</span><span class="p">]:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="c1"># 動詞(VERB), 名詞(NOUN), 形容詞(ADJ)のみ抽出</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;VERB&#39;</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;NOUN&#39;</span> <span class="ow">or</span> <span class="n">word</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s1">&#39;ADJ&#39;</span><span class="p">:</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>  <span class="c1">#標準形に変換する</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="mi">30</span><span class="p">])</span> <span class="c1">#先頭30語だけ</span>
 </code></pre></div>
 <p>これで、コメント文の中で用いられている名詞、動詞、形容詞をすべて取り出すことができました。</p>
 <p>!!! note　”単語を抽出するコツ"</p>
@@ -803,25 +803,25 @@
 <h3 id="_7">単語の頻出度と視覚化<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>単語の抽出ができたら、最初のステップとして、単語の出現頻出度から調べていきます。</p>
 <p>ここは、新しいデータフレームを作り、<code>value_counts()</code>で調べてみましょう。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pd.DataFrame({&quot;words&quot;:words}).value_counts()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pd.DataFrame({&quot;words&quot;:words}).value_counts()
 </code></pre></div>
 <p>ワードクラウドは、テキストデータを視覚的に表現する方法です。ちょっと寄り道をして表示してみましょう。</p>
 <p>まず、日本語フォントをインストールしておきます。（これがないと文字化けします。）</p>
-<div class="highlight"><span class="filename">Colab上でのIPA日本語フォントのインストール</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>!apt-get -y install fonts-ipafont-gothic
+<div class="highlight"><span class="filename">Colab上でのIPA日本語フォントのインストール</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>!apt-get -y install fonts-ipafont-gothic
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>## !pip install wordcloud
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a>from wordcloud import WordCloud
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a>fpath = &#39;/usr/share/fonts/truetype/fonts-japanese-gothic.ttf&#39;
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a>#fpath = &#39;fonts-japanese-gothic.ttf&#39;
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a>word_chain = &#39; &#39;.join(words)
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a>model = WordCloud(width=800, height=600, background_color=&#39;white&#39;, colormap=&#39;bone&#39;, font_path=fpath)
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a>W = model.generate(&#39; &#39;.join(words))
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
-<a id="__codelineno-11-11" name="__codelineno-11-11"></a>plt.imshow(W)
-<a id="__codelineno-11-12" name="__codelineno-11-12"></a>plt.axis(&#39;off&#39;)
-<a id="__codelineno-11-13" name="__codelineno-11-13"></a>plt.show()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>## !pip install wordcloud
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>from wordcloud import WordCloud
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>fpath = &#39;/usr/share/fonts/truetype/fonts-japanese-gothic.ttf&#39;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>#fpath = &#39;fonts-japanese-gothic.ttf&#39;
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>word_chain = &#39; &#39;.join(words)
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>model = WordCloud(width=800, height=600, background_color=&#39;white&#39;, colormap=&#39;bone&#39;, font_path=fpath)
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>W = model.generate(&#39; &#39;.join(words))
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>plt.imshow(W)
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>plt.axis(&#39;off&#39;)
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>plt.show()
 </code></pre></div>
 <p>アンケートの満足度に影響を与えているキーワードが見えてきました。
 しかし、まだどのキーワードがプラスの評価なのか、マイナスの評価なのかわかりません。</p>
@@ -829,20 +829,20 @@
 <p>今回のデータの素晴らしい点は、不動産の満足度が 5 段階評価で回答されている点です。
 各キーワードとこの5段階評価を紐付けてみると、キーワードの満足度が見えて来るかもしれません。 </p>
 <p>コメント内の単語と満足度をペアにして取り出してみます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>words = []
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a>scores = []
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a>for text, score in zip(df[&quot;コメント&quot;], df[&quot;満足度&quot;]):
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    doc = nlp(text)
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a>    for word in doc:
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a>        if word.pos_ in [&#39;VERB&#39;, &#39;NOUN&#39;, &#39;ADJ&#39;]:
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a>            words.append(word.lemma_)
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a>            scores.append(score)
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a>print(words[:30])
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a>print(scores[:30])
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>words = []
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>scores = []
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>for text, score in zip(df[&quot;コメント&quot;], df[&quot;満足度&quot;]):
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    doc = nlp(text)
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    for word in doc:
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        if word.pos_ in [&#39;VERB&#39;, &#39;NOUN&#39;, &#39;ADJ&#39;]:
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>            words.append(word.lemma_)
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>            scores.append(score)
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>print(words[:30])
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>print(scores[:30])
 </code></pre></div>
 <p>Pandas を使って表データにまとめておきましょう。<code>出現数</code>1回のカラムを作って、<code>groupby</code>してみましょう。満足度は平均値(<code>np.nean</code>)をとって、集計します。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>keyword = pd.DataFrame({&quot;キーワード&quot;: words, &quot;満足度&quot;: scores, &quot;出現数&quot;: [1]*len(words)})
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>keyword.groupby(&#39;キーワード&#39;).agg({&#39;満足度&#39;: np.mean, &#39;出現数&#39;: sum}).sort_values(by=&#39;出現数&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>keyword = pd.DataFrame({&quot;キーワード&quot;: words, &quot;満足度&quot;: scores, &quot;出現数&quot;: [1]*len(words)})
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>keyword.groupby(&#39;キーワード&#39;).agg({&#39;満足度&#39;: np.mean, &#39;出現数&#39;: sum}).sort_values(by=&#39;出現数&#39;)
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Let's try</p>
@@ -948,9 +948,9 @@
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
-        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>

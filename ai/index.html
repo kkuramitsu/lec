@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.e6a45f82.min.css">
@@ -237,6 +237,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数式について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python" class="md-nav__link">
     Python サバイバル術
   </a>
@@ -244,7 +251,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     学習と機械学習
   </a>
   
@@ -252,14 +259,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     教師あり学習
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     クラス分類
   </a>
   
@@ -559,6 +566,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数式について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python" class="md-nav__link">
     Python サバイバル術
   </a>
@@ -566,7 +580,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     学習と機械学習
   </a>
   
@@ -574,14 +588,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     教師あり学習
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     クラス分類
   </a>
   
@@ -606,6 +620,10 @@
                 
 
 <h1 id="ai">データサイエンス・AI入門<a class="headerlink" href="#ai" title="Permanent link">#</a></h1>
+<div class="admonition missing">
+<p class="admonition-title">公開前</p>
+<p>本資料は、正式な公開前で内容やコードのチェックがまだ完全に終わっていません。</p>
+</div>
 <p>データサイエンス・AIは、これからの大学生や高校生が学部や専門を問わず、
 学ぶべき内容として注目を集めてみる内容です。</p>
 <p>本講義ノートは、日本女子大学の講義・演習向けにまとめたノートです。</p>
@@ -618,26 +636,29 @@
 基礎から積み上げてみたいな前提が成り立たなくなっています。</p>
 <p>本講義ノートは、数学が高校レベルの理解であっても、仮にPythonがほぼ未習者であっても、
 データサイエンスやAIを体験的に入門できるように配慮してまとめてみました。
-もう少ししっかり使いこなせるようになりたいと思ったら、
-ぜひ基礎に立ち返って振り返ってもらえば良いと思います。</p>
+（若干というかかなり無理が残っていますが..）
+データサイエンスやAIは面白い！と感じてもう少し学びたいと思ったら、
+是非、基礎に戻って、Pythonやエンジニアリング力をあげてください。</p>
 <p>一応、自習で使う読者のために、難易度を示しておきます。</p>
 <ul>
-<li>⭐️: 少々、アドバンスな内容</li>
-<li>⭐️⭐️: Python 未習者は飛ばすべき内容</li>
+<li>⭐️: 少々、アドバンスな内容（飛ばしても構わない）</li>
+<li>⭐️⭐️: Python未習者は飛ばすべき内容</li>
 </ul>
-<p>講義ノートは、自分の備忘録代わりに色々書いてあります。
+<p>講義ノートは、自分の備忘録を含めて代わりに色々書いてあります。
 実際の講義や演習では、履修者の理解と進捗にあわせて、
-補足説明したり、スキップしたりしながら進めています。</p>
+補足説明したり、スキップしたりしながら進めます。</p>
 <h2 id="_1">そもそも入門する前に<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
 <p>データサイエンスやAIを学ぶということはどういうことでしょうか？</p>
 <div class="admonition example">
 <p class="admonition-title">コンテストの審査委員</p>
 <p>日の出町では、愛犬コンテストが開催されることになりました。
 複数の審査員がそれぞれ10点満点で採点して、その平均点を計算することで、
-優勝のワンちゃんを決めることになりました。</p>
+優勝のワンちゃんを決めることになりました。
+<img alt="" src="figs/wanko-fs8.png" style="width:200px" /></p>
 </div>
 <p>皆さんは、小学校から算数を学んできました。
-だから、コンテストの集計係を任されても問題なく、業務を遂行できるはずです。</p>
+だから、突然、コンテストの集計係を任されても問題なく、
+うろたえることなく業務を遂行できるはずです。</p>
 <p>例えば、５人の審査員が、８点、８点、９点、７点、５点と採点したとき、
 平均値は次のように求めることができます。</p>
 <p>
@@ -645,29 +666,30 @@
 \frac{8+8+9+7+5}{5} = 7.4
 </script>
 </p>
-<p>ただし、集計するデータが増えると、作業量も増えて時間がかかります。
+<p>もし集計すべきデータが増えたらどうなるでしょう。
+作業量も増えて膨大な時間がかかります。
 また、人間による手作業は、仮に電卓を使ったとしても、間違いが多くなります。</p>
-<p>日本は、デジタル化が遅れているという話をよく聞くかと思います。
+<p><strong>日本はデジタル化が遅れている</strong> という話をよく聞くかと思います。
 古き良き日本社会は、こんな感じでした。</p>
 <ul>
 <li>計算間違いしないように頑張りましょう。</li>
 <li>ダブルチェック、大切！</li>
 <li>手作業で処理できないことは <strong>諦めましょう</strong>。</li>
 </ul>
-<p>もう変なところで諦めちゃっていたから、デジタル化の進んだ国に差を広げられた訳ですね。</p>
-<p>ここで、データサイエンスやAIを学ぶとどうかわるのでしょうか？</p>
+<p>簡単に諦めちゃっていたから、デジタル化の進んだ国に差を広げられた訳ですね。</p>
+<p>それでは、データサイエンスやAIを学ぶと、どう変わるべきなんでしょう？</p>
 <ul>
 <li>計算は、もうコンピュータで処理しましょう</li>
 <li>間違えたくなければ、コンピュータで処理しましょう</li>
-<li>コンピュータで処理して、<strong>新しい可能性に挑戦しましょう</strong></li>
+<li>もうコンピュータで処理して、<strong>新しい可能性に挑戦しましょう</strong></li>
 </ul>
 <p>最後が、一番大切です。
 諦めるのではなく、新しい可能性に挑戦することです。</p>
-<p>データサイエンスやAIは、コンピュータを使いことなすことが前提の学問です。
-コンピュータを使いこなせてこそ、統計の知識もデータ処理の知識も活きてきます。
-だから、<strong>コンピュータを自由自在に使いこなすこと</strong> が大切です。</p>
+<p>データサイエンスやAIは、コンピュータを使いこなすことが前提の学問です。
+コンピュータを使いこなせてこそ、習った知識も有効に活きてきます。
+だから、<strong>コンピュータを自由自在に使いこなして</strong> 新しいことに挑戦して欲しいです。</p>
 <h2 id="_2">プログラミングについて<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
-<p>コンピュータを自由自在に使いこなすスキルととしてプログラミングあります。
+<p>プログラミングは、コンピュータを自由自在に使いこなす基本スキルです。
 本講義では、プログラミング言語としてPython言語を使います。</p>
 <p>データサイエンスやAIに取り組むためには、
 どの程度、Python をマスターしておくべきか、少し心配かもしれません。</p>
@@ -678,30 +700,32 @@
 \frac{8+8+9+7+5}{5} = 7.4
 </script>
 </p>
-<p><div class="highlight"><span class="filename">Pythonで平均値を求める</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>mean = (8 + 8 + 9 + 7 + 5) / 5
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>print(mean)
+<p><div class="highlight"><span class="filename">Pythonで平均値を求める</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>7.4
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>7.4
 </code></pre></div></p>
 <p>Pythonをはじめプログラミング言語は、数式や簡単な英語でコードを書けるように
-設計されています。少しコツをつかめば、プログラミングを始めるのに高い壁はありません。</p>
-<p>現在のプログラミングは、便利なライブラリが整備されています。
+設計されています。少しコツをつかめば、プログラミングはそれほど高い壁にはなりません。</p>
+<p>また、現在のプログラミングは、便利なライブラリが整備されています。
 データサイエンスやAIの分野では、このようなライブラリを正しく使うだけで、
 数式を理解してプログラミングしなくても、目的の処理ができます。</p>
-<p><div class="highlight"><span class="filename">平均値を求める</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>import numpy as np
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>a = np.array([8, 8, 9, 7, 5])
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>print(a.mean())
+<p><div class="highlight"><span class="filename">平均値を求める</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>import numpy as np
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>a = np.array([8, 8, 9, 7, 5])
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>print(a.mean())
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>7.4
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>7.4
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">英語は大切</p>
 <p>Python は海外で開発されているため、ライブラリは英語になっています。
 結構、英語の語彙力はプログラミングを理解するときのヒントになります。
-ちなみに、算術平均はavarageではなく、meanになります。</p>
+（ちなみに、平均はavarageではなく、meanです。）</p>
 </div>
-<p>もう少しライブラリの威力を見ましょう。</p>
-<p>標準偏差<script type="math/tex">\sigma</script>を求める場合を考えてみましょう。</p>
+<h2 id="_3">数式について<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<p>数式は、どうも苦手だという人が多いと思います。
+しかし、データサイエンス・AI入門では、数式を使った説明がよく出てきます。</p>
+<p>標準偏差<script type="math/tex">\sigma</script>は、例えば、次のように数式で定義して与えられます。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">標準偏差</label><label for="__tabbed_1_2">数学記号の説明</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -726,37 +750,29 @@
 </div>
 </div>
 </div>
-<p>さて、ライブラリを使うと、標準偏差は次のように簡単に求めることができます。</p>
-<p><div class="highlight"><span class="filename">平均値を求める</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>import numpy as np
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>a = np.array([8, 8, 9, 7, 5])
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>print(a.std())
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>1.3564659966250536
-</code></pre></div></p>
-<p>数式は、苦手だという人が多いと思います。</p>
-<p>まず、「標準偏差」の意味を理解しようと、数式を読んではいけません。
-海外の数学者が、<script type="math/tex">\sigma</script>の式で計算できる値を standard deviation と呼んで、
-日本人のどなたかが標準偏差と訳しただけです。</p>
-<p>計算はコンピュータがしてくれるので、計算方法を示す定義として用います。
-Pythonを使うかぎり、プログラム済みのライブラリが用意されているので、
+<p>まず、「標準偏差」の意味を理解しようと思って、数式を読んではいけません。
+標準偏差とは、平均値を中心にほとんどのデータが含まれる上下の範囲を示していますが、
+それを数式から読み取るのは無理です。
+海外の数学者が、<script type="math/tex">\sigma</script>の式で計算される値を standard deviation と呼んで、
+日本人の数学者が標準偏差と訳しただけです。</p>
+<p>数式は、ほとんどの場合、計算方法を示す定義として用いられます。</p>
+<p>Pythonはライブラリが豊富に揃っているため、
+数式からコードを書かなければならない機会はほとんどありません。
 Python なら、数列a の標準偏差は、<code>a.std()</code>と書けば計算できます。</p>
+<p><div class="highlight"><span class="filename">標準偏差を求める</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>1.3564659966250536
+</code></pre></div></p>
 <div class="admonition warning">
-<p class="admonition-title">std()の由来</p>
-<p>わかれば、プログラミングは得意になれるでしょう。</p>
+<p class="admonition-title">メソッド名 std()の由来</p>
+<p>これがわかれば、プログラミングは得意になれるでしょう。</p>
 </div>
-<p>データ分析をしながら経験を積むと、平均値を中心に±標準偏差の中に、
-ほとんどのデータが含まれるということがわかってきます。
-このような理解は、数式を見ただけで理解できるものではありません。</p>
-<div class="admonition warning">
-<p class="admonition-title">プログラミング力をしっかり高めよう</p>
-<p>プログラミングの基礎をしっかり学ぶと、
-より柔軟に応用的な課題にも取り組めるようになります。
-ただ、プログラミング力はすぐに身に付くわけではないので、
-本講義の練習問題を頑張って解きながら、少しづつ高めていきましょう。</p>
-</div>
+<p>このような理解は、数式を見ただけで理解できるものではありません。</p>
 <h2 id="python">Python サバイバル術<a class="headerlink" href="#python" title="Permanent link">#</a></h2>
 <p>（後期までに用意する予定）</p>
-<h2 id="_3">学習と機械学習<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<h2 id="_4">学習と機械学習<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
 <p>ニュートンは、リンゴが落ちるのを見て、万有引力の法則を発見しました。
 もう少し正確に書くと、いろんな現象の観察結果と微積分を使って、「<script type="math/tex">F ∼ Mm/r^2</script> としか思えない」という理由を示しています。</p>
 <p><img src="http://ktymtskz.my.coocan.jp/S/physic/P/p88.jpg" width="50%"/></p>
@@ -775,7 +791,7 @@ F ∼ Mm/r^2
 <li>強化学習 (Q-Learning)</li>
 </ul>
 <p>実は、前回までに学んだK-means法は教師なし学習、線形回帰は教師あり学習と分類され、機械学習アルゴリズムの一種でした。人工知能の基礎となる機械学習といっても、身構えなくてはならないほど難しいものではありません。</p>
-<h3 id="_4">教師あり学習<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<h3 id="_5">教師あり学習<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>教師あり学習は、問題と答えをコンピュータに与えることで予測モデルを学習させる方法です。
 事前に、「特徴を表すデータ」と答えである「目的データ」が必要です。 </p>
 <p>説明のため、これまでに作成してきた身長体重データセットを思い出してください。</p>
@@ -798,7 +814,7 @@ F ∼ Mm/r^2
 <li><strong>回帰問題</strong>: 数値を予測すること</li>
 <li><strong>クラス分類問題</strong>: 職業などのカテゴリを予測すること</li>
 </ul>
-<h3 id="_5">クラス分類<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<h3 id="_6">クラス分類<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>クラス分類は、カテゴリデータを予測することです。
 カテゴリの数が２つなら２クラス分類、それ以上なら多クラス分類と呼ばれます。</p>
 <p>クラス分類が重要なのは、画像認識など興味深いアプリケーションが作れる点にあります。
@@ -862,7 +878,7 @@ F ∼ Mm/r^2
     <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="assets/javascripts/bundle.01de222e.min.js"></script>
       
         <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       

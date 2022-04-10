@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/kaggle/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -764,16 +764,16 @@
 https://www.codexa.net/kaggle-titanic-beginner/
 -->
 
-<div class="highlight"><span class="filename">いつものモジュールをインポートしておきましょう</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>import numpy as np
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>import pandas as pd
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>import matplotlib.pyplot as plt
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>import seaborn as sns
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>try:
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>except ModuleNotFoundError:
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    !pip install japanize_matplotlib
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    import japanize_matplotlib 
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+<div class="highlight"><span class="filename">いつものモジュールをインポートしておきましょう</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import numpy as np
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>import pandas as pd
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>import matplotlib.pyplot as plt
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>import seaborn as sns
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>try:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>except ModuleNotFoundError:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    !pip install japanize_matplotlib
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    import japanize_matplotlib 
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
 </code></pre></div>
 <h2 id="kaggle_1">Kaggle<a class="headerlink" href="#kaggle_1" title="Permanent link">#</a></h2>
 <p>Kaggleは、世界中のデータサイエンス・機械学習を学んでいる人、仕事で活用している人が、40万人以上集まるコミニティです。Kaggleでは、企業や政府などの組織とデータサイエンティストを繋げるコンペ形式のプラットフォームとなっています。</p>
@@ -803,11 +803,11 @@ https://www.codexa.net/kaggle-titanic-beginner/
 英語が苦手であってもなくても、ここから先は英語で書かれた情報を読み取るしかありません。</p>
 </div>
 <p>Pandas を用いて、データの確認をしましょう。</p>
-<div class="highlight"><span class="filename">データの確認</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>train = pd.read_csv(&quot;train.csv&quot;)
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>test = pd.read_csv(&quot;test.csv&quot;)
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>print(&#39;訓練データの次元&#39;, train.shape)
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>print(&#39;テストデータの次元&#39;, test.shape)
+<div class="highlight"><span class="filename">データの確認</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>train = pd.read_csv(&quot;train.csv&quot;)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>test = pd.read_csv(&quot;test.csv&quot;)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>print(&#39;訓練データの次元&#39;, train.shape)
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>print(&#39;テストデータの次元&#39;, test.shape)
 </code></pre></div>
 <p>訓練データとテストデータが最初から別々になって提供されます。
 コンペなので、<strong>テストデータの正解はわからない</strong> ようになっています。
@@ -815,9 +815,9 @@ https://www.codexa.net/kaggle-titanic-beginner/
 <p>訓練データとテストデータの内容を比較してみると、
 訓練データには<code>Survived</code>のカラムがありますが、テストデータにはありません。
 つまり、この<code>Survived</code>を目的変数として予測するモデルを作ることになります。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>train.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>train.head()
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>test.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>test.head()
 </code></pre></div>
 <h3 id="_2">データの把握<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>まず、タイタニック号の乗客者名簿の属性をチェックしておきましょう。</p>
@@ -861,31 +861,31 @@ S = Southampton</li>
 ここは、<a href="https://www.kaggle.com/c/titanic">タイタニック号の生存者予測(Kaggle)</a> の場合を説明します。</p>
 <p>まず、学習した予測モデル(<code>model</code>)から、
 テストデータの予測を行います。</p>
-<div class="highlight"><span class="filename">テストデータの予測</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight"><span class="filename">テストデータの予測</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </code></pre></div>
 <p>提出は、テストデータの予測値を指定されたCSVファイルとして出力します。</p>
 <p>ここで必要になるのは、
 <code>PassengerId</code>と予測された<code>Survived</code>のふたつのカラムからなる表データです。
 データフレームを作って、<code>result.csv</code>に保存します。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">:</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">],</span> <span class="s1">&#39;Survived&#39;</span><span class="p">:</span> <span class="n">y_pred</span><span class="p">})</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;result.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">:</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">],</span> <span class="s1">&#39;Survived&#39;</span><span class="p">:</span> <span class="n">y_pred</span><span class="p">})</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;result.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p>これで、<code>result.csv</code>ができました。
 一応、<code>result.csv</code>のファイル形式を確認して、正しく保存されているかみておきましょう。</p>
-<p><div class="highlight"><span class="filename">最初の10行を表示してみる</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>!head result.csv
+<p><div class="highlight"><span class="filename">最初の10行を表示してみる</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>!head result.csv
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>PassengerId,Survived
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>892,0
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>893,1
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>894,0
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>895,0
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>896,1
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a>897,0
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a>898,1
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a>899,0
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a>900,1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>PassengerId,Survived
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>892,0
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>893,1
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>894,0
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>895,0
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>896,1
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>897,0
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>898,1
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>899,0
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>900,1
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">予測値なので..</p>
@@ -910,9 +910,9 @@ Submitした後の正解スコアを報告してください。</p>
 どこかの属性が一部欠けていたり、信用性が低くて使えないことがあります。
 タイタニック号の乗客名簿は、何か嫌がらせかと思うほど、データが欠損しています。</p>
 <p><strong>訓練データの欠損値</strong></p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>train.isnull().sum()
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>train.isnull().sum()
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>test.isnull().sum()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>test.isnull().sum()
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -932,13 +932,13 @@ y_test["Fare"] = y_test["Fare"].fillna(Xy_train["Fare"].mean())
 <h3 id="_8">説明変数<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
 <p>カテゴリデータは、数値データに変換することで、説明変数として利用できるようになります。
 例えば、性別は次のように0, 1に変換してみます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>train[&quot;Sex&quot;] = train[&quot;Sex&quot;].map({&quot;male&quot;: 0, &quot;female&quot;: 1})
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a>test[&quot;Sex&quot;] = test[&quot;Sex&quot;].map({&quot;male&quot;: 0, &quot;female&quot;: 1})
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>train[&quot;Sex&quot;] = train[&quot;Sex&quot;].map({&quot;male&quot;: 0, &quot;female&quot;: 1})
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>test[&quot;Sex&quot;] = test[&quot;Sex&quot;].map({&quot;male&quot;: 0, &quot;female&quot;: 1})
 </code></pre></div>
 説明変数、目的変数を選びます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>X_train = train[[&quot;Pclass&quot;, &quot;Sex&quot;, &quot;Fare&quot;]]
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a>y_train = train[&quot;Survived&quot;]
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a>X_test = test[[&quot;Pclass&quot;, &quot;Sex&quot;, &quot;Fare&quot;]]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>X_train = train[[&quot;Pclass&quot;, &quot;Sex&quot;, &quot;Fare&quot;]]
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>y_train = train[&quot;Survived&quot;]
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>X_test = test[[&quot;Pclass&quot;, &quot;Sex&quot;, &quot;Fare&quot;]]
 </code></pre></div></p>
 <h3 id="_9">アルゴリズムを選ぶ<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <p>機械学習アルゴリズムを選びます。
@@ -946,9 +946,9 @@ y_test["Fare"] = y_test["Fare"].fillna(Xy_train["Fare"].mean())
 <p>機械学習アルゴリズムは、データの正室に対して、得意/不得意があります。
 しかし、最初のうちは全くわからないので、色々試してみた方がよいでしょう。</p>
 <p>ここでは、決定木を表示したかったので、<code>DecisionTreeClassifier</code>を使ってみました。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>from sklearn.tree import DecisionTreeClassifier,plot_tree
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a>model = DecisionTreeClassifier(max_depth=3)
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a>model.fit(X_train, y_train)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>from sklearn.tree import DecisionTreeClassifier,plot_tree
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>model = DecisionTreeClassifier(max_depth=3)
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>model.fit(X_train, y_train)
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -957,19 +957,19 @@ y_test["Fare"] = y_test["Fare"].fillna(Xy_train["Fare"].mean())
 <p><code>ValueError: Input contains NaN, infinity or a value too large</code>のようなエラーが発生します。
 データの前処理でしっかりと、取り除きましょう。 </p>
 <p>さて、決定木のいいところは、どういう過程で分類されているか、見える化しやすいところです。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>plt.figure(figsize=(15,10))
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>plot_tree(model,feature_names=X_train.columns,filled=True, rounded=True, proportion=True)
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>plt.show()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>plt.figure(figsize=(15,10))
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>plot_tree(model,feature_names=X_train.columns,filled=True, rounded=True, proportion=True)
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>plt.show()
 </code></pre></div>
 訓練データに対する、正解率を計算しておきましょう。（テストデータは正解がないので計算できません。）
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>model.score(X_train, y_train)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>model.score(X_train, y_train)
 </code></pre></div>
 良い気がします。（maxdepthを深くすると、もっと精度は高くなります。）</p>
 <h3 id="_10">提出データの作成<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
 <p>テストデータから予測値を求めて、提出データファイルを作成しましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a># Fare の前処理を忘れないで
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a># X_test[&quot;Fare&quot;].fillna(X_test[&quot;Fare&quot;].mean(), inplace=True) 
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>y_pred = model.predict(X_test)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a># Fare の前処理を忘れないで
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a># X_test[&quot;Fare&quot;].fillna(X_test[&quot;Fare&quot;].mean(), inplace=True) 
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>y_pred = model.predict(X_test)
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -978,11 +978,11 @@ y_test["Fare"] = y_test["Fare"].fillna(Xy_train["Fare"].mean())
 <p><code>ValueError: Input contains NaN, infinity or a value too large</code>のようなエラーが発生します。
 データの前処理でしっかりと、取り除きましょう。 </p>
 <p>Pandasを使って表データに変換し、CSVファイルを出力します。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>data = pd.DataFrame({&#39;PassengerId&#39;: test[&#39;PassengerId&#39;], &#39;Survived&#39;: y_pred})
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a>data.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>data = pd.DataFrame({&#39;PassengerId&#39;: test[&#39;PassengerId&#39;], &#39;Survived&#39;: y_pred})
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>data.head()
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>data.to_csv(&quot;result.csv&quot;, index=False)
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>!head result.csv
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>data.to_csv(&quot;result.csv&quot;, index=False)
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>!head result.csv
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1002,7 +1002,7 @@ y_test["Fare"] = y_test["Fare"].fillna(Xy_train["Fare"].mean())
 データ件数が少ない場合は、目視でみつかる場合がありますが、
 データ件数が多くなると、手作業で探すのは無理です。</p>
 <p>欠損値をチェックすることが必要になります。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>data.isnull().sum()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>data.isnull().sum()
 </code></pre></div>
 <p>欠損値が見つかったときは、
 欠損値を処理するアプローチとしては：</p>
@@ -1013,8 +1013,8 @@ y_test["Fare"] = y_test["Fare"].fillna(Xy_train["Fare"].mean())
 <p>どのように処理するかは、データ分析の目的によって異なります。
 今回は、メンバーを消してしまったら、大変なことになりますので、
 __欠損値の値を平均値で補完する__ことで対応してみます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>data.fillna(data.mean(), inplace=True)
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a>data
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>data.fillna(data.mean(), inplace=True)
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>data
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1022,10 +1022,10 @@ __欠損値の値を平均値で補完する__ことで対応してみます。<
 <p>欠損値の補完</p>
 <p>データ分析では、欠損値は何かの嫌がらせかと思うほど、頻繁に生じます。
 色々な補完方法がありますので、適切な方法を選んでください。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>data[&#39;体重&#39;].fillna(50.0)                 # 体重の欠損値を50.0で穴埋め
-<a id="__codelineno-20-2" name="__codelineno-20-2"></a>data[&#39;体重&#39;].fillna(data[&#39;体重&#39;].mean())   # 体重の欠損値を体重の平均値で穴埋め
-<a id="__codelineno-20-3" name="__codelineno-20-3"></a>data[&#39;体重&#39;].fillna(data[&#39;体重&#39;].median()) # 体重の欠損値を体重の中央値で穴埋め
-<a id="__codelineno-20-4" name="__codelineno-20-4"></a>data[&#39;体重&#39;].fillna(data[&#39;体重&#39;].mode())   # 体重の欠損値を体重の最頻値で穴埋め
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>data[&#39;体重&#39;].fillna(50.0)                 # 体重の欠損値を50.0で穴埋め
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>data[&#39;体重&#39;].fillna(data[&#39;体重&#39;].mean())   # 体重の欠損値を体重の平均値で穴埋め
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>data[&#39;体重&#39;].fillna(data[&#39;体重&#39;].median()) # 体重の欠損値を体重の中央値で穴埋め
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>data[&#39;体重&#39;].fillna(data[&#39;体重&#39;].mode())   # 体重の欠損値を体重の最頻値で穴埋め
 </code></pre></div>
 <h2 id="_14">コースワーク<a class="headerlink" href="#_14" title="Permanent link">#</a></h2>
 <p>どちらかにアカウント登録して、コンペに参加してみよう。</p>
@@ -1107,9 +1107,9 @@ Kaggle にアカウント登録し、
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
-        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/boston2/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -274,20 +274,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     相関係数
   </a>
   
@@ -295,8 +288,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    相関係数を求める関数を定義する★
+  <a href="#_6" class="md-nav__link">
+    相関係数を求める関数を定義する⭐️⭐️
   </a>
   
 </li>
@@ -309,8 +302,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    まとめて調べてみる
+  <a href="#_7" class="md-nav__link">
+    まとめて調べてみる⭐️
   </a>
   
 </li>
@@ -321,7 +314,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     (予習) 近似直線と最小二乗法
   </a>
   
@@ -329,15 +322,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    最小二乗法★
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    練習問題
+  <a href="#_9" class="md-nav__link">
+    最小二乗法⭐️⭐️
   </a>
   
 </li>
@@ -613,20 +599,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     相関係数
   </a>
   
@@ -634,8 +613,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    相関係数を求める関数を定義する★
+  <a href="#_6" class="md-nav__link">
+    相関係数を求める関数を定義する⭐️⭐️
   </a>
   
 </li>
@@ -648,8 +627,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    まとめて調べてみる
+  <a href="#_7" class="md-nav__link">
+    まとめて調べてみる⭐️
   </a>
   
 </li>
@@ -660,7 +639,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     (予習) 近似直線と最小二乗法
   </a>
   
@@ -668,15 +647,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    最小二乗法★
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    練習問題
+  <a href="#_9" class="md-nav__link">
+    最小二乗法⭐️⭐️
   </a>
   
 </li>
@@ -706,75 +678,83 @@
 <h2 id="_2">準備: ボストン住宅価格データセット<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <p>今回もハンズオン演習では、ポストン住宅価格データセットを用います。</p>
 <p>ハンズオン演習を始めるため、Python モジュールとデータセットを読み込んでおきましょう。</p>
-<div class="highlight"><span class="filename">ボストン住宅価格データセットをダウンロード</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">KuramitsuLab</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">boston</span><span class="o">.</span><span class="n">csv</span>
+<div class="highlight"><span class="filename">データ分析用のモジュールを一式インポートする</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#matplotlibの日本語化  </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;pip3 install japanize_matplotlib&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">データ分析用のモジュールを一式インポートする</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#matplotlibの日本語化  </span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;pip3 install japanize_matplotlib&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
+<div class="highlight"><span class="filename">ボストン住宅価格データセットをダウンロード</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">kkuramitsu</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">lec</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">boston</span><span class="o">.</span><span class="n">csv</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">データフレームを用意する</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;boston.csv&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;黒人&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 黒人を除去する</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight"><span class="filename">バイアスのあるデータを消して、データフレームを用意する</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;boston.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;黒人&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 黒人を除去する</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 <p>ちゃんと準備できましたか？</p>
 <h2 id="_3">散布図<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
 <p>散布図は、２つのデータ列を xy座標上にプロットしたグラフです。
 散布図を書くと、ふたつのデータの関連性が視覚化見えてきます。</p>
 <p>まずは、散布図の威力を確認するために前回の復習を兼ねて、
-<code>'部屋数'</code>と<code>'価格'</code>のヒストグラムを書いてみましょう。</p>
+<code>'部屋数'</code>と<code>'住宅価格'</code>のヒストグラムを書いてみましょう。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Let's try</label><label for="__tabbed_1_2">コード</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>まずは自分で書いてみてください！</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">)</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <p><img alt="ヒストグラム" src="../figs/boston_histroom-fs8.png" /></p>
 <p><img alt="ヒストグラム" src="../figs/boston_histprice-fs8.png" /></p>
-<p>二つのヒストグラムを見比べていても、何も関係性は見えてきません。
-ここで、散布図を書いてみると、関係性がみえてきます。</p>
+<p>二つのヒストグラムを見比べていても、まだ何も関係性は見えてきません。
+ここで、散布図を書いてみると、もう少し関係性がみえてきます。</p>
 <h3 id="_4">散布図の描画<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>Pandas では、<code>plt.scatter(X, Y)</code>を使って、散布図を描画します。
 X, Y には、それぞれx軸、y軸に置きたいデータ列を指定します。</p>
-<p><div class="highlight"><span class="filename">部屋数と住宅価格の散布図</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>plt.scatter(df[&#39;部屋数&#39;], df[&#39;住宅価格&#39;])
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>plt.xlabel(&#39;部屋数&#39;)
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>plt.ylabel(&#39;住宅価格&#39;)
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>plt.show()
+<p><div class="highlight"><span class="filename">部屋数と住宅価格の散布図</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>plt.scatter(df[&#39;部屋数&#39;], df[&#39;住宅価格&#39;])
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>plt.xlabel(&#39;部屋数&#39;)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>plt.ylabel(&#39;住宅価格&#39;)
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>plt.show()
 </code></pre></div>
 <img alt="散布図" src="../figs/boston_scatter1-fs8.png" /></p>
 <p>アルファ値（透過率）をつけると、重なり具合が濃淡になって見やすくなります。</p>
-<p><div class="highlight"><span class="filename">部屋数と住宅価格の散布図（濃淡）</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>plt.scatter(df[&#39;部屋数&#39;], df[&#39;住宅価格&#39;], alpha=0.5)
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>plt.xlabel(&#39;部屋数&#39;)
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>plt.ylabel(&#39;住宅価格&#39;)
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>plt.show()
+<p><div class="highlight"><span class="filename">部屋数と住宅価格の散布図（濃淡）</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>plt.scatter(df[&#39;部屋数&#39;], df[&#39;住宅価格&#39;], alpha=0.5)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>plt.xlabel(&#39;部屋数&#39;)
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>plt.ylabel(&#39;住宅価格&#39;)
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>plt.show()
 </code></pre></div>
 <img alt="散布図" src="../figs/boston_scatter2-fs8.png" /></p>
-<p>もうひとつ適当にデータ列を選んで、散布図を書いてみましょう。</p>
-<p><strong><code>'築年'</code>と<code>'価格'</code>列の散布図</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;築年&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;価格&#39;</span><span class="p">])</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;築年&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;価格&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="admonition example">
+<p class="admonition-title">Let's try</p>
+<p>いくつかデータ列を選んで、散布図を書いてみましょう。
+<div class="highlight"><span class="filename">`'築年'`と`'住宅価格'`列の散布図</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;築年&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格])</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;築年&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<img alt="散布図" src="../figs/scatter1-fs8.png" /></p>
-<p>このように散布図はデータの関係性を分析する強力なツールになります。</p>
-<h3 id="_5"><a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
-<h2 id="_6">相関係数<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
-<p>散布図は、２つのデータ列間の関係性を分析する強力なツールになります。
-この関係性を数値化する手法が、<a href="https://ja.wikipedia.org/wiki/相関係数">相関係数</a>です。</p>
+<img alt="散布図" src="../figs/boston_scatter3-fs8.png" /></p>
+</div>
+<p>このように、２つの変数x,yが連動する関係のことを相関関係といいます。</p>
+<ul>
+<li><strong>ｘとｙの間に正の相関がある</strong>: 一方の値が大きければ、もう一方の値も大きくなる傾向がある</li>
+<li><strong>ｘとｙの間に負の相関がある</strong>: 一方の値が大きくなると、もう一方の値が小さくなる傾向がある</li>
+</ul>
+<p><img alt="" src="https://toukeigaku-jouhou.info/wp-content/uploads/2015/08/how-to-read-scatter-plot-1.jpg" /></p>
+<p>(図は、<a href="https://toukeigaku-jouhou.info/2015/08/26/post-479/">散布図（QC7つ道具）の書き方と見方。正の相関・負の相関はどのように打点されるか</a>より)</p>
+<h2 id="_5">相関係数<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<p>散布図は、２つのデータ列の相関を分析する強力なツールになります。
+この関係性を定量化（数値化）する手法が、<a href="https://ja.wikipedia.org/wiki/相関係数">相関係数</a>です。</p>
 <p><a href="https://ja.wikipedia.org/wiki/相関係数">相関係数</a><script type="math/tex">\rho</script>は、2つデータ列<script type="math/tex">X</script>,<script type="math/tex">Y</script>の関係性の強度を測る指標です。次のように計算します。</p>
 <p>
 <script type="math/tex; mode=display">
@@ -799,7 +779,7 @@ X, Y には、それぞれx軸、y軸に置きたいデータ列を指定しま�
 <li><code>scipi</code>モジュールに含まれる<code>pearsonr</code>を用いる</li>
 <li><code>df.corr()</code>: 数値データの全ての相関を一度に求める（→<a href="../student/">コースワーク1</a>で練習します) </li>
 </ul>
-<h3 id="_7">相関係数を求める関数を定義する★<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<h3 id="_6">相関係数を求める関数を定義する⭐️⭐️<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>Pythonは、様々な関数を定義してライブラリとして提供してくれています。ほとんどの場合は、提供されたライブラリを用いると、簡単に計算できます。しかし、原理を理解するときは、少し数式とコードに立ち戻って試してみることも重要です。</p>
 <p>
 <script type="math/tex; mode=display">
@@ -807,41 +787,46 @@ X, Y には、それぞれx軸、y軸に置きたいデータ列を指定しま�
 </script>
 </p>
 <p>まず、<code>numpy</code>を用いてプログラムを書く方法を試してみます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">def</span> <span class="nf">corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>    <span class="n">x_diff</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>    <span class="n">y_diff</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_diff</span><span class="p">,</span> <span class="n">y_diff</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x_diff</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">y_diff</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span> <span class="nf">corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">x_diff</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">y_diff</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_diff</span><span class="p">,</span> <span class="n">y_diff</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x_diff</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">y_diff</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
 </code></pre></div>
-<p>注意: パラメータで、<code>df['価格']</code>のようなデータ列を直接与えられるように、
+<p>注意: パラメータで、<code>df['住宅価格']</code>のようなデータ列を直接与えられるように、
 最初に<code>x = np.array(x)</code>のように、numpy配列に変換してから、計算しています。</p>
-<p><div class="highlight"><span class="filename">築年と住宅価格の相関係数</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;築年&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">]))</span>
+<p><div class="highlight"><span class="filename">築年と住宅価格の相関係数</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;築年&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">]))</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>-0.37695456500459595
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>-0.37695456500459595
 </code></pre></div></p>
-<p><div class="highlight"><span class="filename">部屋数と住宅価格の相関係数</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">]))</span>
+<p><div class="highlight"><span class="filename">部屋数と住宅価格の相関係数</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">]))</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>0.6953599470715389
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>0.6953599470715389
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>相関係数は順序尺度であり比尺度ではないので、例えば「相関係数が0.2と0.4であることから、後者は前者より2倍の相関がある」などとは言えません。</p>
 </div>
 <h3 id="peasonr">Peasonr<a class="headerlink" href="#peasonr" title="Permanent link">#</a></h3>
-<p>先ほどは、Python で相関係数を求める関数を自分で定義しました。しかし、データサイエンスや機械学習で用いる主な関数はほとんどライブラリに定義済みで、自分で定義しなければならないことは少ないです。Python の大きなメリットは、<strong>豊富なライブラリを活用できる</strong> 点にあるので、ネットで検索して、目的のライブラリがないか探してみることも大切です。</p>
+<p>先ほどは、Python で相関係数を求める関数を自分で定義しました。
+しかし、データサイエンスや機械学習で用いる主な関数はほとんどライブラリに定義済みで、
+自分で定義しなければならないことは少ないです。
+Python の大きなメリットは、<strong>豊富なライブラリを活用できる</strong> 点にあるので、ネットで検索して、
+目的のライブラリがないか探してみることも大切です。</p>
 <p>ここでは、SciPy の統計ライブラリから提供される <code>pearsonr()</code> を使って見ます。</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">from·scipy</span><span class="o">.</span><span class="n">stats·import</span> <span class="n">pearsonr</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">rho</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span><span class="err">·</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;価格&#39;</span><span class="p">])</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;相関係数:&#39;</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p値:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">from·scipy</span><span class="o">.</span><span class="n">stats·import</span> <span class="n">pearsonr</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">rho</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span><span class="err">·</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;相関係数:&#39;</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p値:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>相関係数: 0.6953599470715395
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a>p値: 2.4872288710071593e-74
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>相関係数: 0.6953599470715395
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>p値: 2.4872288710071593e-74
 </code></pre></div></p>
-<p><code>pearsonr()</code>関数は、相関係数だけではなく、帰無仮説(無相関)と設定した場合のp値も計算してくれます。計算結果は、タプルで返され、ひとつ目の値が相関係数(rho)、ふたつ目の値がp値になります。</p>
+<p><code>pearsonr()</code>関数は、相関係数だけではなく、帰無仮説(無相関)と設定した場合のp値も計算してくれます。
+計算結果は、タプルで返され、ひとつ目の値が相関係数(rho)、ふたつ目の値がp値になります。</p>
 <div class="admonition note">
 <p class="admonition-title">p値(有意確率)</p>
 <p>p値は、0 に近いほどデータが偶然にそうなった可能性が低いことになる。
@@ -851,43 +836,54 @@ X, Y には、それぞれx軸、y軸に置きたいデータ列を指定しま�
 <p class="admonition-title">Warning</p>
 <p>データサイエンスや機械学習で用いる主な関数は、ほとんどライブラリに定義済みで、自分で定義しなければならないことは少ないです。Python の大きなメリットは、<strong>豊富なライブラリを活用できる</strong> 点にあるので、ネットで検索して、目的のライブラリがないか探してみることも大切です。</p>
 </div>
-<h3 id="_8">まとめて調べてみる<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<h3 id="_7">まとめて調べてみる⭐️<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>最も住宅価格との相関が高そうなデータ列を探してみましょう。
 もちろん、ひとつずつ手作業で調べてもいいのですが、
 Pythonを使って自動処理しましょう。</p>
-<p><code>df.columns</code>で全てのデータ列の名前が得られますので、それをfor文を使って処理します。</p>
-<p><div class="highlight"><span class="filename">全てのデータ列の相関係数を調べる</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    <span class="n">rho</span> <span class="o">=</span> <span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">])</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">-価格: ρ=</span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="admonition example">
+<p class="admonition-title">Pythonのレベルチェック</p>
+<p><code>df.columns</code>で全てのデータ列の名前が得られます。
+それをfor文を使って、繰り返し処理します。</p>
+</div>
+<p>このようなプログラムがすらすらと書ければ、Python力は実用レベルです。</p>
+<p><div class="highlight"><span class="filename">全てのデータ列の相関係数を調べる</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">rho</span> <span class="o">=</span> <span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">])</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">-価格: ρ=</span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>犯罪-価格: ρ=-0.38830460858681154
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a>自然-価格: ρ=0.3604453424505447
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>工場-価格: ρ=-0.4837251600283734
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>川近-価格: ρ=0.17526017719029738
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>大気汚染-価格: ρ=-0.4273207723732816
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>部屋数-価格: ρ=0.6953599470715389
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>築年-価格: ρ=-0.37695456500459595
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a>通勤-価格: ρ=0.2499287340859038
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>交通-価格: ρ=-0.3816262306397775
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a>資産税-価格: ρ=-0.4685359335677663
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a>教員-価格: ρ=-0.5077866855375609
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a>低所得-価格: ρ=-0.7376627261740146
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a>価格-価格: ρ=0.9999999999999991
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>犯罪-価格: ρ=-0.38830460858681154
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>自然-価格: ρ=0.3604453424505447
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>工場-価格: ρ=-0.4837251600283734
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>川近-価格: ρ=0.17526017719029738
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>大気汚染-価格: ρ=-0.4273207723732816
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>部屋数-価格: ρ=0.6953599470715389
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>築年-価格: ρ=-0.37695456500459595
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>通勤-価格: ρ=0.2499287340859038
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>交通-価格: ρ=-0.3816262306397775
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>資産税-価格: ρ=-0.4685359335677663
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>教員-価格: ρ=-0.5077866855375609
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>低所得-価格: ρ=-0.7376627261740146
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>価格-価格: ρ=0.9999999999999991
 </code></pre></div></p>
-<p>注意: 価格-価格は、同じデータ列の相関係数なので、限りなく<code>1.0</code>に近くなっています。ただし、Python上の計算は、なかなかピッタリ<code>1.0</code>にはなりません。</p>
+<p>注意: 価格-価格は、同じデータ列の相関係数なので、限りなく<code>1.0</code>に近くなっています。
+ただし、Python上の計算は、なかなかピッタリ<code>1.0</code>にはなりません。</p>
 <div class="admonition warning">
 <p class="admonition-title">車輪を再発明しない</p>
 <p>もちろん、ちゃんと探せば、一度に全ての数値データの相関を調べてくれるメソッドはあります。
 詳しくは、<a href="../student/">コースワーク1</a>のヒントを見てください</p>
 </div>
-<h2 id="_9">(予習) 近似直線と最小二乗法<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
+<h2 id="_8">(予習) 近似直線と最小二乗法<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
 <p>さて、今回は、散布図と相関を中心に見てきました。
 もし住宅価格と部屋数のように強い相関関係がある場合は場合は、
 ピッと直線を書いてみたくなりませんか？</p>
 <p><img alt="" src="../figs/boston_line-fs8.png" /></p>
 <p>次回の予習として、
 時間があればこのような近似直線を引く方法を考えてみましょう。</p>
-<h3 id="_10">最小二乗法★<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">ここから先は..</p>
+<p>最小二乗法は、数値計算の定番アルゴリズムですが、少量、理系向きの内容です。
+先に、本日までの練習課題として、<a href="../student/">コースワーク1</a>に取り組んでみましょう。</p>
+</div>
+<h3 id="_9">最小二乗法⭐️⭐️<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <p>まず、近似直線を求めるための原理を見ておきます。
 ここでは、簡単な例題を考えます。</p>
 <div class="admonition question">
@@ -897,11 +893,11 @@ Pythonを使って自動処理しましょう。</p>
 <p><img alt="" src="../figs/lsm-fs8.png" /></p>
 </div>
 <p>まず、データをグラフで見ておきましょう。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p>最小二乗法は、もっともらしい直線を近似する方法を求める手法です。</p>
 <p>直線の近似式を <script type="math/tex">y = a x + b</script>とおきます。
@@ -931,62 +927,51 @@ b ={ 1\over n}\sum^n_{i= 1}(y_i - ax_i)　
 </script>
 </p>
 <p>あとは、NumPyを使って、最もらしいa,bを求める関数を定義します。</p>
-<div class="highlight"><span class="filename">最小二乗法による直線の近似</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">def</span> <span class="nf">reg1dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a>    <span class="n">a</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">n</span><span class="p">))</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a>    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">/</span><span class="n">n</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7"></a>    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8"></a>
-<a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11"></a>
-<a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reg1dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="highlight"><span class="filename">最小二乗法による直線の近似</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span> <span class="nf">reg1dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">a</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">n</span><span class="p">))</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">/</span><span class="n">n</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reg1dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div>
 <p>よって、NumPyによって求められた式は、<script type="math/tex">y = 0.51 x + 1.12</script> となります。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4"></a>
-<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reg1dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">8.</span> <span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reg1dim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">8.</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <div class="admonition check">
-<p class="admonition-title"><code>plt.hist(データ列)</code></p>
-<p>データ列を指定すると、ヒストグラムを描画する</p>
+<p class="admonition-title"><code>plt.plot(X,Y)</code></p>
+<p>X,Yのデータ列を指定すると、線グラフを描画する</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">線形回帰</p>
 <p>最小二乗法は、線形回帰(LinearRegression)として、sklearnライブラリで利用できます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3"></a>
-<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># sklearn 用に変形</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># sklearn 用に変形</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div>
 線形回帰モデル<script type="math/tex">y=ax+b</script>の係数<script type="math/tex">a</script>と切片<script type="math/tex">b</script>は、
 それぞれ<code>model.coef_</code>と<code>model.intercept_</code>で取得できます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 </code></pre></div></p>
 </div>
-<h3 id="_11">練習問題<a class="headerlink" href="#_11" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;価格&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2"></a>
-<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reg1dim</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;価格&#39;</span><span class="p">])</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6"></a>
-<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</code></pre></div>
 
               
             </article>
@@ -1059,9 +1044,9 @@ b ={ 1\over n}\sum^n_{i= 1}(y_i - ax_i)　
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
-        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>
