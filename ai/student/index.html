@@ -282,12 +282,18 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     （補足説明)データの形式
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="（補足説明)データの形式">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
@@ -313,18 +319,25 @@
     コースワーク
   </a>
   
-    <nav class="md-nav" aria-label="コースワーク">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    様々なグラフの作画
+  </a>
+  
+    <nav class="md-nav" aria-label="様々なグラフの作画">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     箱ひげ図
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ヒストグラム
   </a>
   
@@ -338,14 +351,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     相関行列とヒートマップ
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     カテゴリーデータを視覚化する
   </a>
   
@@ -600,12 +613,18 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     （補足説明)データの形式
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="（補足説明)データの形式">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
@@ -631,18 +650,25 @@
     コースワーク
   </a>
   
-    <nav class="md-nav" aria-label="コースワーク">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    様々なグラフの作画
+  </a>
+  
+    <nav class="md-nav" aria-label="様々なグラフの作画">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     箱ひげ図
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ヒストグラム
   </a>
   
@@ -656,14 +682,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     相関行列とヒートマップ
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     カテゴリーデータを視覚化する
   </a>
   
@@ -694,7 +720,8 @@
 <p>今回は、データ分析、グラフ描画、相関などを使いながら、
 データの傾向をつかんでいきます。</p>
 <h2 id="_1">データ<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<p>今回は、<a href="https://archive.ics.uci.edu/ml/datasets/student+performance">ポルトガルの高校生の数学の成績データ</a>を使って、データ解析をします。</p>
+<p>今回は、<a href="https://archive.ics.uci.edu/ml/datasets/student+performance">ポルトガルの高校生の数学の成績データ</a>を使って、
+データ解析をします。</p>
 <p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/315e0d53-5fed-3f10-db50-eda9ece4f5f9.jpeg" width="40%"/></p>
 <div class="highlight"><span class="filename">データのURL</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://kuramitsulab.github.io/data/student-mat.csv
 </code></pre></div>
@@ -853,11 +880,41 @@
 <p class="admonition-title">ここからのミッション</p>
 <p>高校生の各属性が数学の成績(G1, G2, G3)、特に最終成績(G3)に与える影響を調べていきましょう。</p>
 </div>
-<h3 id="_3">（補足説明)データの形式<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<h2 id="_3">（補足説明)データの形式<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
 <p>今回のデータは、ボストン住宅データセットと異なり、数値以外の形式のデータが含まれています。</p>
 <p><code>info()</code>メソッドを用いると、カラム名とデータ形式の一覧を表示してくれます。</p>
-<div class="highlight"><span class="filename">データ形式の確認</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>df.info()
+<p><div class="highlight"><span class="filename">データ形式の確認</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>df.info()
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>RangeIndex: 395 entries, 0 to 394
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Data columns (total 33 columns):
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> #   Column      Non-Null Count  Dtype 
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>---  ------      --------------  ----- 
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a> 0   school      395 non-null    object
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a> 1   sex         395 non-null    object
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a> 2   age         395 non-null    int64 
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a> 3   address     395 non-null    object
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> 4   famsize     395 non-null    object
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> 5   Pstatus     395 non-null    object
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a> 6   Medu        395 non-null    int64 
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a> 7   Fedu        395 non-null    int64 
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> 8   Mjob        395 non-null    object
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a> 9   Fjob        395 non-null    object
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a> 10  reason      395 non-null    object
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a> 11  guardian    395 non-null    object
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a> 12  traveltime  395 non-null    int64 
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a> 13  studytime   395 non-null    int64 
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a> 14  failures    395 non-null    int64 
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a> 15  schoolsup   395 non-null    object
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a> 16  famsup      395 non-null    object
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a> 17  paid        395 non-null    object
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a> 18  activities  395 non-null    object
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a> 19  nursery     395 non-null    object
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>...
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a> 31  G2          395 non-null    int64 
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a> 32  G3          395 non-null    int64 
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>dtypes: int64(16), object(17)
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>memory usage: 102.0+ KB
+</code></pre></div></p>
 <p>カラム名に続いて、データの個数、さらに形式が<code>int64</code>か<code>object</code>のように示されています。</p>
 <ul>
 <li><code>int64</code>: 数値データ</li>
@@ -873,78 +930,78 @@
 また、カテゴリーデータであっても、比較可能な数値に変換できるものがあります。</p>
 <p>必ずしもデータの形式を変換する必要はありませんが、
 カテゴリデータとして処理したいなら、型を<code>object</code>に変更しておくとよいでしょう。</p>
-<div class="highlight"><span class="filename">数値を文字列に変換する</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>df[&#39;Medu&#39;] = df[&#39;Medu&#39;].astype(&#39;object&#39;)
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>df[&#39;Fedu&#39;] = df[&#39;Fedu&#39;].astype(&#39;object&#39;)
+<div class="highlight"><span class="filename">数値を文字列に変換する</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>df[&#39;Medu&#39;] = df[&#39;Medu&#39;].astype(&#39;object&#39;)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>df[&#39;Fedu&#39;] = df[&#39;Fedu&#39;].astype(&#39;object&#39;)
 </code></pre></div>
 <h3 id="_4">データをわかりやすくする<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>海外で作られたデータは、特に英語をベースにした記述であって、直感的なデータ分析の妨げになります。
 カラム名やカテゴリーデータは、もう少し直感的に理解しやすいように書き換えてしまいましょう。</p>
 <p>カラム名は、変更後のカラム名の一覧を作成すれば、まとめて差し替えられます。</p>
-<div class="highlight"><span class="filename">カラム名の変更</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s1">&#39;学校名&#39;</span><span class="p">,</span> <span class="s1">&#39;性別&#39;</span><span class="p">,</span> <span class="s1">&#39;年齢&#39;</span><span class="p">,</span> <span class="s1">&#39;住所&#39;</span><span class="p">,</span> <span class="s1">&#39;兄弟姉妹&#39;</span><span class="p">,</span> <span class="s1">&#39;住居&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s1">&#39;母学歴&#39;</span><span class="p">,</span> <span class="s1">&#39;父学歴&#39;</span><span class="p">,</span> <span class="s1">&#39;母職業&#39;</span><span class="p">,</span> <span class="s1">&#39;父職業&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s1">&#39;進学理由&#39;</span><span class="p">,</span> <span class="s1">&#39;保護者&#39;</span><span class="p">,</span> <span class="s1">&#39;通学時間&#39;</span><span class="p">,</span> <span class="s1">&#39;学習時間&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s1">&#39;落第数&#39;</span><span class="p">,</span> <span class="s1">&#39;奨学金&#39;</span><span class="p">,</span> <span class="s1">&#39;親もち&#39;</span><span class="p">,</span> <span class="s1">&#39;塾&#39;</span><span class="p">,</span> <span class="s1">&#39;部活&#39;</span><span class="p">,</span> 
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s1">&#39;幼稚園&#39;</span><span class="p">,</span> <span class="s1">&#39;大学&#39;</span><span class="p">,</span> <span class="s1">&#39;ネット&#39;</span><span class="p">,</span> <span class="s1">&#39;恋人&#39;</span><span class="p">,</span> <span class="s1">&#39;家族&#39;</span><span class="p">,</span> 
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s1">&#39;自由時間&#39;</span><span class="p">,</span> <span class="s1">&#39;外出&#39;</span><span class="p">,</span> <span class="s1">&#39;アルコール&#39;</span><span class="p">,</span> <span class="s1">&#39;パリピ&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">&#39;健康状態&#39;</span><span class="p">,</span> <span class="s1">&#39;欠席日&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">]</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>  <span class="c1">#差し替え</span>
+<div class="highlight"><span class="filename">カラム名の変更</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s1">&#39;学校名&#39;</span><span class="p">,</span> <span class="s1">&#39;性別&#39;</span><span class="p">,</span> <span class="s1">&#39;年齢&#39;</span><span class="p">,</span> <span class="s1">&#39;住所&#39;</span><span class="p">,</span> <span class="s1">&#39;兄弟姉妹&#39;</span><span class="p">,</span> <span class="s1">&#39;住居&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s1">&#39;母学歴&#39;</span><span class="p">,</span> <span class="s1">&#39;父学歴&#39;</span><span class="p">,</span> <span class="s1">&#39;母職業&#39;</span><span class="p">,</span> <span class="s1">&#39;父職業&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s1">&#39;進学理由&#39;</span><span class="p">,</span> <span class="s1">&#39;保護者&#39;</span><span class="p">,</span> <span class="s1">&#39;通学時間&#39;</span><span class="p">,</span> <span class="s1">&#39;学習時間&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s1">&#39;落第数&#39;</span><span class="p">,</span> <span class="s1">&#39;奨学金&#39;</span><span class="p">,</span> <span class="s1">&#39;親もち&#39;</span><span class="p">,</span> <span class="s1">&#39;塾&#39;</span><span class="p">,</span> <span class="s1">&#39;部活&#39;</span><span class="p">,</span> 
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="s1">&#39;幼稚園&#39;</span><span class="p">,</span> <span class="s1">&#39;大学&#39;</span><span class="p">,</span> <span class="s1">&#39;ネット&#39;</span><span class="p">,</span> <span class="s1">&#39;恋人&#39;</span><span class="p">,</span> <span class="s1">&#39;家族&#39;</span><span class="p">,</span> 
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="s1">&#39;自由時間&#39;</span><span class="p">,</span> <span class="s1">&#39;外出&#39;</span><span class="p">,</span> <span class="s1">&#39;アルコール&#39;</span><span class="p">,</span> <span class="s1">&#39;パリピ&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="s1">&#39;健康状態&#39;</span><span class="p">,</span> <span class="s1">&#39;欠席日&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">]</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>  <span class="c1">#差し替え</span>
 </code></pre></div>
 <p>カテゴリーデータも新旧対応表を辞書で作れば、まとめてマッピングできます。</p>
-<div class="highlight"><span class="filename">カテゴリデータの置き換え</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>df[&#39;学校名&#39;] = df[&#39;学校名&#39;].replace({&#39;GP&#39;: &#39;GP高&#39;, &#39;MS&#39;: &#39;MS高&#39;})
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>df[&#39;性別&#39;] = df[&#39;性別&#39;].map({&#39;M&#39;: &#39;男性&#39;, &#39;F&#39;: &#39;女性&#39;})
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>df[&#39;住所&#39;] = df[&#39;住所&#39;].map({&#39;R&#39;: &#39;郊外&#39;, &#39;U&#39;: &#39;市内&#39;})
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>df[&#39;兄弟姉妹&#39;] = df[&#39;兄弟姉妹&#39;].map({&#39;LE3&#39;: &#39;なし&#39;, &#39;GT3&#39;: &#39;あり&#39;})
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>df[&#39;住居&#39;] = df[&#39;住居&#39;].map({&#39;A&#39;: &#39;下宿&#39;, &#39;T&#39;: &#39;同居&#39;})
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>df[&#39;母職業&#39;] = df[&#39;母職業&#39;].map(
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    {&#39;at_home&#39;: &#39;なし&#39;, &#39;services&#39;: &#39;サービス&#39;, &#39;teacher&#39;: &#39;教師&#39;, &#39;health&#39;: &#39;医療&#39;, &#39;other&#39;: &#39;その他&#39;})
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>df[&#39;父職業&#39;] = df[&#39;父職業&#39;].map(
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    {&#39;at_home&#39;: &#39;なし&#39;, &#39;services&#39;: &#39;サービス&#39;, &#39;teacher&#39;: &#39;教師&#39;, &#39;health&#39;: &#39;医療&#39;, &#39;other&#39;: &#39;その他&#39;})
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>df[&#39;進学理由&#39;] = df[&#39;進学理由&#39;].map(
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    {&#39;course&#39;: &#39;教育内容&#39;, &#39;home&#39;: &#39;通いやすさ&#39;, &#39;reputation&#39;: &#39;評判の良さ&#39;, &#39;other&#39;: &#39;その他&#39;})
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>df[&#39;保護者&#39;] = df[&#39;保護者&#39;].map({&#39;mother&#39;: &#39;母親&#39;, &#39;father&#39;: &#39;父親&#39;, &#39;other&#39;: &#39;その他&#39;})
+<div class="highlight"><span class="filename">カテゴリデータの置き換え</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;学校名&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;学校名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;GP&#39;</span><span class="p">:</span> <span class="s1">&#39;GP高&#39;</span><span class="p">,</span> <span class="s1">&#39;MS&#39;</span><span class="p">:</span> <span class="s1">&#39;MS高&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;性別&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;性別&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;男性&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="s1">&#39;女性&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;住所&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住所&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;郊外&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">:</span> <span class="s1">&#39;市内&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;兄弟姉妹&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;兄弟姉妹&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;LE3&#39;</span><span class="p">:</span> <span class="s1">&#39;なし&#39;</span><span class="p">,</span> <span class="s1">&#39;GT3&#39;</span><span class="p">:</span> <span class="s1">&#39;あり&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;住居&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住居&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;下宿&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="s1">&#39;同居&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;母職業&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;母職業&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="p">{</span><span class="s1">&#39;at_home&#39;</span><span class="p">:</span> <span class="s1">&#39;なし&#39;</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">:</span> <span class="s1">&#39;サービス&#39;</span><span class="p">,</span> <span class="s1">&#39;teacher&#39;</span><span class="p">:</span> <span class="s1">&#39;教師&#39;</span><span class="p">,</span> <span class="s1">&#39;health&#39;</span><span class="p">:</span> <span class="s1">&#39;医療&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">:</span> <span class="s1">&#39;その他&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;父職業&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;父職業&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="p">{</span><span class="s1">&#39;at_home&#39;</span><span class="p">:</span> <span class="s1">&#39;なし&#39;</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">:</span> <span class="s1">&#39;サービス&#39;</span><span class="p">,</span> <span class="s1">&#39;teacher&#39;</span><span class="p">:</span> <span class="s1">&#39;教師&#39;</span><span class="p">,</span> <span class="s1">&#39;health&#39;</span><span class="p">:</span> <span class="s1">&#39;医療&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">:</span> <span class="s1">&#39;その他&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;進学理由&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;進学理由&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="p">{</span><span class="s1">&#39;course&#39;</span><span class="p">:</span> <span class="s1">&#39;教育内容&#39;</span><span class="p">,</span> <span class="s1">&#39;home&#39;</span><span class="p">:</span> <span class="s1">&#39;通いやすさ&#39;</span><span class="p">,</span> <span class="s1">&#39;reputation&#39;</span><span class="p">:</span> <span class="s1">&#39;評判の良さ&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">:</span> <span class="s1">&#39;その他&#39;</span><span class="p">})</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;保護者&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;保護者&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;mother&#39;</span><span class="p">:</span> <span class="s1">&#39;母親&#39;</span><span class="p">,</span> <span class="s1">&#39;father&#39;</span><span class="p">:</span> <span class="s1">&#39;父親&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">:</span> <span class="s1">&#39;その他&#39;</span><span class="p">})</span>
 </code></pre></div>
 <h3 id="_5">カテゴリデータの一覧<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>数値データは、<code>describe()</code>メソッドを使って、要約統計量を求めることができました。
 カテゴリデータは、便利なメソッドは用意されていませんが、少し工夫すると、
 要約統計量をつかむことができます。</p>
-<div class="highlight"><span class="filename">性別の比率をみる</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>df[&#39;sex&#39;].value_counts()
+<div class="highlight"><span class="filename">性別の比率をみる</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df[&#39;性別&#39;].value_counts()
 </code></pre></div>
 <p>ひとつずつ、カラム名を調べるのは大変なので、
 <code>df.dtypes</code>が<code>object</code>あるものをカテゴリデータとみなして、
 カテゴリデータのカラム名を取り出します。</p>
-<div class="highlight"><span class="filename">カテゴリデータのカラム名一覧</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>list(df.dtypes[df.dtypes == &#39;object&#39;].index)
+<div class="highlight"><span class="filename">カテゴリデータのカラム名一覧</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>list(df.dtypes[df.dtypes == &#39;object&#39;].index)
 </code></pre></div>
 <p>あとは、for文を使ってカラム名を順番に処理していきます。</p>
-<p><div class="highlight"><span class="filename">カテゴリデータの値の調べる</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>for name in df.dtypes[df.dtypes == &#39;object&#39;].index:
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    print(name)
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    print(df[name].value_counts())
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    print()
+<p><div class="highlight"><span class="filename">カテゴリデータの値の調べる</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>for name in df.dtypes[df.dtypes == &#39;object&#39;].index:
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    print(name)
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    print(df[name].value_counts())
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    print()
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>学校名
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>GP高    349
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>MS高     46
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Name: 学校名, dtype: int64
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>性別
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>女性    208
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>男性    187
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>Name: 性別, dtype: int64
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>住所
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>市内    307
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>郊外     88
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>Name: 住所, dtype: int64
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>学校名
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>GP高    349
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>MS高     46
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>Name: 学校名, dtype: int64
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>性別
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>女性    208
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>男性    187
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>Name: 性別, dtype: int64
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>住所
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>市内    307
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>郊外     88
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>Name: 住所, dtype: int64
 </code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Pandas力をあげるためには？</p>
 <p>Pandas は高機能で、Google で調べるといってもなかなか求めている機能を探すことが難しいです。
 最初のうちは、よくわからないコードが出てきたら、地道にひとつずつ動きを確認するようにしましょう。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>df.dtypes
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>df.dtypes == &#39;object&#39;
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>df.dtypes[df.dtypes == &#39;object&#39;]
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>df.dtypes[df.dtypes == &#39;object&#39;].index
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>df.dtypes
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>df.dtypes == &#39;object&#39;
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>df.dtypes[df.dtypes == &#39;object&#39;]
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>df.dtypes[df.dtypes == &#39;object&#39;].index
 </code></pre></div>
 こういう地道な努力がプログラミング向上に繋がります。</p>
 </div>
@@ -959,10 +1016,11 @@
 <li>恋人の有無と成績の関係は？</li>
 </ol>
 <p>もし自分なりに新しい事実（関係性）を発見したときは、そちらを報告して頂けると
-評価は高くなります。</p>
+評価は高くなります。また、いろいろなグラフの作画に挑戦してください。</p>
+<h2 id="_7">様々なグラフの作画<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
 <p>グラフの作画は、講義で習ったものだけでなく、Web等で調べて新しいグラフに挑戦しよう。
 Webで調べて書くのが、データ分析を上達するコツです。</p>
-<h3 id="_7">箱ひげ図<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<h3 id="_8">箱ひげ図<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
 <p>箱ひげ図は、最大値、最小値、中央値、四分位範囲を視覚化してくれるグラフです。
 ヒゲの上端が最大値、ヒゲの下端が最小値を示します。データの範囲がみえてきます。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">G1,G2,G3と並べた箱ヒゲ図</label><label for="__tabbed_1_2">コード</label></div>
@@ -971,8 +1029,8 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="箱ヒゲ図" src="../figs/student_boxplot-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">G1,G2,G3と並べる</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>plt.boxplot([df[&#39;G1&#39;], df[&#39;G2&#39;], df[&#39;G3&#39;]])
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>plt.grid(True)
+<div class="highlight"><span class="filename">G1,G2,G3と並べる</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>plt.boxplot([df[&#39;G1&#39;], df[&#39;G2&#39;], df[&#39;G3&#39;]])
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>plt.grid(True)
 </code></pre></div>
 </div>
 </div>
@@ -984,12 +1042,12 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="箱ヒゲ図" src="../figs/student_boxplot2-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>order_by = [&#39;なし&#39;, &#39;サービス&#39;, &#39;教師&#39;, &#39;医療&#39;, &#39;その他&#39;]
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sns.boxplot(x=df[&#39;父職業&#39;], y=df[&#39;G3&#39;], order=order_by)
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>plt.title(&#39;父親の仕事が子供の成績に与える影響&#39;)
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>plt.xlabel(&#39;父親の仕事&#39;)
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>plt.ylabel(&#39;成績&#39;)
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>plt.show()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>order_by = [&#39;なし&#39;, &#39;サービス&#39;, &#39;教師&#39;, &#39;医療&#39;, &#39;その他&#39;]
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sns.boxplot(x=df[&#39;父職業&#39;], y=df[&#39;G3&#39;], order=order_by)
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>plt.title(&#39;父親の仕事が子供の成績に与える影響&#39;)
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>plt.xlabel(&#39;父親の仕事&#39;)
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>plt.ylabel(&#39;成績&#39;)
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>plt.show()
 </code></pre></div>
 </div>
 </div>
@@ -1001,24 +1059,24 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="箱ヒゲ図" src="../figs/student_boxplot3-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">subplot を使った凝ったグラフ</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>plt.figure(figsize= (15,5))
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>plt.subplot(1, 2, 1)
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>order_by=[&#39;なし&#39;, &#39;サービス&#39;, &#39;教師&#39;, &#39;医療&#39;, &#39;その他&#39;]
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>sns.boxplot(x=df[&#39;父職業&#39;], y=df[&#39;G3&#39;], order=order_by)
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>plt.xticks(rotation=90)
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>plt.title(&#39;父親の職業と成績&#39;)
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>plt.subplot(1, 2, 2)
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>sns.boxplot(x=df[&#39;母職業&#39;], y=df[&#39;G3&#39;], order=order_by)
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>plt.xticks(rotation=90)
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>plt.title(&#39;母親の職業と成績&#39;)
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>plt.show()
+<div class="highlight"><span class="filename">subplot を使った凝ったグラフ</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>plt.figure(figsize= (15,5))
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>plt.subplot(1, 2, 1)
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>order_by=[&#39;なし&#39;, &#39;サービス&#39;, &#39;教師&#39;, &#39;医療&#39;, &#39;その他&#39;]
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>sns.boxplot(x=df[&#39;父職業&#39;], y=df[&#39;G3&#39;], order=order_by)
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>plt.xticks(rotation=90)
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>plt.title(&#39;父親の職業と成績&#39;)
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>plt.subplot(1, 2, 2)
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>sns.boxplot(x=df[&#39;母職業&#39;], y=df[&#39;G3&#39;], order=order_by)
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>plt.xticks(rotation=90)
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>plt.title(&#39;母親の職業と成績&#39;)
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>plt.show()
 </code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="_8">ヒストグラム<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<h3 id="_9">ヒストグラム<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <p>おなじみのヒストグラムもSeabornを使うと多彩に描画できます。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">パレットによるヒストグラム</label><label for="__tabbed_4_2">コード</label></div>
 <div class="tabbed-content">
@@ -1026,11 +1084,11 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="ヒストグラム" src="../figs/student_count-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">countplot</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sns.set_theme(style=&quot;whitegrid&quot;, font=&quot;IPAexGothic&quot;)
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sns.countplot(x=df[&#39;G3&#39;], palette=&#39;gray_r&#39;)
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>plt.xlabel(&#39;G3&#39;)
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>plt.ylabel(&#39;Count&#39;)
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>plt.show()
+<div class="highlight"><span class="filename">countplot</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sns.set_theme(style=&quot;whitegrid&quot;, font=&quot;IPAexGothic&quot;)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sns.countplot(x=df[&#39;G3&#39;], palette=&#39;gray_r&#39;)
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>plt.xlabel(&#39;G3&#39;)
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>plt.ylabel(&#39;Count&#39;)
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>plt.show()
 </code></pre></div>
 </div>
 </div>
@@ -1042,12 +1100,12 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="ヒストグラム" src="../figs/student_hue-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">性別ごとにヒストグラム</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sns.set(font=&quot;IPAexGothic&quot;)  # 文字化けしたら
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sns.countplot(x=&#39;G3&#39;,hue=&#39;性別&#39;, data=df)
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>plt.title(&#39;性別ごとの成績分布&#39;)
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>plt.xlabel(&#39;G3&#39;)
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>plt.ylabel(&#39;Count&#39;)
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>plt.show()
+<div class="highlight"><span class="filename">性別ごとにヒストグラム</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sns.set(font=&quot;IPAexGothic&quot;)  # 文字化けしたら
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sns.countplot(x=&#39;G3&#39;,hue=&#39;性別&#39;, data=df)
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>plt.title(&#39;性別ごとの成績分布&#39;)
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>plt.xlabel(&#39;G3&#39;)
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>plt.ylabel(&#39;Count&#39;)
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>plt.show()
 </code></pre></div>
 </div>
 </div>
@@ -1059,11 +1117,11 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="ヒストグラム" src="../figs/student_kde-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">カーネル密度推定法によるヒストグラム</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sns.kdeplot(df.groupby(&#39;性別&#39;).get_group(&#39;男性&#39;)[&#39;G3&#39;], shade = True, label = &#39;男子学生&#39;)
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sns.kdeplot(df.groupby(&#39;性別&#39;).get_group(&#39;女性&#39;)[&#39;G3&#39;], shade = True, label = &#39;女子学生&#39;)
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>plt.xlabel(&#39;G3&#39;)
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>plt.ylabel(&#39;% data distribution&#39;)
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>plt.show()
+<div class="highlight"><span class="filename">カーネル密度推定法によるヒストグラム</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sns.kdeplot(df.groupby(&#39;性別&#39;).get_group(&#39;男性&#39;)[&#39;G3&#39;], shade = True, label = &#39;男子学生&#39;)
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sns.kdeplot(df.groupby(&#39;性別&#39;).get_group(&#39;女性&#39;)[&#39;G3&#39;], shade = True, label = &#39;女子学生&#39;)
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>plt.xlabel(&#39;G3&#39;)
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>plt.ylabel(&#39;% data distribution&#39;)
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>plt.show()
 </code></pre></div>
 </div>
 </div>
@@ -1076,7 +1134,7 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="ペアプロット" src="../figs/student_pairplot-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sns.pairplot(df, hue=&#39;性別&#39;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sns.pairplot(df, hue=&#39;性別&#39;)
 </code></pre></div>
 </div>
 </div>
@@ -1088,14 +1146,14 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="ペアプロット" src="../figs/student_pairplot2-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sns.pairplot(df[[&#39;欠席日&#39;, &#39;アルコール&#39;, &#39;年齢&#39;, &#39;G3&#39;]])
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sns.pairplot(df[[&#39;欠席日&#39;, &#39;アルコール&#39;, &#39;年齢&#39;, &#39;G3&#39;]])
 </code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="_9">相関行列とヒートマップ<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<h3 id="_10">相関行列とヒートマップ<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
 <p>相関行列は、すべての数値データ間で相関係数を計算した行列です。</p>
-<div class="highlight"><span class="filename">相関行列を求める</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>df.corr()
+<div class="highlight"><span class="filename">相関行列を求める</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>df.corr()
 </code></pre></div>
 <p>ご多分に漏れず、可視化しておくとデータ解析が行やすいです。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">ヒートマップ</label><label for="__tabbed_9_2">コード</label></div>
@@ -1104,24 +1162,22 @@ Webで調べて書くのが、データ分析を上達するコツです。</p>
 <p><img alt="ヒートマップ" src="../figs/student_headmap-fs8.png" /></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">相関行列のヒートマップ</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>plt.figure(figsize=(10,10))
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>corr = df.corr()
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>sns.heatmap(corr, annot=True)
+<div class="highlight"><span class="filename">相関行列のヒートマップ</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>plt.figure(figsize=(10,10))
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>corr = df.corr()
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>sns.heatmap(corr, annot=True)
 </code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="_10">カテゴリーデータを視覚化する<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<h3 id="_11">カテゴリーデータを視覚化する<a class="headerlink" href="#_11" title="Permanent link">#</a></h3>
 <p>カテゴリデータの分類がどのように散らばっているか一覧を作ります。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>plt.figure(figsize = (15,15))
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>for i,item in enumerate([&#39;school&#39;, &#39;sex&#39;, &#39;famsize&#39;, &#39;Pstatus&#39;, &#39;Mjob&#39;, &#39;Fjob&#39;,
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>       &#39;reason&#39;, &#39;guardian&#39;, &#39;schoolsup&#39;, &#39;famsup&#39;, &#39;paid&#39;, &#39;activities&#39;,
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>       &#39;nursery&#39;, &#39;higher&#39;, &#39;internet&#39;, &#39;romantic&#39;]):
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    plt.subplot(4,4,i+1)
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    sns.countplot(data=df, x=item)
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    plt.title(item)
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>plt.show()   
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>plt.figure(figsize = (15,15))
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>for i,item in enumerate(df.columns):
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    plt.subplot(4,4,i+1)
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    sns.countplot(data=df, x=item)
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    #plt.title(item)
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>plt.show()   
 </code></pre></div>
 
               

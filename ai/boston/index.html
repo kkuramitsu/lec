@@ -1182,7 +1182,8 @@ Pythonのリストや NumPyの配列などの <strong>使い慣れたデータ�
 <li><code>count</code>: データ数</li>
 <li><code>mean</code>: 平均値</li>
 <li><code>std</code>: 標準偏差</li>
-<li><code>min</code>: 下位25%目の値（第一四分位点）</li>
+<li><code>min</code>: 最小値</li>
+<li><code>25%</code>: 下位25%目の値（第一四分位点）</li>
 <li><code>50%</code>: 中央値</li>
 <li><code>75%</code>: 上位25%目の値（第三四分位点）</li>
 <li><code>max</code>: 最大値</li>
@@ -1228,6 +1229,10 @@ Pythonのリストや NumPyの配列などの <strong>使い慣れたデータ�
 <tr>
 <td><code>df['A'].std()</code></td>
 <td><code>'A'</code>列の標準偏差</td>
+</tr>
+<tr>
+<td><code>df['A'].var()</code></td>
+<td><code>'A'</code>列の分散</td>
 </tr>
 <tr>
 <td><code>df['A'].max()</code></td>
@@ -1341,7 +1346,7 @@ Google などで、グラフの書き方をどんどん調べて、自分の求�
 <li>選んだデータ列の標準偏差、分散を求めてみる</li>
 <li>選んだデータ列の箱ヒゲ図を描画してみる</li>
 <li>選んだデータ列のヒストグラムを描画してみる</li>
-<li>選んだデータ列が正規部分にしたがうか従わないか考えてみよう</li>
+<li>選んだデータ列が正規分布にしたがうか従わないか、従わないか考えてみよう</li>
 </ol>
 <h3 id="_16">(おまけ） 正規分布の近似曲線⭐️⭐️<a class="headerlink" href="#_16" title="Permanent link">#</a></h3>
 <p>さて、演習問題の考察を深めたい学生のため、
@@ -1355,12 +1360,13 @@ pdf(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 </p>
 <p>この関数は、SciPy モジュールの <code>scipy.stats.norm.pdf()</code>にあります。
 <code>plt.plot(x, y)</code>は、線グラフを描画する関数です。</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># 区間[-5,5]を100等分する</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 確率密度関数</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># 区間[-5,5]を100等分する</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 確率密度関数</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <img alt="PDF" src="../figs/pdf0-fs8.png" /></p>
 <p>データ列<code>'住宅価格'</code>の最大値、最小値、平均値、標準偏差からスケールを調整します。
@@ -1376,9 +1382,9 @@ pdf(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 </code></pre></div>
 <img alt="PDF" src="../figs/pdf1-fs8.png" /></p>
 <h3 id="2-shapiro-wilk-test">（おまけ２） シャピロ・ウィルク検定(Shapiro-Wilk test)⭐️⭐️<a class="headerlink" href="#2-shapiro-wilk-test" title="Permanent link">#</a></h3>
-<p>正規母集団（＝正規分布に従う母集団）から無作為に多数の標本を抽出すると、その標本の分布もまた正規分布になる、ということが知られています。
-よって、正規性は、各標本（各群のデータに）についてヒストグラムを作成して、その形状から判断することができます。</p>
-<p>標本は、正規分布に従う母集団から無作為抽出されたものである」を帰無仮説として、正規分布を判定する方法です。
+<p>シャピロ・ウィルク検定(Shapiro-Wilk test)は、
+「標本は、正規分布に従う母集団から無作為抽出されたものである」を帰無仮説として、
+正規分布を判定する方法です。
 特に、データ数が1000以下の有効とされます。</p>
 <p>Python では、SciPyモジュールの<code>shapiro</code>関数で算出できます。</p>
 <p><div class="highlight"><span class="filename">'住宅価格'列のシャピロ・ウィルク検定</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">shapiro</span>

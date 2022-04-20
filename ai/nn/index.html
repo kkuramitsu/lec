@@ -1102,12 +1102,10 @@ f'(x) = 12x^3 − 12x^2 − 24x \\
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
-大域最適性と局所最適性
-
-局所最適性とは、最適解のひとつであるが、必ずしも最小にならないこと。
-（最小となる最適解を大域最適解と呼ぶ。）
+<p class="admonition-title">大域最適性と局所最適性</p>
+<p>局所最適性とは、最適解のひとつであるが、必ずしも最小にならないこと。
+（最小となる最適解を<strong>大域最適解</strong> と呼ぶ。）</p>
 </div>
-
 <p>勾配降下法は、大域最小性は保証されません。例えば、上の例でも初期値を<script type="math/tex">x=-3</script>で始めると、局所最適解に収束してしまいます。学習率などを変更して、山を超えるように調整することもできます。
 ただし、機械学習では調整するパラメータの数が多いので、多少、局所最適解になるパラメータがあっても、計算の効率が優先されます。</p>
 <p><strong>2変数の場合</strong></p>
@@ -1162,15 +1160,21 @@ z = x^2 + y^2 ~~~
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 最先端のニューラルネットワークでは、勾配降下法に完成項(momentum)を追加させた手法、さらに適応的に学習率を変更するAdaGradが使われています。</p>
-<ul>
-<li>勾配降下法(GD): <script type="math/tex">\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \nabla f</script>
-</li>
-<li>Momentum: <script type="math/tex">\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \nabla f+ \alpha \Delta \mathbf{w}</script>
-</li>
-<li>AdaGrad: <script type="math/tex">\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \frac{1}{\sqrt{h_i}}\nabla f</script>,
-   <script type="math/tex">h_{i+1} = h_i +  (\nabla f)^2</script>
-</li>
-</ul>
+<p><strong>勾配降下法(GD)</strong>
+<script type="math/tex; mode=display">
+\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \nabla f
+</script>
+<strong>Momentum</strong>
+<script type="math/tex; mode=display">
+\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \nabla f+ \alpha \Delta \mathbf{w}
+</script>
+</p>
+<p><strong>AdaGrad</strong>
+<script type="math/tex; mode=display">
+\mathbf{x}_{i+1} = \mathbf{x}_i - \eta \frac{1}{\sqrt{h_i}}\nabla f
+   ~~~ h_{i+1} = h_i +  (\nabla f)^2
+</script>
+</p>
 <p><img src="https://watlab-blog.com/wp-content/uploads/2020/03/gd-momentum-adagrad.gif" width="50%"/></p>
 <p><a href="https://watlab-blog.com/2020/03/08/adagrad/">wat氏のわかりやすい解説</a>より引用</p>
 <h2 id="_11">単純パーセプトロンの原理<a class="headerlink" href="#_11" title="Permanent link">#</a></h2>
