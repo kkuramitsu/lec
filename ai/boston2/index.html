@@ -457,96 +457,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../class/" class="md-nav__link">
-        ２クラス分類
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kaggle/" class="md-nav__link">
-        Kaggleに挑戦
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mnist/" class="md-nav__link">
-        画像認識とMNIST
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nn/" class="md-nav__link">
-        ニューラルネットワーク⭐️⭐️
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mnist/" class="md-nav__link">
-        コースワーク３
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../corpus/" class="md-nav__link">
-        データ資源とコーパス
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../pandas/" class="md-nav__link">
         データ処理
       </a>
@@ -577,8 +487,38 @@
   
   
     <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../mnist/" class="md-nav__link">
-        コースワーク４
+        画像認識とMNIST
       </a>
     </li>
   
@@ -593,7 +533,7 @@
   
     <li class="md-nav__item">
       <a href="../nn/" class="md-nav__link">
-        より本格的なAIへ
+        ニューラルネットワーク⭐️⭐️
       </a>
     </li>
   
@@ -920,9 +860,9 @@ r={\frac {\sum _{i=1}^{n}\left(x_{i}-{\overline {x}}\right)\left(y_{i}-{\overlin
 Python の大きなメリットは、<strong>豊富なライブラリを活用できる</strong> 点にあるので、ネットで検索して、
 目的のライブラリがないか探してみることも大切です。</p>
 <p>ここでは、SciPy の統計ライブラリから提供される <code>pearsonr()</code> を使って見ます。</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">from·scipy</span><span class="o">.</span><span class="n">stats·import</span> <span class="n">pearsonr</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">rho</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span><span class="err">·</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">rho</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;部屋数&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;住宅価格&#39;</span><span class="p">])</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;相関係数:&#39;</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p値:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
@@ -1160,11 +1100,11 @@ b ={ 1\over n}\sum^n_{i= 1}(y_i - ax_i)　
 <a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># sklearn 用に変形</span>
 <a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre></div>
-線形回帰モデル<script type="math/tex">y=ax+b</script>の係数<script type="math/tex">a</script>と切片<script type="math/tex">b</script>は、
-それぞれ<code>model.coef_</code>と<code>model.intercept_</code>で取得できます。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 </code></pre></div></p>
+<p>線形回帰モデル<script type="math/tex">y=ax+b</script>の係数<script type="math/tex">a</script>と切片<script type="math/tex">b</script>は、
+それぞれ<code>model.coef_</code>と<code>model.intercept_</code>で取得できます。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</code></pre></div>
 </div>
 
               

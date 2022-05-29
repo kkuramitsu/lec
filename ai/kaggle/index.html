@@ -294,8 +294,23 @@
   
   
     <li class="md-nav__item">
-      <a href="../class/" class="md-nav__link">
-        ２クラス分類
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
       </a>
     </li>
   
@@ -481,6 +496,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../mnist/" class="md-nav__link">
         画像認識とMNIST
       </a>
@@ -498,96 +528,6 @@
     <li class="md-nav__item">
       <a href="../nn/" class="md-nav__link">
         ニューラルネットワーク⭐️⭐️
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mnist/" class="md-nav__link">
-        コースワーク３
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../corpus/" class="md-nav__link">
-        データ資源とコーパス
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pandas/" class="md-nav__link">
-        データ処理
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nlp/" class="md-nav__link">
-        自然言語処理
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mnist/" class="md-nav__link">
-        コースワーク４
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nn/" class="md-nav__link">
-        より本格的なAIへ
       </a>
     </li>
   
@@ -764,19 +704,20 @@
 https://www.codexa.net/kaggle-titanic-beginner/
 -->
 
-<div class="highlight"><span class="filename">いつものモジュールをインポートしておきましょう</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import numpy as np
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>import pandas as pd
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>import matplotlib.pyplot as plt
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>import seaborn as sns
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>try:
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>except ModuleNotFoundError:
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    !pip install japanize_matplotlib
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    import japanize_matplotlib 
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+<div class="highlight"><span class="filename">いつものモジュールをインポートしておきましょう</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#matplotlibの日本語化  </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
 </code></pre></div>
 <h2 id="kaggle_1">Kaggle<a class="headerlink" href="#kaggle_1" title="Permanent link">#</a></h2>
-<p>Kaggleは、世界中のデータサイエンス・機械学習を学んでいる人、仕事で活用している人が、40万人以上集まるコミニティです。Kaggleでは、企業や政府などの組織とデータサイエンティストを繋げるコンペ形式のプラットフォームとなっています。</p>
+<p>Kaggleは、世界中のデータサイエンス・機械学習を学んでいる人、仕事で活用している人が、40万人以上集まるコミニティです。
+Kaggleでは、企業や政府などの組織とデータサイエンティストを繋げるコンペ形式のプラットフォームとなっています。</p>
 <div class="admonition note">
 <p class="admonition-title">Competition（コンペ）</p>
 <p>企業や政府がコンペ形式（競争形式）で課題を提示し、賞金と引き換えに最も制度の高い分析モデルを買い取るクラウドファンディングに近い仕組みになっています。</p>
@@ -1048,7 +989,7 @@ Kaggle にアカウント登録し、
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../class/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ２クラス分類" rel="prev">
+        <a href="../nlp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 自然言語処理" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1057,20 +998,20 @@ Kaggle にアカウント登録し、
               <span class="md-footer__direction">
                 Previous
               </span>
-              ２クラス分類
+              自然言語処理
             </div>
           </div>
         </a>
       
       
         
-        <a href="../mnist/" class="md-footer__link md-footer__link--next" aria-label="Next: 画像認識とMNIST" rel="next">
+        <a href="../class/" class="md-footer__link md-footer__link--next" aria-label="Next: ２クラス分類" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              画像認識とMNIST
+              ２クラス分類
             </div>
           </div>
           <div class="md-footer__button md-icon">
