@@ -205,6 +205,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python入門
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../boston/" class="md-nav__link">
         データ分析
       </a>
@@ -423,10 +438,10 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    初心者向けのヒント
+    何から手をつけていいかわからない人向け
   </a>
   
-    <nav class="md-nav" aria-label="初心者向けのヒント">
+    <nav class="md-nav" aria-label="何から手をつけていいかわからない人向け">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -509,7 +524,7 @@
   
     <li class="md-nav__item">
       <a href="../boston5/" class="md-nav__link">
-        回帰(Pytorch版)
+        回帰(PyTorch版)
       </a>
     </li>
   
@@ -524,7 +539,7 @@
   
     <li class="md-nav__item">
       <a href="../mnist2/" class="md-nav__link">
-        MNIST(Pytorch版)
+        MNIST(PyTorch版)
       </a>
     </li>
   
@@ -606,10 +621,10 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    初心者向けのヒント
+    何から手をつけていいかわからない人向け
   </a>
   
-    <nav class="md-nav" aria-label="初心者向けのヒント">
+    <nav class="md-nav" aria-label="何から手をつけていいかわからない人向け">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -711,11 +726,11 @@ Kaggleでは、企業や政府などの組織とデータサイエンティス�
 英語が苦手であってもなくても、ここから先は英語で書かれた情報を読み取るしかありません。</p>
 </div>
 <p>Pandas を用いて、データの確認をしましょう。</p>
-<div class="highlight"><span class="filename">データの確認</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>train = pd.read_csv(&quot;train.csv&quot;)
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>test = pd.read_csv(&quot;test.csv&quot;)
+<div class="highlight"><span class="filename">データの確認</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;train.csv&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>print(&#39;訓練データの次元&#39;, train.shape)
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>print(&#39;テストデータの次元&#39;, test.shape)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;訓練データの次元&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;テストデータの次元&#39;</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
 <p>訓練データとテストデータが最初から別々になって提供されます。
 コンペなので、<strong>テストデータの正解はわからない</strong> ようになっています。
@@ -723,9 +738,9 @@ Kaggleでは、企業や政府などの組織とデータサイエンティス�
 <p>訓練データとテストデータの内容を比較してみると、
 訓練データには<code>Survived</code>のカラムがありますが、テストデータにはありません。
 つまり、この<code>Survived</code>を目的変数として予測するモデルを作ることになります。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>train.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>test.head()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="_2">データの把握<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>まず、タイタニック号の乗客者名簿の属性をチェックしておきましょう。</p>
@@ -814,7 +829,7 @@ Submitした後の正解スコアを報告してください。</p>
 <p>実は、数多くあるKaggleのコンペの中から「タイタニック号の生存者予測」を選んだのは、
 色々な人が解説をかいていて参考にする情報がWebに多く存在するからです。
 それらを参考にしながら、よい方法（仮説）を考えてみてください。</p>
-<h2 id="_6">初心者向けのヒント<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<h2 id="_6">何から手をつけていいかわからない人向け<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
 <p>ちょっと少しモデル作りに関するヒントを紹介しておきます。</p>
 <h3 id="_7">欠損値を処理する<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>実際のデータ分析では、100%データセットが揃っていることはほとんどありません。
@@ -929,7 +944,7 @@ Submitした後の正解スコアを報告してください。</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright (c) 2021
+      Copyright (c) 2022
     </div>
   
   

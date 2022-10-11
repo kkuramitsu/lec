@@ -1,0 +1,1195 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数理・データサイエンス・AI入門">
+      
+      
+        <meta name="author" content="倉光君郎">
+      
+      
+        <link rel="canonical" href="https://kkuramitsu.github.io/lec/ai/python/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Python入門 - 数理・データサイエンス・AI入門</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-header__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数理・データサイエンス・AI入門
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python入門
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="数理・データサイエンス・AI入門" class="md-nav__button md-logo" aria-label="数理・データサイエンス・AI入門" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    数理・データサイエンス・AI入門
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Python入門
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Python入門
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめのプログラム
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめのプログラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    次に進む前に
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bmi" class="md-nav__link">
+    BMIを計算しよう
+  </a>
+  
+    <nav class="md-nav" aria-label="BMIを計算しよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    計算してみる
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    肥満かどうか判定する
+  </a>
+  
+    <nav class="md-nav" aria-label="肥満かどうか判定する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    条件分岐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    モデルと関数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    繰り返しとデータ列
+  </a>
+  
+    <nav class="md-nav" aria-label="繰り返しとデータ列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    データ列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    標準体重のデータ列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    データ列のグラフ描画
+  </a>
+  
+    <nav class="md-nav" aria-label="データ列のグラフ描画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    Matplotlib
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fizzbuzz" class="md-nav__link">
+    卒業: FizzBuzz ゲーム
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston/" class="md-nav__link">
+        データ分析
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston2/" class="md-nav__link">
+        散布図と相関係数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student/" class="md-nav__link">
+        コースワーク１
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston3/" class="md-nav__link">
+        線形回帰
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston4/" class="md-nav__link">
+        統計からAIへ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lunch/" class="md-nav__link">
+        コースワーク２
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        データ処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nlp/" class="md-nav__link">
+        自然言語処理
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class/" class="md-nav__link">
+        ２クラス分類
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaggle/" class="md-nav__link">
+        コースワーク３　Kaggleに挑戦
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist/" class="md-nav__link">
+        画像認識とMNIST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nn/" class="md-nav__link">
+        ニューラルネットワーク⭐️⭐️
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boston5/" class="md-nav__link">
+        回帰(PyTorch版)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mnist2/" class="md-nav__link">
+        MNIST(PyTorch版)
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめのプログラム
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめのプログラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    次に進む前に
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bmi" class="md-nav__link">
+    BMIを計算しよう
+  </a>
+  
+    <nav class="md-nav" aria-label="BMIを計算しよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    計算してみる
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    肥満かどうか判定する
+  </a>
+  
+    <nav class="md-nav" aria-label="肥満かどうか判定する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    条件分岐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    モデルと関数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    繰り返しとデータ列
+  </a>
+  
+    <nav class="md-nav" aria-label="繰り返しとデータ列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    データ列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    標準体重のデータ列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    データ列のグラフ描画
+  </a>
+  
+    <nav class="md-nav" aria-label="データ列のグラフ描画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    Matplotlib
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fizzbuzz" class="md-nav__link">
+    卒業: FizzBuzz ゲーム
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="python">Python 入門<a class="headerlink" href="#python" title="Permanent link">#</a></h1>
+<p>本ノートは、Python未経験者であっても <strong>データ分析やAI開発を体験するために</strong> 最低限のPython力を習得するための <strong>サバイバルガイド</strong> です。</p>
+<h2 id="_1">はじめのプログラム<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p><strong>Hello World</strong>は、プログラミングを学ぶ人がみんな<strong>最初に</strong> 書いてきた<a href="https://ja.wikipedia.org/wiki/Hello_world">伝統のプログラム</a>です。</p>
+<p>まず、通過儀礼として、Hello Worldを書いてみて、実行してみましょう。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Colab上では、実行セルにコードを書いて、実行ボタンを押すことで、実行結果を表示することができます</p>
+<p><img alt="" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/2453d50e-b99d-be10-bbce-24e46e59b3ce.png" /></p>
+<h3 id="_2">次に進む前に<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
+<p>最低限、文字列、数値、変数名の区別を付けましょう。</p>
+<h2 id="bmi">BMIを計算しよう<a class="headerlink" href="#bmi" title="Permanent link">#</a></h2>
+<p>BMI(ボディマス指数)は、次の式で求められる肥満度を表す体格指数です。</p>
+<p><img alt="" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/e85c454c-ca9b-00bb-e362-40234c9072df.png" /></p>
+<p>ここでは、BMIを計算するプログラムを書きながら練習していきます。</p>
+<h3 id="_3">変数<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>変数は、プログラミング中で用いるデータや値に名前を付けて利用できるようにします。</p>
+<p>次は、変数xの値を1にしています。「<strong>xに1を代入する</strong>」とも呼びます。</p>
+<div class="highlight"><span class="filename">xに1を代入する</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>値にxという名前をつけたので、今後はxという名前を用いてその値を利用できるようになります。</p>
+<p>次は、数式に変数を使ってみた例です。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>BMI を計算するために、身長と体重の変数を定義しましょう。</p>
+<p><img alt="" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/e85c454c-ca9b-00bb-e362-40234c9072df.png" /></p>
+<div class="highlight"><span class="filename">身長と体重</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">h</span> <span class="o">=</span> <span class="mf">1.75</span>  <span class="c1"># メートル法</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">w</span> <span class="o">=</span> <span class="mf">68.5</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">変数名</p>
+<p>プログラミングの変数名は、他の人が読んでも誤解することなく <strong>わかりやすい名前</strong> を付けます。数学のように1文字である必要はありません。慣習的に、英単語を用いることが推奨されます。</p>
+<p><div class="highlight"><span class="filename">英語</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">height</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">weight</span> <span class="o">=</span> <span class="mf">68.5</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">ローマ字(非推奨)</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">shincho</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">taijyu</span> <span class="o">=</span> <span class="mf">68.5</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">日本語(ローマ字よりまし)</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">身長</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">体重</span> <span class="o">=</span> <span class="mf">68.5</span>
+</code></pre></div>
+英単語を覚えつつ、英語変数名にするがおすすめです。</p>
+</div>
+<h3 id="_4">計算してみる<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p>身長と体重を変数で与えて、BMIを計算するプログラムを書いてみよう。
+BMIの計算結果は、変数として名前をつけておきましょう。</p>
+<p><div class="highlight"><span class="filename">(...)の部分を書こう</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">h</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">w</span> <span class="o">=</span> <span class="mf">68.5</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">BMI</span> <span class="o">=</span> <span class="o">...</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">BMI</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">出力例</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>22.367346938775512
+</code></pre></div></p>
+<p>Pythonは、数式を計算するとき、
+中学校から習ってきた数式を<strong>ほぼ</strong>そのまま使えるようになっています。違いに注意して計算してみましょう。</p>
+<table>
+<thead>
+<tr>
+<th>数式</th>
+<th>Python</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<script type="math/tex">x+y</script>
+</td>
+<td><code>x + y</code></td>
+<td>x に y を足した値(加算)</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">x-y</script>
+</td>
+<td><code>x - y</code></td>
+<td>x から y を引いた値(減算)</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">x \times y</script>
+</td>
+<td><code>x * y</code></td>
+<td>x に y を掛けた値 (乗算)</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">x^y</script>
+</td>
+<td><code>x ** y</code></td>
+<td>x の y 乗（冪乗）</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">x \div y</script>
+</td>
+<td><code>x / y</code></td>
+<td>x を y で割った値</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">\lfloor x / y \rfloor</script>
+</td>
+<td><code>x // y</code></td>
+<td>x を y で割った商（<strong>小数点以下切り捨て</strong>)</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">\lceil x / y \rceil</script>
+</td>
+<td><code>(x+y-1)//y</code></td>
+<td>x / yの切り上げ</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">x \mod y</script>
+</td>
+<td><code>x % y</code></td>
+<td>x を y で割った余り</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">表示精度</p>
+<p>余力のある人は、検索エンジンを使って、BMIの表示精度を小数点以下３桁までに揃える書き方を調べてみましょう。
+<div class="highlight"><span class="filename">小数点以下３桁まで表示</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>22.367
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">練習問題1</p>
+<p>BMIが22になるときの体重が標準体重で、最も病気になりにくい状態です。次のように、身長(cm)を入力してもらい、標準体重を計算してあげましょう。
+<div class="highlight"><span class="filename">ユーザに身長を入力させる</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;身長(cm)は？&quot;</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">実行結果の例</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>身長(cm)は？175
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>平均体重 67.375
+</code></pre></div></p>
+</div>
+<h2 id="_5">肥満かどうか判定する<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<p>身長と体重からBMIが計算できるようになりました。</p>
+<p>BMIは、日本肥満学会によると、次のような基準で肥満がどうか判定できます。</p>
+<table>
+<thead>
+<tr>
+<th>BMI</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;18.5</td>
+<td>低体重</td>
+</tr>
+<tr>
+<td>18.5≦ ~ &lt;25</td>
+<td>普通体重</td>
+</tr>
+<tr>
+<td>25≦ ~</td>
+<td>肥満</td>
+</tr>
+</tbody>
+</table>
+<p>身長や体重から肥満を判定するプログラムを作ってみましょう。</p>
+<h3 id="_6">条件分岐<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<p>条件分岐は、データや値の条件によってプログラムの動作を変えるプログラムの書き方です。</p>
+<p>次のようなif文と呼ばれる制御構造を書きます。</p>
+<div class="highlight"><span class="filename">if文</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>if 条件 :
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    条件が真のとき、分岐先のコード
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>else:
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    条件が真でないとき、分岐先のコード
+</code></pre></div>
+<p>まず、「肥満」かそうでないか判定するプログラムを書いてみましょう。
+BMIは計算済みであるとすると：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">if</span> <span class="n">BMI</span> <span class="o">&gt;=</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;肥満&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;肥満でない&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>if文による条件分岐は、難しくありません。
+ただし、分岐先のコードを区別するため、
+先頭にインデント（字下げされた空白４文字）が必要になります。</p>
+<div class="admonition note">
+<p class="admonition-title">TABキー</p>
+<p>TABキーを押すと、空白4文字入ります。
+インデントは、空白４文字でなくても構いませんが、必ずTABキーで入れるようにしましょう。</p>
+</div>
+<p>if文は、組み合わせて書くことができます。
+つまり、分岐先の中にもif文を書くことができます。
+この場合は、インデントを入れ子状にネストして書きます。</p>
+<div class="highlight"><span class="filename">肥満でないとき</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span> <span class="mf">18.5</span> <span class="o">&lt;=</span> <span class="n">BMI</span> <span class="o">&lt;</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;普通体重&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;低体重&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>インデントを深くして２つを組み合わせると: </p>
+<div class="highlight"><span class="filename">肥満の判定</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">if</span> <span class="n">BMI</span> <span class="o">&gt;=</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;肥満&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="k">if</span> <span class="mf">18.5</span> <span class="o">&lt;=</span> <span class="n">BMI</span> <span class="o">&lt;</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;普通体重&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;低体重&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><code>elif</code> は、
+else の中でifで始まるときの特別な書き方です。
+<code>elif</code>を使えば、インデントが深くなるのを避けられます。</p>
+<div class="highlight"><span class="filename">肥満の判定(elif)</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">if</span> <span class="n">BMI</span> <span class="o">&gt;=</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;肥満&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">elif</span> <span class="mf">18.5</span> <span class="o">&lt;=</span> <span class="n">BMI</span> <span class="o">&lt;</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;普通体重&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;低体重&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Let's try</p>
+<p>身長と体重からBMIを計算する部分と組み合わせて、プログラムを完成させましょう。</p>
+</div>
+<h3 id="_7">モデルと関数<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<p>BMIによる肥満判定モデルを定義しましょう。</p>
+<ul>
+<li>入力: 体重(w), 身長(h)</li>
+<li>出力: 3クラス(低体重, 普通体重, 肥満)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span> <span class="nf">BMIModel</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">BMI</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">h</span> <span class="o">**</span> <span class="mi">2</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="k">if</span> <span class="n">BMI</span> <span class="o">&gt;=</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        <span class="k">return</span> <span class="s2">&quot;肥満&quot;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="k">elif</span> <span class="mf">18.5</span> <span class="o">&lt;=</span> <span class="n">BMI</span> <span class="o">&lt;</span> <span class="mf">25.0</span> <span class="p">:</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="k">return</span> <span class="s2">&quot;普通体重&quot;</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="k">return</span> <span class="s2">&quot;低体重&quot;</span>
+</code></pre></div>
+<h2 id="_8">繰り返しとデータ列<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<p>繰り返しは、チューリング完全性と停止性に関連するので、プログラミング初学者にとって最初の壁になりやすい部分です。</p>
+<p>データ分析やAIでは、データ列に対して繰り返し処理する作業は頻出です。ここでは、データ列に対する繰り返し処理に焦点を当てて理解します。</p>
+<h3 id="_9">データ列<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p>Python では、データ列を扱うデータ構造として、リストが用意されています。</p>
+<div class="highlight"><span class="filename">10, 20, 30 のデータ列</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+</code></pre></div>
+<p>このようにデータ列が定義されたら、
+for文はデータ列の値を先頭から順番に一つずつ変数に代入して、
+実行する制御構造です。</p>
+<p>次は、data の値を変数xにひとつずつ代入し、
+それを繰り返しています。</p>
+<p><div class="highlight"><span class="filename">データ列の繰り返し処理</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="p">:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>20
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>40
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>60
+</code></pre></div></p>
+<p>プログラミングでは、データ列の処理結果をデータ列として扱えた方が便利なことも多いです。そのようなときは、空のデータ列を作り、処理結果を追加することで、データ列を作ります。</p>
+<p><div class="highlight"><span class="filename">新しいデータ列</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">newdata</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 空のデータ列を作る</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="p">:</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">newdata</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># x*2 を追加する</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">newdata</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>[20, 40, 60]
+</code></pre></div></p>
+<h3 id="_10">標準体重のデータ列<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p>ある身長(例えば自分の身長）に対し、体重のデータ列(weights)を変化させて、BMIを計算してみます。</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">h</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">:</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="n">BMI</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">BMI</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>40 13.061224489795919
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>45 14.693877551020408
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>50 16.3265306122449
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>55 17.959183673469386
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>60 19.591836734693878
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>65 21.224489795918366
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>70 22.857142857142858
+</code></pre></div></p>
+<div class="admonition example">
+<p class="admonition-title">練習問題</p>
+<p>標準体重は、BMIが22のときの体重で、最も生活習慣病になりにくい体重と言われています。
+次の身長のデータ列(heights)に対する標準体重を求めてみよう。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>heights = [145, 150, 155, 160, 165, 170, 175, 180, 185]
+</code></pre></div></p>
+</div>
+<h3 id="_11">データ列のグラフ描画<a class="headerlink" href="#_11" title="Permanent link">#</a></h3>
+<p>体重のデータ列からBMIを計算する方法を学んでみました。
+計算したBMIを表示する代わりにデータ列に格納し、
+グラフに表示する方法をみていきましょう。</p>
+<div class="highlight"><span class="filename">BMIを表示</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">h</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">:</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="n">BMI</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">BMI</span><span class="p">)</span>
+</code></pre></div>
+<p><div class="highlight"><span class="filename">データ列BMIに格納</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">h</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">BMI175</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">:</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="n">BMI</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="n">BMI175</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BMI</span><span class="p">)</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">BMI175</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">実行結果</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>[13.061224489795919, 14.693877551020408, 16.3265306122449, 17.959183673469386, 19.591836734693878, 21.224489795918366, 22.857142857142858]
+</code></pre></div></p>
+<p>データ列は、グラフ化すると、視覚的にみやすく、特徴が理解しやすくなります。</p>
+<h4 id="matplotlib">Matplotlib<a class="headerlink" href="#matplotlib" title="Permanent link">#</a></h4>
+<p>Matplotlib は、NumPy配列などを描画する定番のライブラリです。
+論文出版に耐えうる高品質なグラフが作画できます。</p>
+<div class="highlight"><span class="filename">グラフ作画の準備</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</code></pre></div>
+<p>今から、体重のデータ列(weights)をX軸に、BMI(BMI175)のデータ列をY軸にしてグラフに描画します。</p>
+<p><div class="highlight"><span class="filename">体重とBMI</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">BMI175</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="" src="../figs/bmi1-fs8.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Let's try</p>
+<p>身長155cmの人のBMIを体重ごとに計算してグラフ化してみよう。</p>
+<p><img alt="" src="../figs/bmi2-fs8.png" /></p>
+<p>(できたら、身長175cmと同時に表示しよう。）</p>
+<div class="highlight"><span class="filename">ヒント: ラベルの付け方</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">BMI175</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;175cm&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">BMI155</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;155cm&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">練習問題</p>
+<p>身長130cmから200cmまで5cm間隔でx軸にとり、
+BMI=18,22,25,30のときの体重をy軸にプロットしたグラフを書いてみよう。</p>
+<p><img alt="" src="../figs/bmi3-fs8.png" /></p>
+</div>
+<h2 id="fizzbuzz">卒業: FizzBuzz ゲーム<a class="headerlink" href="#fizzbuzz" title="Permanent link">#</a></h2>
+<p><strong>データ分析や機械学習を体験するために</strong> 最低限のPython力を習得するための入門編はおしまいです。次回からデータ分析、機械学習に取り組んでいきます。</p>
+<p>最後に、昔からプログラミング力があるか試されるFizzBuzzテストのプログラムに挑戦してみましょう。</p>
+<div class="admonition note">
+<p class="admonition-title">FizzBuzzゲーム</p>
+<p>アメリカのパーティゲーム、順番に1,2,3,...と100まで数えます。そのとき、3の倍数のときはFizz、5の倍数のときはBuzz, ３と5の倍数のときはFizzBuzz と言わなければなりません。（それ以外は数字を発言します。）</p>
+</div>
+<p>1から100まで、FizzBuzzを表示するプログラムを書いてみよう。</p>
+<!--
+## 練習問題の解答例（準備中)
+
+### BMI の計算
+
+次は、よくある間違いです。どこが間違っているのでしょうか？
+
+<div class="highlight"><span class="filename">よくある間違い</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">h</span> <span class="o">=</span> <span class="mf">1.75</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">w</span> <span class="o">=</span> <span class="mf">68.5</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">BMI</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">h</span> <span class="o">*</span> <span class="n">h</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">BMI</span><span class="p">)</span>
+</code></pre></div>
+
+### 標準体重
+
+標準体重は、BMIが22のときの体重で、最も生活習慣病になりにくい体重と言われています。
+次の身長のデータ列(heights)に対する標準体重を求めてみよう。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>heights = [145, 150, 155, 160, 165, 170, 175, 180, 185]
+</code></pre></div>
+-->
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: はじめに" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              はじめに
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../boston/" class="md-footer__link md-footer__link--next" aria-label="Next: データ分析" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              データ分析
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) 2022
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
