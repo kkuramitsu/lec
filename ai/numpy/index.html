@@ -19,7 +19,7 @@
     
     
       
-        <title>配列（NumPy) - 数理・データサイエンス・AI入門</title>
+        <title>NumPyとグラフ - 数理・データサイエンス・AI入門</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              配列（NumPy)
+              NumPyとグラフ
             
           </span>
         </div>
@@ -208,6 +208,170 @@
       <a href="../python/" class="md-nav__link">
         Python入門
       </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          NumPyとグラフ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        NumPyとグラフ
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    準備
+  </a>
+  
+    <nav class="md-nav" aria-label="準備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numpy_1" class="md-nav__link">
+    Numpyモジュール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    Matplotlib　モジュール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数列
+  </a>
+  
+    <nav class="md-nav" aria-label="数列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    等差数列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    要素数を指定した数列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy_2" class="md-nav__link">
+    NumPyと計算
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPyと計算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数列の計算
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    グラフの描画
+  </a>
+  
+    <nav class="md-nav" aria-label="グラフの描画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ユニバーサル関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    グラフの書き方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    円の描画 (媒介変数)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    コースワーク：コッホ曲線
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -458,7 +622,14 @@
         
           <li class="md-nav__item">
   <a href="#numpy_1" class="md-nav__link">
-    Numpyとは
+    Numpyモジュール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    Matplotlib　モジュール
   </a>
   
 </li>
@@ -470,35 +641,89 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    リストと配列
+    数列
   </a>
   
-    <nav class="md-nav" aria-label="リストと配列">
+    <nav class="md-nav" aria-label="数列">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    リスト/配列の基本操作
+    等差数列
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    まとめ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    配列の演算
+    要素数を指定した数列
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy_2" class="md-nav__link">
+    NumPyと計算
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPyと計算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数列の計算
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    グラフの描画
+  </a>
+  
+    <nav class="md-nav" aria-label="グラフの描画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ユニバーサル関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    グラフの書き方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    円の描画 (媒介変数)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    コースワーク：コッホ曲線
+  </a>
   
 </li>
       
@@ -516,235 +741,265 @@
                 
 
 
-<h1 id="numpy">配列（NumPy)<a class="headerlink" href="#numpy" title="Permanent link">#</a></h1>
-<p>データサイエンスや機械学習の基礎となるリストとNumPyの使い方を学びます。</p>
+<h1 id="numpy">NumPy と グラフ作画<a class="headerlink" href="#numpy" title="Permanent link">#</a></h1>
+<p>Numpyは、科学計算やデータサイエンス、機械学習の基礎となる基本的なライブラリです。
+配列をベクトルや行列として効率よく扱うことができます。</p>
+<p>今回は、グラフ作画用のモジュール matplotlib とあわせて、使い方を学んでいきます。</p>
 <h2 id="_1">準備<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<p>Pythonで拡張機能を用いたプログラミングをするときは、まずモジュールをインポートして使います。</p>
-<h3 id="numpy_1">Numpyとは<a class="headerlink" href="#numpy_1" title="Permanent link">#</a></h3>
-<p>Numpyは、科学計算やデータサイエンス、機械学習で最もよく使われる基本的なライブラリです。
-多次元配列を効率よく処理することができます。</p>
+<p>Pythonで拡張機能を用いたプログラミングをするときは、
+まずモジュールをインポートして使います。</p>
+<h3 id="numpy_1">Numpyモジュール<a class="headerlink" href="#numpy_1" title="Permanent link">#</a></h3>
 <p>Numpy モジュールを<code>np</code>という名前でインポートします。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import numpy as np
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>import numpy.random as random
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>%precision 3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">random</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">%</span><span class="n">precision</span> <span class="mi">3</span>
 </code></pre></div>
-<h2 id="_2">リストと配列<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
-<p>リストは、複数のデータを列として扱うデータ構造です。
-次のように<code>[ ]</code> で囲んでリストを作ります。</p>
-<p><strong>リストの例</strong></p>
-<div class="highlight"><span class="filename">リストの例</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>data = [1, 2, 3, 4, 5, 6] 
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>print(data)
+<p>NumPyの配列は、科学技術計算のため開発されたリストの高効率＆高速版です。
+リストは、<code>np.array()</code>によって配列に変換して使うことができます。</p>
+<p><strong>配列</strong>: リストの高速版</p>
+<p><div class="highlight"><span class="filename">配列</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>data = np.array([1, 2, 3, 4, 5, 6])
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>data
 </code></pre></div>
-<p>NumPy配列は、科学技術計算のため開発されたリストの高効率＆高速版です。</p>
-<p><strong>NumPyの配列</strong>: リストの高速版</p>
-<div class="highlight"><span class="filename">NumPy配列</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>data = np.array([1, 2, 3, 4, 5, 6])
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>print(data)
-</code></pre></div>
-<p>データサイエンスや機械学習では配列を使うことが多いので、
-NumPyの配列の使い方を学びます。</p>
-<h3 id="_3">リスト/配列の基本操作<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
-<p>リストや配列は、インデックス(添字)によって内部の値を取り出すことができます。</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>array([1, 2, 3, 4, 5, 6])
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">配列</p>
+<p>本ノートでは、NumPyの配列のことを単に「配列」と呼びます。</p>
 </div>
-<p><strong>例題（配列）</strong></p>
-<p>次の配列<code>a</code>に対し、次の値を求める操作を書いてみよう</p>
-<p>入力例：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>a = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-</code></pre></div>
-<ol>
-<li><code>a</code>の最初の要素</li>
-<li><code>a</code>の要素数を得る</li>
-<li><code>a</code>の先頭と末尾の和</li>
-<li><code>a</code>の先頭を取り除いた配列</li>
-<li><code>a</code>を逆順にした配列</li>
-<li><code>a</code>の総和</li>
-<li><code>a</code>の平均値</li>
-</ol>
-<p><strong>最初の要素</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>print(a[0])
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<p><strong><script type="math/tex">N</script>個数える</strong></p>
-<p>プログラミング(Python)では、原則、「<strong>0から</strong><script type="math/tex">N-1</script>まで」のように0から数えます。</p>
-<p><strong>要素数を得る</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>len(a)
-</code></pre></div>
-<p><strong><code>a</code>の先頭と末尾の和</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>a[0]+a[len(a)-1]
-</code></pre></div>
-<p>添字を<code>-n</code>にすると、末尾から位置を指定できます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>a[0]+a[-1]
-</code></pre></div>
-<p><strong><code>a</code>の先頭を取り除いた配列</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>a[1:]
-</code></pre></div>
-<p><strong><code>a</code>を逆順にした配列</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>a[::-1]
-</code></pre></div>
-<p><strong><code>a</code>の総和</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>a.sum()
-</code></pre></div>
-<p><strong><code>a</code>の平均値</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>a.mean()
-</code></pre></div>
-<h3 id="_4">まとめ<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>数列(数学)</th>
-<th>リスト(Python)</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<script type="math/tex">\|a\|</script>
-</td>
-<td><code>len(a)</code></td>
-<td>個数</td>
-</tr>
-<tr>
-<td>
-<script type="math/tex">a_1</script>
-</td>
-<td><code>a[0]</code></td>
-<td>先頭の値</td>
-</tr>
-<tr>
-<td>
-<script type="math/tex">a_2</script>
-</td>
-<td><code>a[1]</code></td>
-<td></td>
-</tr>
-<tr>
-<td>
-<script type="math/tex">a_i</script>
-</td>
-<td><code>a[i]</code></td>
-<td>i番目の値</td>
-</tr>
-<tr>
-<td>
-<script type="math/tex">a_{N-1}</script>
-</td>
-<td><code>a[len(a)-2]</code>もしくは<code>a[-2]</code></td>
-<td></td>
-</tr>
-<tr>
-<td>
-<script type="math/tex">a_{N}</script>
-</td>
-<td><code>a[len(a)-1]</code>もしくは<code>a[-1]</code></td>
-<td>末尾の値</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_5">配列の演算<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
-<p>Numpyの配列は、科学技術計算用に開発されたため、データは演算はベクトルとして解釈されます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>a = np.array([1, 2, 3, 4])
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>b = np.array([1, 0, 0, 1])
-</code></pre></div>
-<p><strong>配列の和</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>a + b
-</code></pre></div>
-<p><strong>配列の差</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>a + b
-</code></pre></div>
-<p><strong>配列のスカラー積</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>a * 2
-</code></pre></div>
-<p><strong>内積</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>a * b
-</code></pre></div>
-<p><strong>次元の変更</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>a.reshape(2,2)
-</code></pre></div>
-<p><link href="admonition.css" rel="stylesheet"></link></p>
-<h1 id="_6">関数とグラフ<a class="headerlink" href="#_6" title="Permanent link">#</a></h1>
-<p>データサイエンスや機械学習の基礎となるNumPyとMatplotlibの使い方を学びます。</p>
-<h2 id="_7">準備<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
-<p>Pythonで拡張機能を用いたプログラミングをするときは、まずモジュールをインポートして使います。</p>
-<h3 id="numpy_2">Numpyとは<a class="headerlink" href="#numpy_2" title="Permanent link">#</a></h3>
-<p>Numpyは、科学計算やデータサイエンス、機械学習で最もよく使われる基本的なライブラリです。
-多次元配列を効率よく処理することができます。</p>
-<p>Numpy モジュールを<code>np</code>という名前でインポートします。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>import numpy as np
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>import numpy.random as random
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>%precision 3
-</code></pre></div>
-<h3 id="matplotlib">Matplotlib<a class="headerlink" href="#matplotlib" title="Permanent link">#</a></h3>
-<p>Matplotlib は、NumPy配列などを描画する定番のライブラリです。
-出版に耐えうる高品質なグラフが作画できます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>import matplotlib.pyplot as plt 
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>import seaborn as sns 
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>%matplotlib inline
+<p>NumPyは、Python 標準ライブラリではありませんが、数列(数値の入った配列)を扱うとき、
+使わない理由はありません。どんどん活用していきましょう。</p>
+<h3 id="matplotlib">Matplotlib　モジュール<a class="headerlink" href="#matplotlib" title="Permanent link">#</a></h3>
+<p>Matplotlib は、リストや配列などを描画する定番のライブラリです。
+出版に耐えうる高品質なグラフを作成することができます。</p>
+<div class="highlight"><span class="filename">Matplotlibのインポート</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </code></pre></div>
 <p>Colab上で、グラフを日本語表示したいときは、
 日本語化されたmatplotlibをあらかじめインストールして用います。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>!pip install japanize_matplotlib
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>import japanize_matplotlib #日本語化 matplotlib 
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+<div class="highlight"><span class="filename">日本語フォントのインストール</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#日本語化 matplotlib </span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
 </code></pre></div>
-<p>最初にまとめて、一度にインポートするようにしておくと良いでしょう。</p>
+<p>NumPyやMatplotlibは、最初にまとめて、
+インポートするようにしておくと良いでしょう。</p>
 <p><strong>モジュールの準備</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>import numpy as np
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>import pandas as pd
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>import matplotlib.pyplot as plt
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>import seaborn as sns
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>try:
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    import japanize_matplotlib #matplotlibの日本語化  
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>except ModuleNotFoundError:
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    !pip install japanize_matplotlib
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    import japanize_matplotlib 
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>sns.set(font=&quot;IPAexGothic&quot;) #日本語フォント設定
+<div class="highlight"><span class="filename">まとめて一度に準備</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="o">%</span><span class="n">precision</span> <span class="mi">3</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> <span class="c1">#matplotlibの日本語化  </span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="err">!</span><span class="n">pip3</span> <span class="n">install</span> <span class="n">japanize_matplotlib</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;IPAexGothic&quot;</span><span class="p">)</span> <span class="c1">#日本語フォント設定</span>
 </code></pre></div>
-<h3 id="_8">数列の生成<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
-<p>最後に、データサイエンスで用いる便利な数列の生成を紹介しておきます。</p>
-<p><strong>等差数列</strong> (つまり、<code>range(x)</code>のNumPy版)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>np.arange(10)  # 0から10未満までの整数列
+<h2 id="_2">数列<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>まず、NumPyの数列（数値の入った配列）を生成する方法をなれておきましょう。</p>
+<h3 id="_3">等差数列<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p><code>np.arange()</code>は、<code>range()</code>のNumPy版です。
+整数が並んだ数列を作るときに使います。</p>
+<p><div class="highlight"><span class="filename">0から10未満までの整数列</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>np.arange(1, 101, 5)  # 1から100までの5刻みの整数列
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</code></pre></div></p>
+<p><div class="highlight"><span class="filename">1から100までの5刻みの整数列</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> 
 </code></pre></div>
-<p><strong>区間を指定した数列</strong></p>
-<p>こちらは、要素の数をズバリ指定します。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>np.linspace(-10, 10, 20)  # 区間[-10, 10] 要素数20の数列
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>array([ 1,  6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81,
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>       86, 91, 96])
+</code></pre></div></p>
+<h3 id="_4">要素数を指定した数列<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<p><code>np.linspace</code>は、範囲と要素数を指定した数列を作ります。
+要素数によっては、整数列になるとは限りません。</p>
+<p><div class="highlight"><span class="filename">区間[-10, 10] 要素数14の数列</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>同じ値の数列</strong></p>
-<p>20個の0からなる数列</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>np.zeros(20)  # 0が20個
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>array([-10.   ,  -8.462,  -6.923,  -5.385,  -3.846,  -2.308,  -0.769,
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>         0.769,   2.308,   3.846,   5.385,   6.923,   8.462,  10.   ])
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">数値の型</p>
+<p>NumPyの配列は、C/C++ の数値型に由来する数値の種類を表す型を持っています。</p>
+<p><code>dtype</code>プロパティで確認することができます。
+<div class="highlight"><span class="filename">dtype</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">d</span><span class="o">.</span><span class="n">dtype</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>np.ones(15)  # 1が15個
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>dtype(&#39;float64&#39;)
 </code></pre></div>
-<p><strong>乱数列</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>np.random.rand(100)   # 0.0から1.0までの乱数列(100個)
+<code>astype()</code>メソッドを使うことで、数値の型を変換した新しい配列が得られます。
+<div class="highlight"><span class="filename">int型に変換する</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">d</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>np.random.randint(1, 6, 100) #1から6までの乱数列(100個)
-</code></pre></div>
-<h2 id="_9">グラフの描画<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
-<p>数列は、グラフ化すると、視覚的にみやすく、特徴が理解しやすくなります。</p>
-<p>例えば、x, yの数列を表示してみても、xとyの関係性はわかりません。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>x = np.linspace(-10, 10, 100)
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>y = np.sin(x)
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>print(x)
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>print(y)
-</code></pre></div>
-<p>Matplotlib でグラフに表示してみると、視覚的にわかりやすくなります。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>x = np.linspace(-10, 10, 100)
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>y = np.sin(x)
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>plt.plot(x, y)
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>plt.grid(True)
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>array([-10,  -8,  -6,  -5,  -3,  -2,   0,   0,   2,   3,   5,   6,   8, 10])
+</code></pre></div></p>
 </div>
-<p>ユニバーサル関数: <code>np.sin()</code></p>
-<p><code>np.sin(x)</code>は、NumPy用の<script type="math/tex">sin(x)</script>関数です。配列<code>x</code>の各要素ごとに<script type="math/tex">sin(x)</script>を計算します。</p>
-<h3 id="_10">グラフの書き方<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<p><strong>定数列</strong></p>
+<p>要素数を指定して、同じ値からなる配列を作るには、次のようにも書けます。</p>
+<p><div class="highlight"><span class="filename">0が8個</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>array([0., 0., 0., 0., 0., 0., 0., 0.])
+</code></pre></div></p>
+<p><div class="highlight"><span class="filename">1が12個</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>array([1., 1., 1., 1.])
+</code></pre></div></p>
+<p><strong>乱数列</strong></p>
+<p><div class="highlight"><span class="filename">0.0から1.0までの乱数列(100個)</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>array([0.868, 0.987, 0.731, 0.953, 0.758, 0.659, 0.094, 0.517, 0.606,
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>       0.113, 0.816, 0.745, 0.84 , 0.151, 0.046, 0.647, 0.821, 0.221,
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>       0.24 , 0.986, 0.409, 0.866, 0.789, 0.618, 0.232, 0.936, 0.751,
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>       0.395, 0.351, 0.954, 0.871, 0.425, 0.164, 0.345, 0.102, 0.448,
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>       0.2  , 0.641, 0.906, 0.417, 0.157, 0.944, 0.319, 0.247, 0.942,
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>       0.076, 0.865, 0.273, 0.003, 0.674, 0.006, 0.345, 0.4  , 0.85 ,
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>       0.24 , 0.078, 0.969, 0.235, 0.443, 0.773, 0.884, 0.219, 0.895,
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>       0.084, 0.529, 0.316, 0.518, 0.526, 0.279, 0.924, 0.676, 0.451,
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>       0.391, 0.526, 0.545, 0.497, 0.151, 0.74 , 0.079, 0.12 , 0.653,
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>       0.11 , 0.591, 0.024, 0.274, 0.385, 0.994, 0.355, 0.802, 0.817,
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>       0.778, 0.651, 0.587, 0.7  , 0.323, 0.544, 0.948, 0.774, 0.985,
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>       0.823])
+</code></pre></div></p>
+<p><div class="highlight"><span class="filename">1から6までの乱数列(100個)</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">#7は含まれない</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>array([6, 3, 2, 5, 5, 6, 2, 1, 5, 5, 3, 5, 5, 4, 6, 6, 5, 5, 2, 4, 1, 2,
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>       5, 4, 1, 5, 3, 2, 3, 5, 2, 1, 5, 1, 4, 3, 4, 4, 2, 4, 1, 6, 4, 6,
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>       4, 5, 1, 6, 1, 6, 4, 4, 3, 3, 6, 6, 3, 2, 4, 4, 3, 4, 1, 6, 6, 5,
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>       1, 1, 3, 3, 3, 6, 2, 4, 4, 1, 5, 1, 2, 2, 4, 5, 3, 4, 2, 3, 1, 5,
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>       6, 2, 1, 5, 1, 4, 6, 6, 2, 6, 1, 5])
+</code></pre></div></p>
+<h2 id="numpy_2">NumPyと計算<a class="headerlink" href="#numpy_2" title="Permanent link">#</a></h2>
+<p>NumPyの1次元配列はベクトルとしても計算できます。</p>
+<p>つまり、同じ大きさな配列を用意すると:</p>
+<div class="highlight"><span class="filename">2次元ベクトル</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> 
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+<p>次のようなベクトルと解釈して計算することもできます。</p>
+<p>
+<script type="math/tex; mode=display">
+\vec{a} = (1, 2)  ~~~ \vec{b} = (3, 4)
+</script>
+</p>
+<p><div class="highlight"><span class="filename">2次元ベクトルの和</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>array([4, 6])
+</code></pre></div></p>
+<p>スカラー値は、全ての要素に演算が適用されます。</p>
+<p><div class="highlight"><span class="filename">スカラー和</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>array([2, 3])
+</code></pre></div></p>
+<p>NumPyの配列は、少し癖がありますが、一度に計算できるので便利です。</p>
+<div class="admonition note">
+<p class="admonition-title">内積</p>
+<p>内積を計算したいときは、<code>np.dot(a,b)</code>を使います。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>11
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">練習: ベクトルの計算</p>
+<p>ベクトル<script type="math/tex">\vec{a}=(1,2,3), \vec{b}=(3,2,1)</script>としたとき、
+1. 絶対値（ノルム）を求める
+2. 二つのベクトルのなす角を求める（内積と絶対値の利用）
+3. ベクトルの長さを1にして正規化する</p>
+</div>
+<h3 id="_5">数列の計算<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>数列 [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5] に対して、
+次の関数を適用して得られる数列を求めよ。</p>
+<p>
+<script type="math/tex; mode=display">
+y = -2x + 1
+</script>
+</p>
+<p><strong>もしNumPyを使わないと</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>[11,  9,  7,  5,  3,  1, -1, -3, -5, -7, -9]
+</code></pre></div></p>
+<p><strong>NumPyを使えば</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>array([11,  9,  7,  5,  3,  1, -1, -3, -5, -7, -9])
+</code></pre></div></p>
+<div class="admonition example">
+<p class="admonition-title">練習問題: 放物線</p>
+<p>-10〜10 の区間の30個の数列に対し、
+<script type="math/tex">y = -\frac{1}{2}x^2 + 10</script> を適用した数列を求めよ。
+<div class="highlight"><span class="filename">答え</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>[-40.    -33.341 -27.158 -21.451 -16.219 -11.463  -7.182  -3.377  -0.048
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>2.806   5.184   7.087   8.514   9.465   9.941   9.941   9.465   8.514
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>7.087   5.184   2.806  -0.048  -3.377  -7.182 -11.463 -16.219 -21.451
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>-27.158 -33.341 -40.   ]
+</code></pre></div></p>
+</div>
+<h2 id="_6">グラフの描画<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<p>数列は、グラフ化すると、視覚的にみやすく、特徴が理解しやすくなります。</p>
+<p><div class="highlight"><span class="filename">放物線</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+[-10.     -9.31   -8.621  -7.931  -7.241  -6.552  -5.862  -5.172  -4.483
+  -3.793  -3.103  -2.414  -1.724  -1.034  -0.345   0.345   1.034   1.724
+   2.414   3.103   3.793   4.483   5.172   5.862   6.552   7.241   7.931
+   8.621   9.31   10.   ]
+[-40.    -33.341 -27.158 -21.451 -16.219 -11.463  -7.182  -3.377  -0.048
+   2.806   5.184   7.087   8.514   9.465   9.941   9.941   9.465   8.514
+   7.087   5.184   2.806  -0.048  -3.377  -7.182 -11.463 -16.219 -21.451
+ -27.158 -33.341 -40.   ]</p>
+<p>数列 x, yを表示して比べても、xとyの関係性はわかりません。</p>
+<p>Matplotlib でグラフに表示してみると、視覚的にわかりやすくなります。</p>
+<p><div class="highlight"><span class="filename">放物線のグラフ</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<img alt="" src="../figs/parabora1-fs8.png" /></p>
+<h3 id="_7">ユニバーサル関数<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<p>次は、y=sin(x)のグラフを書いてみましょう。</p>
+<p><div class="highlight"><span class="filename">mathをインポートすると</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="kn">import</span> <span class="nn">math</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>---------------------------------------------------------------------------
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>TypeError                                 Traceback (most recent call last)
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>セル20 を /Users/kimio/Git/sphinx/ai2022/code/numpy.ipynb in &lt;cell line: 3&gt;()
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>      1 import math
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>      2 x = np.linspace(-10, 10, 100)
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>----&gt; 3 y = math.sin(x)
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>      4 plt.plot(x, y)
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>      5 plt.grid(True)
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>TypeError: only size-1 arrays can be converted to Python scalars
+</code></pre></div></p>
+<p>これは、math.sin(x)は、NumPyの配列に対応していないためにエラーになります。</p>
+<div class="admonition note">
+<p class="admonition-title">ユニバーサル関数</p>
+<p>配列<code>x</code>の各要素ごとに関数を適用して計算するNumPy向けの関数のこと</p>
+</div>
+<p>Python のふつうの関数は、<code>np.frompyfunc</code>でユニバーサル関数に変換することができます。</p>
+<div class="highlight"><span class="filename">math.sinのユニバーサル関数化</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frompyfunc</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">np.sin(x)</p>
+<p>sin(x)のユニバーサル関数は、よく使うので<code>np.sin(x)</code>でも定義されています。</p>
+</div>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="kn">import</span> <span class="nn">math</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="n">sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frompyfunc</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<img alt="" src="../figs/sin1-fs8.png" /></p>
+<h3 id="_8">グラフの書き方<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
 <p>
 <script type="math/tex">y = sin(x)</script>の例から、グラフの書き方を学びましょう</p>
 <ol>
@@ -753,54 +1008,35 @@ NumPyの配列の使い方を学びます。</p>
 <li>グラフの大きさ、ラベルなどを設定</li>
 <li><code>plt.plot(x, y)</code> でグラフにプロット</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>x = np.linspace(-10, 10, 100)
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>y = np.sin(x)
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>plt.figure(figsize=(10, 2)) #グラフの大きさを指定
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>plt.plot(x, y, label=&#39;sin(x)&#39;)
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>plt.legend() #ラベルの表示
-<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>
-<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>plt.title(&#39;y=sin(x)&#39;)
-<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>plt.xlabel(&#39;x&#39;)
-<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>plt.ylabel(&#39;y&#39;)
-<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>
-<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>plt.grid(True) #グリッド
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>x = np.linspace(-10, 10, 100)
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>y = np.sin(x)
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>plt.figure(figsize=(10, 2)) #グラフの大きさを指定
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>plt.plot(x, y, label=&#39;sin(x)&#39;)
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>plt.legend() #ラベルの表示
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>plt.title(&#39;y=sin(x)&#39;)
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>plt.xlabel(&#39;x&#39;)
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>plt.ylabel(&#39;y&#39;)
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>plt.grid(True) #グリッド
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
-</div>
-<p>Let's try</p>
+<p class="admonition-title">練習問題</p>
 <ol>
 <li>
 <script type="math/tex">y=cos(x)</script>のグラフに書き換えてみよう</li>
 <li>
 <script type="math/tex">y=sin(x)</script>と<script type="math/tex">y=cos(x)</script>を同じグラフに書いてみよう</li>
 <li>
-<script type="math/tex">y=sin(x), y=sin(2x), y=sin(3x), ..</script> と同じグラフに書いてみよう</li>
+<script type="math/tex">y=sin(x), y=sin(2x), y=sin(3x), ..</script> と同じグラフに書いてみよう
+<img alt="" src="../figs/cos-fs8.png" />
+<img alt="" src="../figs/sin2-fs8.png" /></li>
 </ol>
-<h3 id="_11">関数グラフの描画<a class="headerlink" href="#_11" title="Permanent link">#</a></h3>
-<p>自分で定義した関数もグラフで描画することができます。</p>
-<p>
-<script type="math/tex">f(x) = x^2 - 2x + 1</script>
-</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>def f(x):
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    return x ** 2 - 2*x + 1
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>x = np.linspace(-4, 4, 100) # 区間[-4, 4]にする
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>y = f(x)
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>plt.figure(figsize=(5, 3)) #グラフの大きさを指定
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>plt.plot(x, y, label=&#39;f(x)&#39;)
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>plt.legend() #ラベルの表示
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>plt.title(&#39;$y=x^2-2x+1$&#39;) # latex の数式
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>plt.xlabel(&#39;x&#39;)
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>plt.ylabel(&#39;y&#39;)
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>
-<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>plt.grid(True)
-</code></pre></div>
-<h3 id="_12">円の描画 (媒介変数)<a class="headerlink" href="#_12" title="Permanent link">#</a></h3>
-<p>円は、<script type="math/tex">x^2 + y^2 = 1</script> ですね。つまり、媒介変数<script type="math/tex">t</script>を用いると、次のように直せますね。</p>
+</div>
+<h3 id="_9">円の描画 (媒介変数)<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<p>円は、<script type="math/tex">x^2 + y^2 = 1</script> ですね。
+つまり、媒介変数<script type="math/tex">t</script>を用いると、次のように直せますね。</p>
 <ol>
 <li>
 <script type="math/tex">x = cos(t)</script>
@@ -809,121 +1045,317 @@ NumPyの配列の使い方を学びます。</p>
 <script type="math/tex">y = sin(t)</script>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>t = np.linspace(-np.pi, np.pi, 100)
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>x = np.cos(t)
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>y = np.sin(t)
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>plt.plot(x, y)
+<p><div class="highlight"><span class="filename">円</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p>楕円も描画することができます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>t = np.linspace(-np.pi, np.pi, 100)
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>x = np.cos(t)
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>y = np.sin(t)
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>plt.plot(x, 0.5 * y)
-<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>plt.ylim(-1.0, 1.0)
-</code></pre></div>
+<img alt="" src="../figs/circle1-fs8.png" /></p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
+<p class="admonition-title">練習問題</p>
+<p><a href="https://ja.wikipedia.org/wiki/リサジュー図形">リサジュー図形</a>を描画してみよう。
+<img alt="" src="../figs/lissa-fs8.png" />
+<code>plt.subplot()</code>を使うと、1枚の図に複数のグラフが書けます。</p>
 </div>
-<p>Let's try</p>
-<p><a href="https://ja.wikipedia.org/wiki/リサジュー図形">リサジュー図形</a>を描画してみよう。</p>
-<h2 id="_13">色々なグラフ<a class="headerlink" href="#_13" title="Permanent link">#</a></h2>
-<p>Matplotlibは色々なグラフを描画することができます。少し例をみながら書き方を学びましょう。</p>
-<h3 id="pltscatterxy">散布図 (<code>plt.scatter(x,y)</code>)<a class="headerlink" href="#pltscatterxy" title="Permanent link">#</a></h3>
-<p>散布図は、2つのデータの組み合わせに対して、xy座標上にプロットしたグラフです。散布図を書くと、ふたつのデータの関連性が見えてきます。</p>
-<p><strong>一様乱数列 X, Yの散布図</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>x = np.random.rand(100)
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>y = np.random.rand(100)
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>plt.figure(figsize=(4,4))
-<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>plt.scatter(x, y, marker=&#39;x&#39;)
-</code></pre></div>
-<p><strong>色分けして表示する例</strong></p>
-<p><a href="https://ja.wikipedia.org/wiki/モンテカルロ法">モンテカルロ法</a>で、円周率を求めるとき、半径１の円の中にあるかないかで色分けしてみます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a># モンテカルロ法
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>x = np.random.rand(200)
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>y = np.random.rand(200)
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>d = np.hypot(x, y)   # 原点から(x,y)の距離
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>
-<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a># 原点からの距離で分ける
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>x_inside = x[d&lt;1.0]  
-<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>y_inside = y[d&lt;1.0]
-<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>x_outside = x[d&gt;=1.0]
-<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>y_outside = y[d&gt;=1.0]
-<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>
-<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>plt.figure(figsize=(5,5))
-<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>plt.scatter(x_inside,y_inside, c=&#39;pink&#39;)　# ピンク色
-<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>plt.scatter(x_outside,y_outside, c=&#39;cyan&#39;) # シアン色
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<p><strong>配列のフィルタ</strong></p>
-<p>フィルタは、条件にマッチした値だけ残す操作です。少し特殊ですが<code>配列[条件式]</code>のように書きます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>a = np.array([1,2,3,4,5,6,7,8,9])
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>a[a % 2 == 0] # 偶数かどうか
-</code></pre></div>
-<h3 id="pltbar">棒グラフ <code>plt.bar()</code><a class="headerlink" href="#pltbar" title="Permanent link">#</a></h3>
-<p>棒グラフは、カテゴリーごとの数値を比較したい時に使います。
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>x = [1, 2, 3]
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>y = [10, 1, 4]
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>plt.figure(figsize=(5,3))
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>plt.bar(x, y, align=&#39;center&#39;, width=0.5)
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>plt.xticks(x, [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;])
-</code></pre></div></p>
-<h3 id="_14">ヒストグラム<a class="headerlink" href="#_14" title="Permanent link">#</a></h3>
-<p>ヒストグラムは、縦軸に度数、横軸に階級をとり、データの分布状況を視覚的に認識するために定番のグラフです。</p>
-<p><strong>サイコロを60回ふったときの各目の出現</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>x = np.random.randint(1, 7, 60) #1以上7未満の60個の乱数
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>print(x)
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>plt.hist(x, bins=6, rwidth=0.8) 
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>plt.axhline(y = 10, color=&#39;red&#39;, linestyle=&#39;--&#39;) #期待値に赤点戦を引く
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<p>Let's try: <a href="https://ja.wikipedia.org/wiki/大数の法則">大数の法則</a></p>
-<p>サイコロをふる回数を増やしてみて、偏りが平坦になることを確認してみよう（つまり、60を大きくしてみよう。）</p>
-<h3 id="subplot">Subplot 複数の図を表示する<a class="headerlink" href="#subplot" title="Permanent link">#</a></h3>
-<p>Subplotの機能を使えば、複数の図をみやすいように一枚にまとめて描画することができます。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a># https://matplotlib.org/tutorials/introductory/pyplot.html より
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>def f(t):
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    return np.exp(-t) * np.cos(2*np.pi*t)
-<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
-<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>t1 = np.arange(0.0, 5.0, 0.1)
-<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>t2 = np.arange(0.0, 5.0, 0.02)
-<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>
-<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>plt.figure(1)
-<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>plt.subplot(2,1,1)  # 1枚目の位置
-<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>plt.plot(t1, f(t1), &#39;bo&#39;, t2, f(t2), &#39;k&#39;)
-<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>
-<a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a>plt.subplot(2,1,2)  # 2枚目の位置
-<a id="__codelineno-41-13" name="__codelineno-41-13" href="#__codelineno-41-13"></a>plt.plot(t2, np.cos(2*np.pi*t2), &#39;r--&#39;)
-<a id="__codelineno-41-14" name="__codelineno-41-14" href="#__codelineno-41-14"></a>plt.show()
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<p>subplot の理解するためには</p>
-<p>グラフを1枚追加して、<code>plt.subplot(3,1,3)</code>で描画してみよう。もしくは、<code>subplot()</code>のパラメータを変更してどうなるか変わるか調べてみよう。</p>
-<h3 id="matplotlib_1">もっと Matplotlibを使いこなすには？<a class="headerlink" href="#matplotlib_1" title="Permanent link">#</a></h3>
-<p>Matplotlibは、科学論文誌において定番的に用いられるグラフ作成術です。
-機能は豊富で短期間にマスターし尽くせるものでもありません。</p>
-<p>今後、Matplotlib を使ってグラフを描画するサンプルをみることが増えますが、
-気になるところがあったら、Webで調べながら技を増やしていきましょう。</p>
-<p>ぜひ、Webの情報を活用して使いこなしていきましょう。</p>
-<p>https://qiita.com/skotaro/items/08dc0b8c5704c94eafb9</p>
-<h2 id="_15">コースワーク<a class="headerlink" href="#_15" title="Permanent link">#</a></h2>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-</div>
-<p><strong>演習問題（サイコロの目の和）</strong></p>
+<h2 id="_10">コースワーク：コッホ曲線<a class="headerlink" href="#_10" title="Permanent link">#</a></h2>
+<p><a href="https://ja.wikipedia.org/wiki/コッホ曲線">コッホ曲線</a>を書いてみましょう。</p>
+<p>ヒント: 辺ABの座標を<script type="math/tex">A(x_a, y_a)</script>, <script type="math/tex">B(x_b, y_b)</script>とすると、
+ABを三等分にする点<script type="math/tex">P(x_p, y_p)</script>,$Q(x_q, y_q)は次のようになる。
+<script type="math/tex; mode=display">
+P(x_p, y_p) = (x_a + \frac{x_b - x_a}{3}, y_a + \frac{y_b - y_a}{3})
+</script>
+</p>
 <p>
-<script type="math/tex">n</script>個のサイコロを1000回振ったときの<strong>サイコロの目の和</strong>を考える。サイコロの数を<script type="math/tex">1</script>から<script type="math/tex">8</script>に増やしていくと、サイコロの目の和の頻度分布をヒストグラムとして描画せよ。また、サイコロの数が増えたとき、最終的にどのような分布に近づくか考察せよ。</p>
-<p><strong>例</strong>：(可能であれば１枚にまとめてみましょう。
-<img alt="c3_example.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/5347cd65-5a95-6e49-de47-d444af60b7fa.png" /></p>
-<p><link href="admonition.css" rel="stylesheet"></link></p>
+<script type="math/tex; mode=display">
+Q(x_q, y_q) = (x_a + \frac{2(x_b - x_a)}{3}, y_a + \frac{2(y_b - y_a)}{3})
+</script>
+</p>
+<p>長さPQを1辺とする正三角形の頂点<script type="math/tex">R(x_r, y_r)</script>は</p>
+<p>
+<script type="math/tex; mode=display">
+x_r = x_p + (x_q-x_p)\cos{\frac{\pi}{3}}-(y_q-y_p)\sin{\frac{\pi}{3}}
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+y_r = y_p + (x_q-x_p)\sin{\frac{\pi}{3}}+(y_q-y_p)\cos{\frac{\pi}{3}}
+</script>
+</p>
+<p>これが深さN=1のコッホ曲線です。</p>
+<p><img alt="" src="../figs/koch1-fs8.png" /></p>
+<p>それぞれに辺に対し、３等分して正三角形を作っていきます。
+これを繰り返していくと、深さNのコッホ曲線が得られます。</p>
+<p><img alt="" src="../figs/koch2-fs8.png" />
+<img alt="" src="../figs/koch3-fs8.png" /></p>
+<p>再帰関数をマスターすると、Nが大きくなったときでも簡単に書けます。</p>
+<!--
+## 色々なグラフ
+
+Matplotlibは色々なグラフを描画することができます。
+少し例をみながら書き方を学びましょう。
+
+### 散布図 (`plt.scatter(x,y)`)
+
+散布図は、2つのデータの組み合わせに対して、xy座標上にプロットしたグラフです。散布図を書くと、ふたつのデータの関連性が見えてきます。
+
+__一様乱数列 X, Yの散布図__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>x = np.random.rand(100)
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>y = np.random.rand(100)
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>plt.figure(figsize=(4,4))
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>plt.scatter(x, y, marker=&#39;x&#39;)
+</code></pre></div>
+
+__色分けして表示する例__
+
+[モンテカルロ法](https://ja.wikipedia.org/wiki/モンテカルロ法)で、円周率を求めるとき、半径１の円の中にあるかないかで色分けしてみます。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a># モンテカルロ法
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>x = np.random.rand(200)
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>y = np.random.rand(200)
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>d = np.hypot(x, y)   # 原点から(x,y)の距離
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a># 原点からの距離で分ける
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>x_inside = x[d&lt;1.0]  
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>y_inside = y[d&lt;1.0]
+<a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a>x_outside = x[d&gt;=1.0]
+<a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a>y_outside = y[d&gt;=1.0]
+<a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a>
+<a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a>plt.figure(figsize=(5,5))
+<a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a>plt.scatter(x_inside,y_inside, c=&#39;pink&#39;)　# ピンク色
+<a id="__codelineno-45-14" name="__codelineno-45-14" href="#__codelineno-45-14"></a>plt.scatter(x_outside,y_outside, c=&#39;cyan&#39;) # シアン色
+</code></pre></div>
+
+!!! warning
+
+**配列のフィルタ**
+
+フィルタは、条件にマッチした値だけ残す操作です。少し特殊ですが`配列[条件式]`のように書きます。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>a = np.array([1,2,3,4,5,6,7,8,9])
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>a[a % 2 == 0] # 偶数かどうか
+</code></pre></div>
+
+
+### 棒グラフ `plt.bar()`
+
+棒グラフは、カテゴリーごとの数値を比較したい時に使います。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>x = [1, 2, 3]
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>y = [10, 1, 4]
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>plt.figure(figsize=(5,3))
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>plt.bar(x, y, align=&#39;center&#39;, width=0.5)
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>plt.xticks(x, [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;])
+</code></pre></div>
+
+### ヒストグラム
+
+ヒストグラムは、縦軸に度数、横軸に階級をとり、データの分布状況を視覚的に認識するために定番のグラフです。
+
+__サイコロを60回ふったときの各目の出現__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>x = np.random.randint(1, 7, 60) #1以上7未満の60個の乱数
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>print(x)
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>plt.hist(x, bins=6, rwidth=0.8) 
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>plt.axhline(y = 10, color=&#39;red&#39;, linestyle=&#39;--&#39;) #期待値に赤点戦を引く
+</code></pre></div>
+
+!!! warning "[大数の法則](https://ja.wikipedia.org/wiki/大数の法則)"
+    サイコロをふる回数を増やしてみて、偏りが平坦になることを確認してみよう
+    （つまり、60を大きくしてみよう。）
+
+
+### Subplot 複数の図を表示する
+
+Subplotの機能を使えば、複数の図をみやすいように一枚にまとめて描画することができます。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a># https://matplotlib.org/tutorials/introductory/pyplot.html より
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>def f(t):
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>    return np.exp(-t) * np.cos(2*np.pi*t)
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>
+<a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>t1 = np.arange(0.0, 5.0, 0.1)
+<a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>t2 = np.arange(0.0, 5.0, 0.02)
+<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>
+<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>plt.figure(1)
+<a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a>plt.subplot(2,1,1)  # 1枚目の位置
+<a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a>plt.plot(t1, f(t1), &#39;bo&#39;, t2, f(t2), &#39;k&#39;)
+<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a>
+<a id="__codelineno-49-12" name="__codelineno-49-12" href="#__codelineno-49-12"></a>plt.subplot(2,1,2)  # 2枚目の位置
+<a id="__codelineno-49-13" name="__codelineno-49-13" href="#__codelineno-49-13"></a>plt.plot(t2, np.cos(2*np.pi*t2), &#39;r--&#39;)
+<a id="__codelineno-49-14" name="__codelineno-49-14" href="#__codelineno-49-14"></a>plt.show()
+</code></pre></div>
+
+!!! warning "subplot の理解するためには"
+    グラフを1枚追加して、`plt.subplot(3,1,3)`で描画してみよう。もしくは、`subplot()`のパラメータを変更してどうなるか変わるか調べてみよう。
+
+### もっと Matplotlibを使いこなすには？
+
+Matplotlibは、科学論文誌において定番的に用いられるグラフ作成術です。
+機能は豊富で短期間にマスターし尽くせるものでもありません。
+
+今後、Matplotlib を使ってグラフを描画するサンプルをみることが増えますが、
+気になるところがあったら、Webで調べながら技を増やしていきましょう。
+
+ぜひ、Webの情報を活用して使いこなしていきましょう。
+
+https://qiita.com/skotaro/items/08dc0b8c5704c94eafb9
+
+## コースワーク
+
+!!! example
+
+**演習問題（サイコロの目の和）**
+
+$n$個のサイコロを1000回振ったときの**サイコロの目の和**を考える。サイコロの数を$1$から$8$に増やしていくと、サイコロの目の和の頻度分布をヒストグラムとして描画せよ。また、サイコロの数が増えたとき、最終的にどのような分布に近づくか考察せよ。
+
+
+__例__：(可能であれば１枚にまとめてみましょう。
+![c3_example.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/57754/5347cd65-5a95-6e49-de47-d444af60b7fa.png)
+
+
+## リストと配列
+
+リストは、複数のデータを列として扱うデータ構造です。
+次のように`[ ]` で囲んでリストを作ります。
+
+__リストの例__
+
+<div class="highlight"><span class="filename">リストの例</span><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>data = [1, 2, 3, 4, 5, 6] 
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>print(data)
+</code></pre></div>
+
+NumPy配列は、科学技術計算のため開発されたリストの高効率＆高速版です。
+
+__NumPyの配列__: リストの高速版
+
+<div class="highlight"><span class="filename">NumPy配列</span><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>data = np.array([1, 2, 3, 4, 5, 6])
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>print(data)
+</code></pre></div>
+
+データサイエンスや機械学習では配列を使うことが多いので、
+NumPyの配列の使い方を学びます。
+
+### リスト/配列の基本操作
+
+リストや配列は、インデックス(添字)によって内部の値を取り出すことができます。
+
+!!! example
+
+**例題（配列）**
+
+次の配列`a`に対し、次の値を求める操作を書いてみよう
+
+入力例：
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>a = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+</code></pre></div>
+
+1. `a`の最初の要素
+2. `a`の要素数を得る
+3. `a`の先頭と末尾の和
+4. `a`の先頭を取り除いた配列
+5. `a`を逆順にした配列
+6. `a`の総和
+7. `a`の平均値
+
+
+
+__最初の要素__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>print(a[0])
+</code></pre></div>
+
+!!! warning
+
+**$N$個数える**
+
+プログラミング(Python)では、原則、「**0から**$N-1$まで」のように0から数えます。
+
+
+
+__要素数を得る__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>len(a)
+</code></pre></div>
+
+__`a`の先頭と末尾の和__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>a[0]+a[len(a)-1]
+</code></pre></div>
+
+添字を`-n`にすると、末尾から位置を指定できます。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>a[0]+a[-1]
+</code></pre></div>
+
+__`a`の先頭を取り除いた配列__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>a[1:]
+</code></pre></div>
+
+__`a`を逆順にした配列__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>a[::-1]
+</code></pre></div>
+
+__`a`の総和__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>a.sum()
+</code></pre></div>
+
+__`a`の平均値__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>a.mean()
+</code></pre></div>
+
+### まとめ
+
+| 数列(数学) | リスト(Python)               | 意味      |
+| ---------- | ---------------------------- | --------- |
+| $\|a\|$    | `len(a)`                     | 個数      |
+| $a_1$      | `a[0]`                       | 先頭の値  |
+| $a_2$      | `a[1]`                       |           |
+| $a_i$      | `a[i]`                       | i番目の値 |
+| $a_{N-1}$  | `a[len(a)-2]`もしくは`a[-2]` |           |
+| $a_{N}$    | `a[len(a)-1]`もしくは`a[-1]` | 末尾の値  |
+
+### 配列の演算
+
+Numpyの配列は、科学技術計算用に開発されたため、データは演算はベクトルとして解釈されます。
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>a = np.array([1, 2, 3, 4])
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>b = np.array([1, 0, 0, 1])
+</code></pre></div>
+
+__配列の和__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>a + b
+</code></pre></div>
+
+__配列の差__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>a + b
+</code></pre></div>
+
+__配列のスカラー積__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>a * 2
+</code></pre></div>
+
+__内積__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>a * b
+</code></pre></div>
+
+__次元の変更__
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>a.reshape(2,2)
+</code></pre></div>
+
+-->
 
               
             </article>
@@ -933,6 +1365,41 @@ NumPyの配列の使い方を学びます。</p>
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../python/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python入門" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Python入門
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../boston/" class="md-footer__link md-footer__link--next" aria-label="Next: データ分析" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              データ分析
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
