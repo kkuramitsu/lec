@@ -66,7 +66,7 @@ window.onload = function () {
         var td1 = tr.insertCell(-1);
         td1.innerHTML = html_td;
         var td2 = tr.insertCell(-1);
-        td2.innerHTML = hint;
+        td2.innerHTML = `<span style="8pt">${hint}</span>`;
         if (problem_id !== undefined) {
             var td3 = tr.insertCell(-1);
             cells[problem_id] = td3;
@@ -80,14 +80,13 @@ window.onload = function () {
         fetch(url).then(function (response) {
             response.text().then(function (text) {
                 const data = JSON.parse(text);
-                var AC = 0, AC2 = 0, ModAC = 0;
+                var AC = 0;
                 var score = {};
                 var epoch = [];
-                var extra = '';
                 data.sort((x, y) => x.epoch_second - y.epoch_second);
                 for (var i = 0; i < data.length; i += 1) {
                     var problem_id = data[i].problem_id;
-                    if (data[i].epoch_second > 1648771200) {
+                    if (data[i].epoch_second > 1680710597) { //1680710597
                         epoch.push(data[i].epoch_second);
                     }
                     else {
@@ -101,9 +100,20 @@ window.onload = function () {
                         if (data[i].result == 'AC') {
                             s = `<span class="label-ac">AC</span>`;
                             if (!(problem_id in score)) {
-                                AC += 1;
+                                score[problem_id] = 1;
+                                if (problem_id.endsWith('_d')) {
+                                    AC += 8;
+                                }
+                                else if (problem_id.endsWith('_c')) {
+                                    AC += 4;
+                                }
+                                else if (problem_id.endsWith('_b')) {
+                                    AC += 2;
+                                }
+                                else {
+                                    AC += 1;
+                                }
                             }
-                            count(score, problem_id, 1);
                         }
                         else if (data[i].result == 'TLE') {
                             s = '<span class="label-mod">TLE</span>';
@@ -112,15 +122,6 @@ window.onload = function () {
                             s = '<span class="label-wa">' + data[i].result + '</span>';
                         }
                         cells[problem_id].innerHTML += `<a href="${url}" target="atcoder_result">${s}</a> `;
-                    }
-                    else {
-                        if (data[i].result == 'AC') {
-                            if (!(problem_id in score)) {
-                                AC2 += 1;
-                            }
-                            count(score, problem_id, 1);
-                            extra += `<a href="${url}" target="atcoder_result">${problem_id}</a> `;
-                        }
                     }
                 }
                 //
@@ -133,10 +134,8 @@ window.onload = function () {
                 time = (((time * 100) / 3600) | 0) / 100
                 //
                 var element = document.getElementById('results');
-                element.innerHTML = `<span class="label-ac">正解数</span> ${AC} + ${AC2}`
-                    + ` <span class="label-wa">時間(おおよそ)</span> ${time}`;
-                // element = document.getElementById('extra');
-                // element.innerHTML = extra;
+                element.innerHTML = `<span class="label-ac">得点</span> ${AC}`
+                    + ` <span class="label-wa">練習時間(おおよそ)</span> ${time}`;
             });
         });
     }
