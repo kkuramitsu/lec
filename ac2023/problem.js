@@ -76,8 +76,8 @@ problems = [
     ["グリッドブロック", "https://atcoder.jp/contests/abc186/tasks/abc186_b", "2次元リスト入門"],
     ["数列を数える", "https://atcoder.jp/contests/abc226/tasks/abc226_b", "Setを使う"],
     ["サイクルヒット", "https://atcoder.jp/contests/abc211/tasks/abc211_b", "重複除去　Setを使うと楽"],
-    ["アメーバ", "https://atcoder.jp/contests/abc205/tasks/abc205_c", "辞書を活用する"],
-    ["map", "https://atcoder.jp/contests/abc275/tasks/abc275_d", "辞書？"],
+    ["アメーバ", "https://atcoder.jp/contests/abc274/tasks/abc274_c", "辞書を活用する"],
+    //    ["map", "https://atcoder.jp/contests/abc275/tasks/abc275_d", "辞書？"],
 
     ["総合", "", ""],
     ["180度", "https://atcoder.jp/contests/abc202/tasks/abc202_b", "文字リスト結合"],
